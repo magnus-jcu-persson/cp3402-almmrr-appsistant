@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Appsistant</string>
+    <string name="applications_list">Applications List</string>
 </resources>
