@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/applications_list"
-        style="@style/TextAppearance.AppCompat.Headline"/>
+        style="@style/TextAppearance.AppCompat.Display1"/>
 
     <Space
         android:layout_width="match_parent"
@@ -31,6 +31,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:id="@+id/application_list"/>
 
 </LinearLayout>

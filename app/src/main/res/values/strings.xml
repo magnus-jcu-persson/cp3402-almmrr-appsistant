@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Appsistant</string>
     <string name="applications_list">Applications List</string>
+    <string name="row_placeholder">RowPlaceholder</string>
 </resources>
