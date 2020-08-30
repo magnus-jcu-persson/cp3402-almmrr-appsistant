@@ -1,14 +1,10 @@
 package au.edu.jcu.cp3402.almmrr.appsistant;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.*;
-
-
 import android.os.Bundle;
-import android.view.MotionEvent;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
     private Class[] applicationActivities = {
             CalendarActivity.class
     };
-
 
 
     @Override
