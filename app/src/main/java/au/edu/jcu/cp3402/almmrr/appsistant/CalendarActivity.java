@@ -5,6 +5,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.PopupWindow;
 import android.widget.Toast;
 
 public class CalendarActivity extends AppCompatActivity {
@@ -41,12 +45,13 @@ public class CalendarActivity extends AppCompatActivity {
         applicationListAdapter = new CalendarAdapter(
                 this,
                 applicationList,
-                applicationActivities
+                applicationActivities,
+                applicationListView
+
         );
         applicationListView.setAdapter(applicationListAdapter);
     }
 
-    private void openCalendar(){
-        Toast.makeText(this,"Hello",Toast.LENGTH_LONG).show();
-    }
+
+
 }
