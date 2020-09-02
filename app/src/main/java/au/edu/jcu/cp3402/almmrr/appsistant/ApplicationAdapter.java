@@ -68,5 +68,4 @@ public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.
         Intent intent = new Intent(context, applicationActivities[position]);
         context.startActivity(intent);
     }
-
 }
