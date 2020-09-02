@@ -102,7 +102,7 @@ public class CalendarAdapter extends ApplicationAdapter {
                 .setData(CalendarContract.Events.CONTENT_URI);
         context.startActivity(addAppointment);
     }
-
+  
     private void openCalendar() {
         long start = System.currentTimeMillis();
         Uri.Builder builder = CalendarContract.CONTENT_URI.buildUpon();
@@ -129,6 +129,5 @@ public class CalendarAdapter extends ApplicationAdapter {
             e.printStackTrace();
         }
     }
-
-
 }
+
