@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        applicationListView = findViewById(R.id.application_list);
+        applicationListView = findViewById(R.id.calendar_list);
 
         setApplicationListView();
         LoadingDialog loadingDialog = new LoadingDialog(MainActivity.this);
