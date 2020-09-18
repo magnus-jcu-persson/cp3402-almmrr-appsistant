@@ -1,12 +1,9 @@
 package au.edu.jcu.cp3402.almmrr.appsistant;
 
-import android.app.Activity;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Handler;
-import android.os.Looper;
 import android.provider.CalendarContract;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -27,14 +24,12 @@ public class CalendarAdapter extends ApplicationAdapter {
     private Context context;
     private String[] applicationList;
     RecyclerView applicationListView;
-    LoadingDialog loadingDialog;
 
     EditText date;
     Button goToDate;
     Button cancel;
     View popup;
     String dateFormat;
-    private int activityDelay;
 
 
     public CalendarAdapter(Context context, String[] applicationList, Class[] applicationActivities, RecyclerView applicationListView) {
@@ -42,8 +37,6 @@ public class CalendarAdapter extends ApplicationAdapter {
         this.context = context;
         this.applicationList = applicationList;
         this.applicationListView = applicationListView;
-        activityDelay = context.getResources().getInteger(R.integer.activity_delay);
-        loadingDialog = new LoadingDialog((Activity) this.context);
     }
 
     @Override
@@ -68,14 +61,7 @@ public class CalendarAdapter extends ApplicationAdapter {
                 @Override
                 public void onClick(View view) {
                     holder.linearLayout.setOnClickListener(null);
-                    loadingDialog.start();
-                    new Handler(Looper.myLooper()).postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            loadingDialog.dismiss();
-                            openCalendar();
-                        }
-                    }, activityDelay * 1000);
+                    openCalendar();
                 }
             });
         } else if (position == 1) {
@@ -83,15 +69,7 @@ public class CalendarAdapter extends ApplicationAdapter {
                 @Override
                 public void onClick(View view) {
                     holder.linearLayout.setOnClickListener(null);
-                    loadingDialog.start();
-                    new Handler(Looper.myLooper()).postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            loadingDialog.dismiss();
-                            newAppointment();
-                        }
-                    }, activityDelay * 1000);
-
+                    newAppointment();
                 }
             });
         } else {
@@ -107,16 +85,8 @@ public class CalendarAdapter extends ApplicationAdapter {
             @Override
             public void onClick(View view) {
                 goToDate.setOnClickListener(null);
-                loadingDialog.start();
-                new Handler(Looper.myLooper()).postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        loadingDialog.dismiss();
-                        dateFormat = date.getText().toString();
-                        goToDate(dateFormat);
-                    }
-                }, activityDelay * 1000);
-
+                dateFormat = date.getText().toString();
+                goToDate(dateFormat);
             }
         });
 

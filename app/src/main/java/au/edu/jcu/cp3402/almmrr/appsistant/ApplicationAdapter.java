@@ -1,10 +1,7 @@
 package au.edu.jcu.cp3402.almmrr.appsistant;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +16,6 @@ public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.
     private Context context;
     private String[] applicationList;
     private Class[] applicationActivities;
-    private int activityDelay;
 
     public static class ApplicationViewHolder extends RecyclerView.ViewHolder {
         public LinearLayout linearLayout;
@@ -38,7 +34,6 @@ public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.
         this.context = context;
         this.applicationList = applicationList;
         this.applicationActivities = applicationActivities;
-        activityDelay = context.getResources().getInteger(R.integer.activity_delay);
     }
 
     @NonNull
@@ -52,29 +47,16 @@ public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull final ApplicationViewHolder holder, final int position) {
-
-        TextView viewApplicationName = (TextView) holder.linearLayout
+        TextView viewApplicationName = holder.linearLayout
                 .findViewById(R.id.application_name);
 
         viewApplicationName.setText(applicationList[position]);
-
 
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 holder.linearLayout.setOnClickListener(null);
-                final LoadingDialog loadingDialog = new LoadingDialog((Activity) context);
-                loadingDialog.start();
-                loadingDialog.setText("Loading " + applicationList[position]);
-
-                // -- FORCE DELAY FOR HYPOTHESIS
-                new Handler(Looper.myLooper()).postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        loadingDialog.dismiss();
-                        startActivity(position);
-                    }
-                }, activityDelay * 1000);
+                startActivity(position);
             }
         });
     }
