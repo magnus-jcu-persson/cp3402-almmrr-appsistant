@@ -1,4 +1,4 @@
-package au.edu.jcu.cp3402.almmrr.appsistant;
+package au.edu.jcu.cp3402.almmrr.AppAssist;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import au.edu.jcu.cp3402.almmrr.AppAssist.R;
 
 public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.ApplicationViewHolder> {
 

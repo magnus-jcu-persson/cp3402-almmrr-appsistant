@@ -1,12 +1,12 @@
-package au.edu.jcu.cp3402.almmrr.appsistant;
+package au.edu.jcu.cp3402.almmrr.AppAssist;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.os.Bundle;
+
+import au.edu.jcu.cp3402.almmrr.AppAssist.R;
 
 public class CalendarActivity extends AppCompatActivity {
     private RecyclerView applicationListView;

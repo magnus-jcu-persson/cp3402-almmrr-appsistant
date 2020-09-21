@@ -1,10 +1,12 @@
-package au.edu.jcu.cp3402.almmrr.appsistant;
+package au.edu.jcu.cp3402.almmrr.AppAssist;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 
 import android.widget.TextView;
+
+import au.edu.jcu.cp3402.almmrr.AppAssist.R;
 
 public class TutorialDialog {
         Activity activity;

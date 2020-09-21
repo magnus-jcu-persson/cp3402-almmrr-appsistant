@@ -1,4 +1,4 @@
-package au.edu.jcu.cp3402.almmrr.appsistant;
+package au.edu.jcu.cp3402.almmrr.AppAssist;
 
 import android.content.ContentUris;
 import android.content.Context;
@@ -19,6 +19,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+import au.edu.jcu.cp3402.almmrr.AppAssist.R;
 
 public class CalendarAdapter extends ApplicationAdapter {
     private Context context;
