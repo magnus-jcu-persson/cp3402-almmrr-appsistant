@@ -19,7 +19,6 @@ public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.
 
     public static class ApplicationViewHolder extends RecyclerView.ViewHolder {
         public LinearLayout linearLayout;
-
         public ApplicationViewHolder(LinearLayout view) {
             super(view);
             linearLayout = view;
