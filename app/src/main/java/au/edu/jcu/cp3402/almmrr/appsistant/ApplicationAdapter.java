@@ -27,6 +27,7 @@ public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.
         public ApplicationViewHolder(LinearLayout view) {
             super(view);
             linearLayout = view;
+
         }
     }
 
@@ -52,8 +53,8 @@ public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ApplicationViewHolder holder, final int position) {
-        TextView viewApplicationName = (TextView) holder.linearLayout
+    public void onBindViewHolder(@NonNull final ApplicationViewHolder holder, final int position) {
+        TextView viewApplicationName = holder.linearLayout
                 .findViewById(R.id.application_name);
         ImageButton viewApplicationDetail= holder.linearLayout
                 .findViewById(R.id.imageButton);
@@ -74,9 +75,11 @@ public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.
 
 
         viewApplicationName.setText(applicationList[position]);
+
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                holder.linearLayout.setOnClickListener(null);
                 startActivity(position);
             }
         });

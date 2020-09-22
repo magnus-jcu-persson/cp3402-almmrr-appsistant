@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity"
-    android:padding="10dp">
+    android:padding="25dp">
 
     <TextView
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="5dp"/>
+        android:layout_height="10dp"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -27,11 +27,11 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="5dp"/>
+        android:layout_height="10dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/calendar_list"/>
+        android:id="@+id/application_list"/>
 
 </LinearLayout>

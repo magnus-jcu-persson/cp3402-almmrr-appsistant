@@ -10,39 +10,37 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class CalendarAdapter extends ApplicationAdapter {
     private Context context;
     private String[] applicationList;
     RecyclerView applicationListView;
+
     EditText date;
     Button goToDate;
     Button cancel;
     View popup;
     String dateFormat;
 
+
     public CalendarAdapter(Context context, String[] applicationList, Class[] applicationActivities, RecyclerView applicationListView) {
         super(context, applicationList, applicationActivities, applicationListView);
         this.context = context;
         this.applicationList = applicationList;
         this.applicationListView = applicationListView;
-
-
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ApplicationViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final ApplicationViewHolder holder, final int position) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         popup = inflater.inflate(R.layout.popup_date, null);
         date = (EditText) popup.findViewById(R.id.editTextDate);
@@ -54,7 +52,7 @@ public class CalendarAdapter extends ApplicationAdapter {
         int height = 550;
         final PopupWindow popupWindow = new PopupWindow(popup, width, height, true);
 
-        TextView viewApplicationName = (TextView) holder.linearLayout
+        TextView viewApplicationName = holder.linearLayout
                 .findViewById(R.id.application_name);
 
         viewApplicationName.setText(applicationList[position]);
@@ -62,6 +60,7 @@ public class CalendarAdapter extends ApplicationAdapter {
             holder.linearLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    holder.linearLayout.setOnClickListener(null);
                     openCalendar();
                 }
             });
@@ -69,6 +68,7 @@ public class CalendarAdapter extends ApplicationAdapter {
             holder.linearLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    holder.linearLayout.setOnClickListener(null);
                     newAppointment();
                 }
             });
@@ -84,6 +84,7 @@ public class CalendarAdapter extends ApplicationAdapter {
         goToDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                goToDate.setOnClickListener(null);
                 dateFormat = date.getText().toString();
                 goToDate(dateFormat);
             }
@@ -115,7 +116,7 @@ public class CalendarAdapter extends ApplicationAdapter {
     }
 
     private void goToDate(String date) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
         try {
             Date dateParsed = sdf.parse(date);
             long currentTimeMillis = dateParsed.getTime();

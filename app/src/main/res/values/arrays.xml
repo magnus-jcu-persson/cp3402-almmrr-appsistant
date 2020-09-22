@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="tutorial_selection">
+        <item>Full Tutorial</item>
+        <item>Short Tutorial</item>
+        <item>No Tutorial</item>
+    </array>
+</resources>

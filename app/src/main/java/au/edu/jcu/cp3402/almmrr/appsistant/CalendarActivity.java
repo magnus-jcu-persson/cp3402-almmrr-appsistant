@@ -4,18 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.PopupWindow;
-import android.widget.Toast;
 
 public class CalendarActivity extends AppCompatActivity {
     private RecyclerView applicationListView;
     private RecyclerView.Adapter applicationListAdapter;
     private RecyclerView.LayoutManager applicationListManager;
-
+    private TutorialDialog tutorialDialog;
     private String[] applicationList = {
             "View My Calendar",
             "Add a new Appointment",
@@ -32,8 +29,9 @@ public class CalendarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
         applicationListView = findViewById(R.id.calendar_list);
-
         setApplicationListView();
+        tutorialDialog = new TutorialDialog(this);
+        tutorialDialog.start();
     }
 
     private void setApplicationListView() {
@@ -51,7 +49,4 @@ public class CalendarActivity extends AppCompatActivity {
         );
         applicationListView.setAdapter(applicationListAdapter);
     }
-
-
-
 }
