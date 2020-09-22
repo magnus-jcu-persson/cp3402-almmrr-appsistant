@@ -39,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
         applicationListAdapter = new ApplicationAdapter(
                 this,
                 applicationList,
-                applicationActivities
+                applicationActivities,
+                applicationListView
         );
         applicationListView.setAdapter(applicationListAdapter);
 
