@@ -1,10 +1,12 @@
-package au.edu.jcu.cp3402.almmrr.appsistant;
+package au.edu.jcu.cp3402.almmrr.AppAssist;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.*;
 import android.os.Bundle;
+
+import au.edu.jcu.cp3402.almmrr.AppAssist.R;
 
 public class MainActivity extends AppCompatActivity {
 
