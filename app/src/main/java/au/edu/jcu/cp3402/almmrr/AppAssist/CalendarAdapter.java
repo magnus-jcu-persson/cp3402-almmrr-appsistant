@@ -35,7 +35,7 @@ public class CalendarAdapter extends ApplicationAdapter {
 
 
     public CalendarAdapter(Context context, String[] applicationList, Class[] applicationActivities, RecyclerView applicationListView) {
-        super(context, applicationList, applicationActivities);
+        super(context, applicationList, applicationActivities, applicationListView);
         this.context = context;
         this.applicationList = applicationList;
         this.applicationListView = applicationListView;
