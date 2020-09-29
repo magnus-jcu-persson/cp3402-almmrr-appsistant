@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.*;
+
+import android.app.Activity;
 import android.os.Bundle;
 
 import au.edu.jcu.cp3402.almmrr.AppAssist.R;
@@ -11,14 +13,14 @@ import au.edu.jcu.cp3402.almmrr.AppAssist.R;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView applicationListView;
-    private Adapter applicationListAdapter;
+    private ApplicationAdapter applicationListAdapter;
     private LayoutManager applicationListManager;
 
     private String[] applicationList = {
             "Calendar"
     };
 
-    private Class[] applicationActivities = {
+    private Class<?>[] applicationActivities = {
             CalendarActivity.class
     };
 
@@ -30,6 +32,12 @@ public class MainActivity extends AppCompatActivity {
         applicationListView = findViewById(R.id.application_list);
 
         setApplicationListView();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        applicationListView.setAdapter(applicationListAdapter);
     }
 
     private void setApplicationListView() {
@@ -45,6 +53,5 @@ public class MainActivity extends AppCompatActivity {
                 applicationListView
         );
         applicationListView.setAdapter(applicationListAdapter);
-
     }
 }
