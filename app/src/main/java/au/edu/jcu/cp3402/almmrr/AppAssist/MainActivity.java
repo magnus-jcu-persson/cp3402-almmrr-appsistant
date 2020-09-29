@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        applicationListManager.removeAllViews();
         applicationListView.setAdapter(applicationListAdapter);
     }
 

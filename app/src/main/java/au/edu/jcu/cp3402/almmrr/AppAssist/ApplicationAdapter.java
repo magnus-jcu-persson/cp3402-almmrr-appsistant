@@ -62,7 +62,7 @@ public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.
 
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        popup = inflater.inflate(R.layout.popup_pre, null); // Safe to pass null for
+        popup = inflater.inflate(R.layout.popup_pre, null);
         final WebView webView = popup.findViewById(R.id.webView);
         final PopupWindow popupWindow = new PopupWindow(popup, 850, 550);
         final boolean[] checkState = {false};
@@ -80,10 +80,10 @@ public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.
                     popupWindow.showAtLocation(applicationListView, Gravity.CENTER, 0, 0);
                     checkState[0] = true;
                 } else {
+                    // Dismiss Popup Window.
                     popupWindow.dismiss();
                     checkState[0] = false;
                 }
-
             }
         });
 
