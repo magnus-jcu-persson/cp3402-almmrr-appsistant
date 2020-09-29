@@ -10,7 +10,7 @@ import au.edu.jcu.cp3402.almmrr.AppAssist.R;
 
 public class CalendarActivity extends AppCompatActivity {
     private RecyclerView applicationListView;
-    private RecyclerView.Adapter applicationListAdapter;
+    private CalendarAdapter applicationListAdapter;
     private RecyclerView.LayoutManager applicationListManager;
     private TutorialDialog tutorialDialog;
     private String[] applicationList = {
@@ -19,7 +19,7 @@ public class CalendarActivity extends AppCompatActivity {
             "Go to A Specific Date",
     };
 
-    private Class[] applicationActivities = {
+    private Class<?>[] applicationActivities = {
             //Intents for Android calendar
 
     };

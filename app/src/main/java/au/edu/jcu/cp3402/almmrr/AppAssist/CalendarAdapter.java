@@ -34,7 +34,7 @@ public class CalendarAdapter extends ApplicationAdapter {
     String dateFormat;
 
 
-    public CalendarAdapter(Context context, String[] applicationList, Class[] applicationActivities, RecyclerView applicationListView) {
+    public CalendarAdapter(Context context, String[] applicationList, Class<?>[] applicationActivities, RecyclerView applicationListView) {
         super(context, applicationList, applicationActivities, applicationListView);
         this.context = context;
         this.applicationList = applicationList;
@@ -48,7 +48,6 @@ public class CalendarAdapter extends ApplicationAdapter {
         date = (EditText) popup.findViewById(R.id.editTextDate);
         goToDate = popup.findViewById(R.id.goToDate);
         cancel = popup.findViewById(R.id.cancel);
-
 
         int width = 850;
         int height = 550;
@@ -121,6 +120,8 @@ public class CalendarAdapter extends ApplicationAdapter {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
         try {
             Date dateParsed = sdf.parse(date);
+            assert dateParsed != null;
+
             long currentTimeMillis = dateParsed.getTime();
             Uri.Builder builder = CalendarContract.CONTENT_URI.buildUpon();
             builder.appendPath("time");
