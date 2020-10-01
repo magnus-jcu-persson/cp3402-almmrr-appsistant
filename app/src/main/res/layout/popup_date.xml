@@ -3,7 +3,7 @@
     android:layout_width="350dp"
     android:layout_height="250dp"
     android:layout_gravity="center"
-    android:background="@color/colorPrimary"
+    android:background="@color/colorAccent"
     android:orientation="vertical">
 
     <TextView
@@ -14,7 +14,7 @@
         android:layout_weight="1"
         android:text="What date would like to see?"
         android:textAlignment="center"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorText"
         android:textSize="24sp" />
 
     <EditText
@@ -26,8 +26,8 @@
         android:hint="dd-mm-yyyy"
         android:inputType="date|text"
         android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF" />
+        android:textColor="#000000"
+        android:textColorHint="@color/colorText" />
 
     <LinearLayout
         android:layout_width="match_parent"

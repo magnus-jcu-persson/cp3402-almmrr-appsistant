@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">Appsistant</string>
+    <string name="app_name">AppAssist</string>
     <string name="applications_list">Applications List</string>
     <string name="row_placeholder">RowPlaceholder</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="loading">Loading...</string>
+    <string name="loading">Loading…</string>
     <string name="calendar_title">Calendar</string>
     <string name="select_option_heading">Select an option:</string>
     <string name="Tutorial_Dialog">What type of Tutorial would you like?</string>
