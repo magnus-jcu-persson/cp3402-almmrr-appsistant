@@ -5,10 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.*;
 
-import android.app.Activity;
 import android.os.Bundle;
-
-import au.edu.jcu.cp3402.almmrr.AppAssist.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setThemeMode(Theme.COLOR_BLIND);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         applicationListView = findViewById(R.id.application_list);
@@ -54,5 +52,16 @@ public class MainActivity extends AppCompatActivity {
                 applicationListView
         );
         applicationListView.setAdapter(applicationListAdapter);
+    }
+
+    private void setThemeMode(Theme theme) {
+        switch (theme) {
+            case COLOR_BLIND:
+                setTheme(R.style.ColorBlindMode);
+                break;
+            default:
+            case NORMAL:
+                setTheme(R.style.AppTheme);
+        }
     }
 }

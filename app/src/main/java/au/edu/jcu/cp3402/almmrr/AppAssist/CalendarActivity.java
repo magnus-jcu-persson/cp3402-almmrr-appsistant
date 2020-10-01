@@ -6,8 +6,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
-import au.edu.jcu.cp3402.almmrr.AppAssist.R;
-
 public class CalendarActivity extends AppCompatActivity {
     private RecyclerView applicationListView;
     private CalendarAdapter applicationListAdapter;
@@ -26,6 +24,7 @@ public class CalendarActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setThemeMode(Theme.COLOR_BLIND);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
         applicationListView = findViewById(R.id.calendar_list);
@@ -48,5 +47,16 @@ public class CalendarActivity extends AppCompatActivity {
 
         );
         applicationListView.setAdapter(applicationListAdapter);
+    }
+
+    private void setThemeMode(Theme theme) {
+        switch (theme) {
+            case COLOR_BLIND:
+                setTheme(R.style.ColorBlindMode);
+                break;
+            default:
+            case NORMAL:
+                setTheme(R.style.AppTheme);
+        }
     }
 }
