@@ -31,6 +31,7 @@ public class Tutorial_Activity extends AppCompatActivity {
             public void onClick(View view) {
                 count += 1;
                 if (count == 1){
+
                 }
             }
         });
