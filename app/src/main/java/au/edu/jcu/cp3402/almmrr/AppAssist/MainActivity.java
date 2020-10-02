@@ -1,17 +1,23 @@
 package au.edu.jcu.cp3402.almmrr.AppAssist;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.*;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView applicationListView;
     private ApplicationAdapter applicationListAdapter;
     private LayoutManager applicationListManager;
+
+    private SharedPreferences appPreferences;
+    private boolean colorBlindMode;
 
     private String[] applicationList = {
             "Calendar"
@@ -24,12 +30,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setThemeMode(Theme.COLOR_BLIND);
+        checkColorBlindMode();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         applicationListView = findViewById(R.id.application_list);
 
         setApplicationListView();
+
+        SwitchCompat toggle = findViewById(R.id.toggleColorBlind);
+        toggle.setChecked(colorBlindMode);
     }
 
     @Override
@@ -52,6 +61,27 @@ public class MainActivity extends AppCompatActivity {
                 applicationListView
         );
         applicationListView.setAdapter(applicationListAdapter);
+    }
+
+    private void checkColorBlindMode() {
+        appPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
+        colorBlindMode = appPreferences.getBoolean("settingColorBlind", false);
+        if (colorBlindMode) {
+            setThemeMode(Theme.COLOR_BLIND);
+        } else {
+            setThemeMode(Theme.NORMAL);
+        }
+    }
+
+    public void toggleColorBlindMode(View view) {
+
+        SwitchCompat toggle = (SwitchCompat) view;
+
+        SharedPreferences.Editor appEditor = appPreferences.edit();
+        appEditor.putBoolean("settingColorBlind", toggle.isChecked());
+        appEditor.apply();
+
+        recreate();
     }
 
     private void setThemeMode(Theme theme) {

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 public class CalendarActivity extends AppCompatActivity {
@@ -24,7 +25,13 @@ public class CalendarActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setThemeMode(Theme.COLOR_BLIND);
+        SharedPreferences appPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
+        boolean colorBlindMode = appPreferences.getBoolean("settingColorBlind", false);
+        if (colorBlindMode) {
+            setThemeMode(Theme.COLOR_BLIND);
+        } else {
+            setThemeMode(Theme.NORMAL);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
         applicationListView = findViewById(R.id.calendar_list);

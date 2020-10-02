@@ -8,4 +8,5 @@
     <string name="calendar_title">Calendar</string>
     <string name="select_option_heading">Select an option:</string>
     <string name="Tutorial_Dialog">What type of Tutorial would you like?</string>
+    <string name="toggle_color_blind">Activate Color Blind Mode</string>
 </resources>

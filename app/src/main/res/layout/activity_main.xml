@@ -31,7 +31,22 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:id="@+id/application_list"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="toggleColorBlindMode"
+        android:checked="false"
+        android:id="@+id/toggleColorBlind"
+        style="@style/TextAppearance.AppCompat.Large"
+        android:text="@string/toggle_color_blind" />
+
 
 </LinearLayout>
