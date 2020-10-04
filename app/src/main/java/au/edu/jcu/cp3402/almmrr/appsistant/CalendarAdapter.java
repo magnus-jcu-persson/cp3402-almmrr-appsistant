@@ -8,10 +8,16 @@ import android.provider.CalendarContract;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,12 +30,14 @@ public class CalendarAdapter extends ApplicationAdapter {
     private Context context;
     private String[] applicationList;
     RecyclerView applicationListView;
-
+    Uri uri;
     EditText date;
     Button goToDate;
     Button cancel;
     View popup;
+    View videoPopup;
     String dateFormat;
+    WebView videoView;
 
 
     public CalendarAdapter(Context context, String[] applicationList, Class[] applicationActivities, RecyclerView applicationListView) {
@@ -41,16 +49,23 @@ public class CalendarAdapter extends ApplicationAdapter {
 
     @Override
     public void onBindViewHolder(@NonNull final ApplicationViewHolder holder, final int position) {
+
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         popup = inflater.inflate(R.layout.popup_date, null);
         date = (EditText) popup.findViewById(R.id.editTextDate);
         goToDate = popup.findViewById(R.id.goToDate);
         cancel = popup.findViewById(R.id.cancel);
-
+        videoPopup = inflater.inflate(R.layout.popup_video, null);
+        videoView = videoPopup.findViewById(R.id.VideoWebView);
+        WebSettings webSettings= videoView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        ImageButton viewApplicationDetail = holder.linearLayout
+                .findViewById(R.id.imageButton);
 
         int width = 850;
         int height = 550;
         final PopupWindow popupWindow = new PopupWindow(popup, width, height, true);
+        final PopupWindow videoPopupWindow = new PopupWindow(videoPopup, width, height, true);
 
         TextView viewApplicationName = holder.linearLayout
                 .findViewById(R.id.application_name);
@@ -62,8 +77,10 @@ public class CalendarAdapter extends ApplicationAdapter {
                 public void onClick(View view) {
                     holder.linearLayout.setOnClickListener(null);
                     openCalendar();
+
                 }
             });
+            videoView.loadUrl("https://appassist.s3-ap-southeast-2.amazonaws.com/openCalendar.html");
         } else if (position == 1) {
             holder.linearLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -72,6 +89,7 @@ public class CalendarAdapter extends ApplicationAdapter {
                     newAppointment();
                 }
             });
+            videoView.loadUrl("https://appassist.s3-ap-southeast-2.amazonaws.com/addNewEvent.html");
         } else {
             holder.linearLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -79,8 +97,8 @@ public class CalendarAdapter extends ApplicationAdapter {
                     popupWindow.showAtLocation(applicationListView, Gravity.CENTER, 0, 0);
                 }
             });
+            videoView.loadUrl("https://appassist.s3-ap-southeast-2.amazonaws.com/goToDate.html");
         }
-
         goToDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,7 +107,13 @@ public class CalendarAdapter extends ApplicationAdapter {
                 goToDate(dateFormat);
             }
         });
-
+        viewApplicationDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                videoPopupWindow.showAtLocation(holder.linearLayout,Gravity.CENTER,0,0);
+                Toast.makeText(context,"Video should be shgowing",Toast.LENGTH_SHORT).show();
+            }
+        });
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,7 +127,7 @@ public class CalendarAdapter extends ApplicationAdapter {
                 .setData(CalendarContract.Events.CONTENT_URI);
         context.startActivity(addAppointment);
     }
-  
+
     private void openCalendar() {
         long start = System.currentTimeMillis();
         Uri.Builder builder = CalendarContract.CONTENT_URI.buildUpon();

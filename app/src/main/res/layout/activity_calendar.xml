@@ -5,27 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CalendarActivity">
+
     <LinearLayout
+        android:id="@+id/CalendarLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="25dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="25dp">
 
         <TextView
+            style="@style/TextAppearance.AppCompat.Display2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/calendar_title"
-            style="@style/TextAppearance.AppCompat.Display2" />
+            android:text="@string/calendar_title" />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="10dp" />
 
         <TextView
+            style="@style/TextAppearance.AppCompat.Display1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/select_option_heading"
-            style="@style/TextAppearance.AppCompat.Display1" />
+            android:text="@string/select_option_heading" />
 
         <Space
             android:layout_width="match_parent"

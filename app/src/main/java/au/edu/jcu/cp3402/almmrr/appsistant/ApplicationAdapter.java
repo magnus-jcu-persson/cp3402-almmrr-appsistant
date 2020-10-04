@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -61,7 +60,7 @@ public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         popup = inflater.inflate(R.layout.popup_pre, null);
-        final WebView webView= popup.findViewById(R.id.webView);
+        final WebView webView= popup.findViewById(R.id.VideoWebView);
         final PopupWindow popupWindow= new PopupWindow(popup,850,550);
 
         viewApplicationDetail.setOnClickListener(new View.OnClickListener() {
