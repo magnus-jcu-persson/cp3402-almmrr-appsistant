@@ -11,17 +11,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textAlignment="center"
-        style="@style/TextAppearance.AppCompat.Display2"/>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="10dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:text="@string/applications_list"
         style="@style/TextAppearance.AppCompat.Display1"/>
 
