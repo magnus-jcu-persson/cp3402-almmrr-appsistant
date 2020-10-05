@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
@@ -32,9 +33,9 @@ public class TutorialDialog {
             public void onClick(DialogInterface dialogInterface, int i) {
                 if (i == 0) {
                     vibrateDevice();
-                    //fullTutorial();
+                    fullTutorial();
                 } else if (i == 1) {
-                    //shortTutorial();
+                    shortTutorial();
                 } else skipTutorial();
             }
 
@@ -63,7 +64,15 @@ public class TutorialDialog {
         dialog.dismiss();
     }
 
-    private void skipTutorial() {
+
+    private void skipTutorial(){
+        dialog.dismiss();
+    }
+    private void fullTutorial(){
+        Intent intent = new Intent(activity, Tutorial_Activity.class);
+        activity.startActivity(intent);
+    }
+    private void shortTutorial(){
 
     }
 }
