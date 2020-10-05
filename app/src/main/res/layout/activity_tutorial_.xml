@@ -28,31 +28,31 @@
 
     <fragment
         android:id="@+id/fragment"
-        android:name="au.edu.jcu.cp3402.almmrr.appsistant.Tut_fragment1"
+        android:name="au.edu.jcu.cp3402.almmrr.AppAssist.Tut_fragment1"
         android:layout_width="395dp"
         android:layout_height="656dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.426"
+        app:layout_constraintVertical_bias="0.36"
         tools:layout="@layout/fragment_tut_fragment1" />
 
     <TextView
-        android:background="@android:color/background_light"
         android:id="@+id/tutTextView"
         android:layout_width="287dp"
         android:layout_height="101dp"
+        android:background="@android:color/background_light"
         android:fontFamily="sans-serif-black"
         android:text="@string/continue_tut"
         android:textColor="@android:color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.427"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.339" />
+        app:layout_constraintVertical_bias="0.276" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -62,7 +62,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.938"
+        app:layout_constraintVertical_bias="0.926"
         app:srcCompat="@drawable/right_arrow" />
 
     <ImageView
