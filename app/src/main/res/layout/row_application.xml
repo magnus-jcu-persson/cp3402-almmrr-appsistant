@@ -10,21 +10,31 @@
     <TextView
         android:id="@+id/application_name"
         style="@style/TextAppearance.AppCompat.Large"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="2"
+        android:layout_weight="12"
         android:padding="5dp"
         android:text="@string/row_placeholder" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+    android:id="@+id/imageButton_detail"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:layout_weight="1"
+    android:background="@android:color/transparent"
+    app:srcCompat="@android:drawable/ic_menu_info_details" />
+
+    <ImageButton
+        android:id="@+id/imageButton_video"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:background="@android:color/transparent"
-        app:srcCompat="@android:drawable/ic_menu_info_details" />
+        app:srcCompat="@android:drawable/ic_media_play" />
 
     <ImageView
         android:id="@+id/imageView"

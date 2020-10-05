@@ -13,7 +13,12 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import javax.xml.xpath.XPathFunctionResolver;
+
+import static android.provider.Settings.System.getString;
 
 public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.ApplicationViewHolder> {
     RecyclerView applicationListView;
@@ -58,7 +63,9 @@ public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.
         TextView viewApplicationName = holder.linearLayout
                 .findViewById(R.id.application_name);
         final ImageButton viewApplicationDetail = holder.linearLayout
-                .findViewById(R.id.imageButton);
+                .findViewById(R.id.imageButton_detail);
+        final ImageButton viewApplicationVideo = holder.linearLayout
+                .findViewById(R.id.imageButton_video);
 
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -84,6 +91,19 @@ public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.
                     popupWindow.dismiss();
                     checkState[0] = false;
                 }
+            }
+        });
+
+        viewApplicationVideo.setOnClickListener(new View.OnClickListener() {
+
+            public int getStringIdentifier(Context context, String name) {
+                return context.getResources().getIdentifier(name, "string", context.getPackageName());
+            }
+
+            @Override
+            public void onClick(View view){
+                webView.loadUrl(context.getString(getStringIdentifier(context, String.format("URL_%s",
+                        applicationList[position].toLowerCase()))));
             }
         });
 
