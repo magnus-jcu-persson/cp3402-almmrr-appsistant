@@ -20,9 +20,9 @@ public class Tutorial_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutorial_);
-         count = 0;
+        count = 0;
         fragment1 = new Tut_fragment1();
-        tutTextView.findViewById(R.id.tutTextView);
+        tutTextView = findViewById(R.id.tutTextView);
 
         nextFragmentButton = findViewById(R.id.nextFragmentButton);
         nextFragmentButton.setOnClickListener(new View.OnClickListener() {
