@@ -34,7 +34,7 @@ public class CalendarActivity extends AppCompatActivity {
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
-        applicationListView = findViewById(R.id.calendar_list);
+        applicationListView = findViewById(R.id.view_calendar_list);
         setApplicationListView();
         tutorialDialog = new TutorialDialog(this);
         tutorialDialog.start();

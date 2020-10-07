@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:id="@+id/application_list"/>
+        android:id="@+id/view_application_list"/>
 
     <Space
         android:layout_width="match_parent"
@@ -33,9 +33,9 @@
         android:layout_height="wrap_content"
         android:onClick="toggleColorBlindMode"
         android:checked="false"
-        android:id="@+id/toggleColorBlind"
+        android:id="@+id/switch_color_blind"
         style="@style/TextAppearance.AppCompat.Large"
-        android:text="@string/toggle_color_blind" />
+        android:text="@string/text_activate_color_blind" />
 
 
 </LinearLayout>

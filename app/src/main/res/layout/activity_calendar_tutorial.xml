@@ -4,10 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Tutorial_Activity">
+    tools:context=".TutorialActivity">
 
     <TextView
-        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tutorial"
@@ -27,8 +26,7 @@
         app:srcCompat="@drawable/abc_vector_test" />
 
     <fragment
-        android:id="@+id/fragment"
-        android:name="au.edu.jcu.cp3402.almmrr.AppAssist.Tut_fragment1"
+        android:name="au.edu.jcu.cp3402.almmrr.AppAssist.CalendarTutorialFragment1"
         android:layout_width="395dp"
         android:layout_height="656dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -37,15 +35,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.36"
-        tools:layout="@layout/fragment_tut_fragment1" />
+        tools:layout="@layout/fragment_calendar_tutorial_1" />
 
     <TextView
-        android:id="@+id/tutTextView"
+        android:id="@+id/view_tutorial_information"
         android:layout_width="287dp"
         android:layout_height="101dp"
         android:background="@android:color/background_light"
         android:fontFamily="sans-serif-black"
-        android:text="@string/continue_tut"
+        android:text="@string/text_tutorial_continue"
         android:textColor="@android:color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -55,7 +53,6 @@
         app:layout_constraintVertical_bias="0.276" />
 
     <ImageView
-        android:id="@+id/imageView3"
         android:layout_width="75dp"
         android:layout_height="143dp"
         android:layout_marginEnd="96dp"
@@ -63,10 +60,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.926"
-        app:srcCompat="@drawable/right_arrow" />
+        app:srcCompat="@drawable/ic_right_arrow" />
 
     <ImageView
-        android:id="@+id/imageView4"
         android:layout_width="86dp"
         android:layout_height="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -75,6 +71,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/right_arrow" />
+        app:srcCompat="@drawable/ic_right_arrow" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

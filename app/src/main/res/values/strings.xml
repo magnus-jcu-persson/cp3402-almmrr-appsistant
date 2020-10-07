@@ -3,11 +3,10 @@
     <string name="applications_list">Applications List</string>
     <string name="row_placeholder">RowPlaceholder</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="loading">Loading…</string>
-    <string name="calendar_title">Calendar</string>
+    <string name="title_calendar">Calendar</string>
     <string name="select_option_heading">Select an option:</string>
-    <string name="Tutorial_Dialog">What type of Tutorial would you like?</string>
-    <string name="toggle_color_blind">Activate Color Blind Mode</string>
-    <string name="continue_tut">To add an event click the red plus sign in the lower left. Click the arrow on the bottom right to continue the tutorial.</string>
+    <string name="question_tutorial_type">What type of Tutorial would you like?</string>
+    <string name="text_activate_color_blind">Activate Color Blind Mode</string>
+    <string name="text_tutorial_continue">To add an event click the red plus sign in the lower left. Click the arrow on the bottom right to continue the tutorial.</string>
 </resources>
