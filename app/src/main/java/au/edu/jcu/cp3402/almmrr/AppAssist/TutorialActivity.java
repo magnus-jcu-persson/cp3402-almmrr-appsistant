@@ -10,22 +10,22 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class Tutorial_Activity extends AppCompatActivity {
-    ImageButton nextFragmentButton;
-    Tut_fragment1 fragment1;
-    TextView tutTextView;
+public class TutorialActivity extends AppCompatActivity {
+    ImageButton buttonNextFragment;
+    CalendarTutorialFragment1 fragmentCalendarTutorial1;
+    TextView textViewTutorial;
     ArrayList<Fragment> fragments;
     int count;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tutorial_);
+        setContentView(R.layout.activity_calendar_tutorial);
         count = 0;
-        fragment1 = new Tut_fragment1();
-        tutTextView = findViewById(R.id.tutTextView);
+        fragmentCalendarTutorial1 = new CalendarTutorialFragment1();
+        textViewTutorial = findViewById(R.id.view_tutorial_information);
 
-        nextFragmentButton = findViewById(R.id.nextFragmentButton);
-        nextFragmentButton.setOnClickListener(new View.OnClickListener() {
+        buttonNextFragment = findViewById(R.id.nextFragmentButton);
+        buttonNextFragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 count += 1;

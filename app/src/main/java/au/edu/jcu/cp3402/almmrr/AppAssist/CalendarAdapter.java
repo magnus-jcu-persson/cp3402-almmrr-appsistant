@@ -22,18 +22,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import au.edu.jcu.cp3402.almmrr.AppAssist.R;
-
 public class CalendarAdapter extends ApplicationAdapter {
     private Context context;
     private String[] applicationList;
     RecyclerView applicationListView;
 
-    EditText date;
-    Button goToDate;
-    Button cancel;
-    View popup;
-    View webPopup;
+    EditText editTextDate;
+    Button buttonGoToDate;
+    Button buttonCancel;
+    View viewPopup;
+    View viewWebPopup;
     String dateFormat;
 
 
@@ -47,18 +45,18 @@ public class CalendarAdapter extends ApplicationAdapter {
     @Override
     public void onBindViewHolder(@NonNull final ApplicationViewHolder holder, final int position) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        popup = inflater.inflate(R.layout.popup_date, null);
-        date = (EditText) popup.findViewById(R.id.editTextDate);
-        goToDate = popup.findViewById(R.id.goToDate);
-        cancel = popup.findViewById(R.id.cancel);
+        viewPopup = inflater.inflate(R.layout.popup_date, null);
+        editTextDate = (EditText) viewPopup.findViewById(R.id.edit_date);
+        buttonGoToDate = viewPopup.findViewById(R.id.button_go);
+        buttonCancel = viewPopup.findViewById(R.id.button_cancel);
         final ImageButton viewApplicationVideo = holder.linearLayout
                 .findViewById(R.id.imageButton_video);
-        webPopup = inflater.inflate(R.layout.popup_pre, null);
-        final WebView webView = webPopup.findViewById(R.id.webView);
+        viewWebPopup = inflater.inflate(R.layout.popup_web_view, null);
+        final WebView webView = viewWebPopup.findViewById(R.id.webView);
 
         int width = 850;
         int height = 550;
-        final PopupWindow popupWindow = new PopupWindow(popup, width, height, true);
+        final PopupWindow popupWindow = new PopupWindow(viewPopup, width, height, true);
 
         TextView viewApplicationName = holder.linearLayout
                 .findViewById(R.id.application_name);
@@ -89,16 +87,16 @@ public class CalendarAdapter extends ApplicationAdapter {
             });
         }
 
-        goToDate.setOnClickListener(new View.OnClickListener() {
+        buttonGoToDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goToDate.setOnClickListener(null);
-                dateFormat = date.getText().toString();
+                buttonGoToDate.setOnClickListener(null);
+                dateFormat = editTextDate.getText().toString();
                 goToDate(dateFormat);
             }
         });
 
-        cancel.setOnClickListener(new View.OnClickListener() {
+        buttonCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 popupWindow.dismiss();

@@ -8,23 +8,20 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 
 
-public class tut2 extends Fragment {
+public class CalendarTutorialFragment1 extends Fragment {
 
 
-    public tut2() {
+    public CalendarTutorialFragment1() {
         // Required empty public constructor
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_calendar_tutorial_1, container, false);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tut2, container, false);
+
+        return view ;
     }
 }

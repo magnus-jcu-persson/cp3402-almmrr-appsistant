@@ -7,8 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-import au.edu.jcu.cp3402.almmrr.AppAssist.R;
-
 class LoadingDialog {
     Activity activity;
     AlertDialog dialog;
@@ -27,7 +25,7 @@ class LoadingDialog {
             builder.setView(view);
             builder.setCancelable(false);
 
-            textView = view.findViewById(R.id.textView);
+            textView = view.findViewById(R.id.view_date_prompt);
 
             dialog = builder.create();
             dialog.show();
