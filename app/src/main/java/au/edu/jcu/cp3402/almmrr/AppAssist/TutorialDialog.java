@@ -11,8 +11,6 @@ import android.os.Vibrator;
 import android.util.Log;
 import android.widget.TextView;
 
-import au.edu.jcu.cp3402.almmrr.AppAssist.R;
-
 public class TutorialDialog {
     Activity activity;
     AlertDialog dialog;
@@ -27,15 +25,15 @@ public class TutorialDialog {
         vibrator = (Vibrator) activity.getSystemService(Context.VIBRATOR_SERVICE);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        builder.setTitle(R.string.Tutorial_Dialog);
-        builder.setItems(R.array.tutorial_selection, new DialogInterface.OnClickListener() {
+        builder.setTitle(R.string.question_tutorial_type);
+        builder.setItems(R.array.array_tutorial_options, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 if (i == 0) {
                     vibrateDevice();
-                    fullTutorial();
+                    startFullTutorial();
                 } else if (i == 1) {
-                    shortTutorial();
+                    startShortTutorial();
                 } else skipTutorial();
             }
 
@@ -68,11 +66,11 @@ public class TutorialDialog {
     private void skipTutorial(){
         dialog.dismiss();
     }
-    private void fullTutorial(){
-        Intent intent = new Intent(activity, Tutorial_Activity.class);
+    private void startFullTutorial(){
+        Intent intent = new Intent(activity, TutorialActivity.class);
         activity.startActivity(intent);
     }
-    private void shortTutorial(){
+    private void startShortTutorial(){
 
     }
 }

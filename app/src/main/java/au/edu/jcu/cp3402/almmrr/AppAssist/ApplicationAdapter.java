@@ -13,12 +13,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import javax.xml.xpath.XPathFunctionResolver;
-
-import static android.provider.Settings.System.getString;
 
 public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.ApplicationViewHolder> {
     RecyclerView applicationListView;
@@ -69,7 +64,7 @@ public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.
 
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        popup = inflater.inflate(R.layout.popup_pre, null);
+        popup = inflater.inflate(R.layout.popup_web_view, null);
         final WebView webView = popup.findViewById(R.id.webView);
         final PopupWindow popupWindow = new PopupWindow(popup, 850, 550);
         final boolean[] checkState = {false};

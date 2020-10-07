@@ -13,16 +13,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.RecyclerView.*;
 
 import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.view.View;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 
 import java.util.ArrayList;
@@ -56,12 +52,12 @@ public class MainActivity extends AppCompatActivity {
         checkColorBlindMode();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        applicationListView = findViewById(R.id.application_list);
+        applicationListView = findViewById(R.id.view_application_list);
 
         setupSpeechRecognizer();
         setApplicationListView();
 
-        SwitchCompat toggle = findViewById(R.id.toggleColorBlind);
+        SwitchCompat toggle = findViewById(R.id.switch_color_blind);
         toggle.setChecked(colorBlindMode);
     }
 

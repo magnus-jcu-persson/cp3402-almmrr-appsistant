@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <array name="tutorial_selection">
+    <array name="array_tutorial_options">
         <item>Full Tutorial</item>
         <item>Short Tutorial</item>
         <item>No Tutorial</item>
