@@ -112,7 +112,7 @@ public class CalendarAdapter extends ApplicationAdapter {
             @Override
             public void onClick(View view){
                 String path = applicationList[position].toLowerCase().replace(" ", "_");
-                webView.loadUrl(context.getString(getStringIdentifier(context, String.format("URL_%s",
+                webView.loadUrl(context.getString(getStringIdentifier(context, String.format("url_%s_video",
                         path))));
             }
         });

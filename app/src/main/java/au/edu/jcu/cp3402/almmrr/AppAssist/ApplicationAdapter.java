@@ -97,7 +97,7 @@ public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.
 
             @Override
             public void onClick(View view){
-                webView.loadUrl(context.getString(getStringIdentifier(context, String.format("URL_%s",
+                webView.loadUrl(context.getString(getStringIdentifier(context, String.format("url_%s_video",
                         applicationList[position].toLowerCase()))));
             }
         });
