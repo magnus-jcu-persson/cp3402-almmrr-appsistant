@@ -1,9 +1,6 @@
 package au.edu.jcu.cp3402.almmrr.AppAssist;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -11,10 +8,16 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import java.util.ArrayList;
 
 public class TutorialActivity extends AppCompatActivity {
     ImageButton buttonNextFragment;
+    ImageButton buttonPreviousFragment;
+
     CalendarTutorialFragment1 fragmentCalendarTutorial1;
     CalendarTutorialFragment2 fragmentCalendarTutorial2;
     TextView textViewTutorial;
@@ -34,6 +37,7 @@ public class TutorialActivity extends AppCompatActivity {
         fragmentCalendarTutorial1 = new CalendarTutorialFragment1();
         fragmentCalendarTutorial2 = new CalendarTutorialFragment2();
         fragments = new ArrayList<>(4);
+        // add overview (layout.activity_calendar_tutorial)
         fragments.add(fragmentCalendarTutorial1);
         fragments.add(fragmentCalendarTutorial2);
 
@@ -41,21 +45,59 @@ public class TutorialActivity extends AppCompatActivity {
         settingsArrow = findViewById(R.id.settingsArrow);
 
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentContainer,fragments.get(0));
+        fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(0));
         fragmentTransaction.commit();
 
         buttonNextFragment = findViewById(R.id.nextFragmentButton);
         buttonNextFragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setFragmentState();
+                increaseFragmentState();
+            }
+        });
+
+        buttonPreviousFragment = findViewById(R.id.previousFragmentButton);
+        buttonPreviousFragment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                decreaseFragmentState();
             }
         });
     }
-    protected void setFragmentState() {
-        count += 1;
+
+    protected void decreaseFragmentState() {
+        if (count <= 0 | count == 1) {
+            count = 1;
+        } else {
+            count -= 1;
+        }
+
         switch (count) {
             case 1:
+                fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(0));
+                fragmentTransaction.commit();
+                settingsArrow.setVisibility(View.INVISIBLE);
+                textViewTutorial.setText(R.string.event_button);
+                break;
+            case 2:
+                fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(1));
+                fragmentTransaction.commit();
+                break;
+            case 3:
+                break;
+        }
+    }
+
+    protected void increaseFragmentState() {
+        count += 1;
+        
+        switch (count) {
+            case 1:
+                fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(0));
+                fragmentTransaction.commit();
                 settingsArrow.setVisibility(View.INVISIBLE);
                 textViewTutorial.setText(R.string.event_button);
             case 2:
@@ -64,6 +106,12 @@ public class TutorialActivity extends AppCompatActivity {
                 fragmentTransaction.commit();
                 textViewTutorial.setText(R.string.event_tutorial);
             case 3:
+                break;
+            case 4:
+                count = 0;
+                Intent intent = new Intent(this, CalendarActivity.class);
+                startActivity(intent);
+                break;
         }
     }
 }

@@ -26,6 +26,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/abc_vector_test" />
 
+    <ImageButton
+        android:id="@+id/previousFragmentButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rotation="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/abc_vector_test" />
+
     <FrameLayout
         android:id="@+id/fragmentContainer"
         android:layout_width="428dp"
