@@ -21,7 +21,10 @@ public class TutorialActivity extends AppCompatActivity {
     ArrayList<Fragment> fragments;
     ImageView settingsArrow;
     FrameLayout fragmentContainer;
+
+    FragmentTransaction fragmentTransaction;
     int count;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,24 +40,28 @@ public class TutorialActivity extends AppCompatActivity {
         textViewTutorial = findViewById(R.id.view_tutorial_information);
         settingsArrow = findViewById(R.id.settingsArrow);
 
-
+        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentContainer,fragments.get(0));
+        fragmentTransaction.commit();
 
         buttonNextFragment = findViewById(R.id.nextFragmentButton);
         buttonNextFragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                count += 1;
-                if (count == 1){
-                    settingsArrow.setVisibility(View.INVISIBLE);
-                    textViewTutorial.setVisibility(View.INVISIBLE);
-                }else if (count == 2){
-                    FragmentTransaction fragmentTransaction;
-                    fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(1));
-                    fragmentTransaction.commit();
-                }
+                setFragmentState();
             }
         });
+    }
+    protected void setFragmentState(){
+        count += 1;
+        if (count == 1){
+            settingsArrow.setVisibility(View.INVISIBLE);
+            textViewTutorial.setText(R.string.eventButton);
+        }else if (count == 2){
+            fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(1));
+            fragmentTransaction.commit();
+        }
     }
 
 }
