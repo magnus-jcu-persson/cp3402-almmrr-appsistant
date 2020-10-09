@@ -52,16 +52,18 @@ public class TutorialActivity extends AppCompatActivity {
             }
         });
     }
-    protected void setFragmentState(){
+    protected void setFragmentState() {
         count += 1;
-        if (count == 1){
-            settingsArrow.setVisibility(View.INVISIBLE);
-            textViewTutorial.setText(R.string.eventButton);
-        }else if (count == 2){
-            fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(1));
-            fragmentTransaction.commit();
+        switch (count) {
+            case 1:
+                settingsArrow.setVisibility(View.INVISIBLE);
+                textViewTutorial.setText(R.string.event_button);
+            case 2:
+                fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(1));
+                fragmentTransaction.commit();
+                textViewTutorial.setText(R.string.event_tutorial);
+            case 3:
         }
     }
-
 }
