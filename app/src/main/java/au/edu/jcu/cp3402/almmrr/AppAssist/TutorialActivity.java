@@ -92,7 +92,7 @@ public class TutorialActivity extends AppCompatActivity {
 
     protected void increaseFragmentState() {
         count += 1;
-        
+
         switch (count) {
             case 1:
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -109,6 +109,7 @@ public class TutorialActivity extends AppCompatActivity {
                 break;
             case 4:
                 count = 0;
+                finish();
                 Intent intent = new Intent(this, CalendarActivity.class);
                 startActivity(intent);
                 break;

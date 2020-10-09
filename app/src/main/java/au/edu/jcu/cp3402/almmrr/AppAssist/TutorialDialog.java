@@ -62,10 +62,12 @@ public class TutorialDialog {
         dialog.dismiss();
     }
     private void startFullTutorial(){
+        activity.finish();
         Intent intent = new Intent(activity, TutorialActivity.class);
         activity.startActivity(intent);
     }
     private void startShortTutorial(){
+        activity.finish();
 
     }
 }
