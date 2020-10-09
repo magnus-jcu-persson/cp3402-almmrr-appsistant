@@ -58,11 +58,6 @@ public class TutorialDialog {
         textView.setText(text);
     }
 
-    void dismiss() {
-        dialog.dismiss();
-    }
-
-
     private void skipTutorial(){
         dialog.dismiss();
     }

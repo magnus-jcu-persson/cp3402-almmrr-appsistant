@@ -7,6 +7,7 @@
     tools:context=".TutorialActivity">
 
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tutorial"
@@ -25,22 +26,35 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/abc_vector_test" />
 
-    <fragment
-        android:name="au.edu.jcu.cp3402.almmrr.AppAssist.CalendarTutorialFragment1"
-        android:layout_width="395dp"
-        android:layout_height="656dp"
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="428dp"
+        android:layout_height="600dp"
+        android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.36"
-        tools:layout="@layout/fragment_calendar_tutorial_1" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <fragment
+            android:id="@+id/fragmentFrame"
+            android:name="au.edu.jcu.cp3402.almmrr.AppAssist.CalendarTutorialFragment1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.493"
+            tools:layout="@layout/fragment_calendar_tutorial_1" />
+    </FrameLayout>
+
 
     <TextView
         android:id="@+id/view_tutorial_information"
-        android:layout_width="287dp"
-        android:layout_height="101dp"
+        android:layout_width="302dp"
+        android:layout_height="109dp"
         android:background="@android:color/background_light"
         android:fontFamily="sans-serif-black"
         android:text="@string/text_tutorial_continue"
@@ -53,18 +67,9 @@
         app:layout_constraintVertical_bias="0.276" />
 
     <ImageView
-        android:layout_width="75dp"
-        android:layout_height="143dp"
-        android:layout_marginEnd="96dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.926"
-        app:srcCompat="@drawable/ic_right_arrow" />
-
-    <ImageView
-        android:layout_width="86dp"
-        android:layout_height="48dp"
+        android:id="@+id/settingsArrow"
+        android:layout_width="68dp"
+        android:layout_height="41dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.855"
