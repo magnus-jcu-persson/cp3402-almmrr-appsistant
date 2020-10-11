@@ -5,10 +5,12 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 public class TutorialDialog {
@@ -16,9 +18,18 @@ public class TutorialDialog {
     AlertDialog dialog;
     TextView textView;
     Vibrator vibrator;
+    CharSequence[] multiChoiceItems;
+    boolean[] setMultiChoiceItems;
+    SharedPreferences appPreferences;
+    SharedPreferences.Editor appEditor;
 
-    TutorialDialog(Activity myActivity) {
+    TutorialDialog(Activity myActivity, Context context) {
+        appPreferences = context.getSharedPreferences(context.getPackageName(),Context.MODE_PRIVATE);
+        appEditor=appPreferences.edit();
+        appEditor.apply();
         activity = myActivity;
+        multiChoiceItems = new CharSequence[]{"Remember My Preference"};
+        setMultiChoiceItems = new boolean[1];
     }
 
     void start() {
@@ -31,10 +42,18 @@ public class TutorialDialog {
             public void onClick(DialogInterface dialogInterface, int i) {
                 if (i == 0) {
                     vibrateDevice();
+                    appEditor.putString("setting:set_tutorial_length","long");
+                    appEditor.apply();
                     startFullTutorial();
                 } else if (i == 1) {
+                    appEditor.putString("setting:set_tutorial_length","short");
+                    appEditor.apply();
                     startShortTutorial();
-                } else skipTutorial();
+                } else{
+                    appEditor.putString("setting:set_tutorial_length","none");
+                    appEditor.apply();
+                    skipTutorial();
+                }
             }
 
         });
@@ -63,14 +82,16 @@ public class TutorialDialog {
     }
 
 
-    private void skipTutorial(){
+    private void skipTutorial() {
         dialog.dismiss();
     }
-    private void startFullTutorial(){
+
+    private void startFullTutorial() {
         Intent intent = new Intent(activity, TutorialActivity.class);
         activity.startActivity(intent);
     }
-    private void startShortTutorial(){
+
+    private void startShortTutorial() {
 
     }
 }

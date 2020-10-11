@@ -21,6 +21,14 @@
         android:layout_width="match_parent"
         android:layout_height="16dp"/>
 
+    <Spinner
+        android:id="@+id/set_tutorial_length"
+        style="@style/TextAppearance.AppCompat.Large"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:entries="@array/array_tutorial_options"
+        android:textSize="22sp" />
+
     <Button
         android:layout_width="match_parent"
         android:layout_columnSpan="1"

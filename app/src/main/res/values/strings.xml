@@ -9,4 +9,10 @@
     <string name="question_tutorial_type">What type of Tutorial would you like?</string>
     <string name="text_activate_color_blind">Activate Color Blind Mode</string>
     <string name="text_tutorial_continue">To add an event click the red plus sign in the lower left. Click the arrow on the bottom right to continue the tutorial.</string>
+
+    <array name="tutorial_length_options">
+        <item>Long Tutorial</item>
+        <item>Short Tutorial</item>
+        <item>No Tutorial</item>
+    </array>
 </resources>

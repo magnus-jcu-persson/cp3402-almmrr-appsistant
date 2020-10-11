@@ -1,16 +1,14 @@
 package au.edu.jcu.cp3402.almmrr.AppAssist;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SwitchCompat;
-
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Switch;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 
 import java.util.Map;
 
@@ -83,4 +81,10 @@ public class SettingsActivity extends AppCompatActivity {
         appEditor.putBoolean(preferenceKey, setting.isChecked());
         appEditor.apply();
     }
+    public void stringArray(View view){
+        //Save string with tutorial length
+    }
+
+
+
 }
