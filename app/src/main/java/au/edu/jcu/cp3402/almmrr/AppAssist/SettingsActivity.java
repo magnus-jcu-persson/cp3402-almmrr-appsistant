@@ -1,7 +1,5 @@
 package au.edu.jcu.cp3402.almmrr.AppAssist;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;

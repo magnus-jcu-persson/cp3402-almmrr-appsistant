@@ -25,7 +25,7 @@ public class TutorialDialog {
 
     TutorialDialog(Activity myActivity, Context context) {
         appPreferences = context.getSharedPreferences(context.getPackageName(),Context.MODE_PRIVATE);
-        appEditor=appPreferences.edit();
+        appEditor = appPreferences.edit();
         appEditor.apply();
         activity = myActivity;
         multiChoiceItems = new CharSequence[]{"Remember My Preference"};
@@ -34,30 +34,26 @@ public class TutorialDialog {
 
     void start() {
         vibrator = (Vibrator) activity.getSystemService(Context.VIBRATOR_SERVICE);
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        builder.setTitle(R.string.question_tutorial_type);
-        builder.setItems(R.array.array_tutorial_options, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                if (i == 0) {
-                    vibrateDevice();
-                    appEditor.putString("setting:set_tutorial_length","long");
+        int tutorialOption = appPreferences.getInt("setting:option_tutorial_length", -1);
+        if (tutorialOption != -1) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+            builder.setTitle(R.string.question_tutorial_type);
+            builder.setItems(R.array.array_tutorial_options, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    appEditor.putInt("setting:option_tutorial_length", i);
+                    Log.i("SavePreference", "setting:option_tutorial_length: " + i);
                     appEditor.apply();
-                    startFullTutorial();
-                } else if (i == 1) {
-                    appEditor.putString("setting:set_tutorial_length","short");
-                    appEditor.apply();
-                    startShortTutorial();
-                } else{
-                    appEditor.putString("setting:set_tutorial_length","none");
-                    appEditor.apply();
-                    skipTutorial();
+                    chooseTutorialOption(i);
                 }
-            }
-        });
-        dialog = builder.create();
-        dialog.show();
+            });
+            dialog = builder.create();
+            dialog.show();
+        } else {
+            chooseTutorialOption(tutorialOption);
+        }
+
+
     }
 
     // Vibrate device when user clicks on an option throughout the tutorial
@@ -78,6 +74,21 @@ public class TutorialDialog {
 
     void dismiss() {
         dialog.dismiss();
+    }
+
+    private void chooseTutorialOption(int choice) {
+        switch (choice) {
+            case 0:
+                vibrateDevice();
+                startFullTutorial();
+                break;
+            case 1:
+                startShortTutorial();
+                break;
+            default:
+                skipTutorial();
+                break;
+        }
     }
 
 
