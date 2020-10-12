@@ -34,11 +34,13 @@ public class MainActivity extends AppCompatActivity {
     private boolean colorBlindMode;
 
     private String[] applicationList = {
-            "Calendar"
+            "Calendar",
+            "Contacts"
     };
 
     private Class<?>[] applicationActivities = {
-            CalendarActivity.class
+            CalendarActivity.class,
+            ContactsActivity.class
     };
 
     /* Voice recognition related variables */
