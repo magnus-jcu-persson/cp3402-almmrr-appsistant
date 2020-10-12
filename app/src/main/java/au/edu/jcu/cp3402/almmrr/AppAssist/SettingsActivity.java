@@ -7,12 +7,15 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Spinner;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 
 import java.util.Map;
 
-public class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private Resources resources;
     private SharedPreferences appPreferences;
@@ -34,6 +37,9 @@ public class SettingsActivity extends AppCompatActivity {
         appEditor = appPreferences.edit();
         appEditor.apply();
 
+        Spinner spinnerTutorialLength = findViewById(R.id.option_tutorial_length);
+        spinnerTutorialLength.setOnItemClickListener((AdapterView.OnItemClickListener) this);
+
         loadPreferences();
     }
 
@@ -46,18 +52,24 @@ public class SettingsActivity extends AppCompatActivity {
         Map<String, ?> preferences = appPreferences.getAll();
         for (Map.Entry<String, ?> preference : preferences.entrySet()) {
             String key = preference.getKey();
+            String resourceName = key.substring(8);
+            int resourceID = resources.getIdentifier(
+                    resourceName,
+                    "id",
+                    getPackageName()
+            );
             // -- Key starts with toggle, it's a Switch view.
             if (key.startsWith("setting:toggle")) {
                 Boolean value = (Boolean) preference.getValue();
-                String resourceName = key.substring(8);
-                int resourceID = resources.getIdentifier(
-                        resourceName,
-                        "id",
-                        getPackageName()
-                );
                 SwitchCompat setting = findViewById(resourceID);
                 if (setting != null) {
                     setting.setChecked(value);
+                }
+            } else if (key.startsWith("setting:option")) {
+                Integer value = (Integer) preference.getValue();
+                Spinner setting = findViewById(resourceID);
+                if (setting != null) {
+                    setting.setSelection(value);
                 }
             }
         }
@@ -81,10 +93,18 @@ public class SettingsActivity extends AppCompatActivity {
         appEditor.putBoolean(preferenceKey, setting.isChecked());
         appEditor.apply();
     }
-    public void stringArray(View view){
-        //Save string with tutorial length
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        Spinner setting = (Spinner) adapterView;
+        String preferenceKey = "setting:" + getResources().getResourceEntryName(setting.getId());
+        Log.i("SavePreference", preferenceKey + ": " + i);
+        appEditor.putInt(preferenceKey, i);
+        appEditor.apply();
     }
 
-
-
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+        // -- PASS
+    }
 }

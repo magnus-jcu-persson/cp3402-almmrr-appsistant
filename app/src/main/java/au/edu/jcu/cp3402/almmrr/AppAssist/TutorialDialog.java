@@ -55,7 +55,6 @@ public class TutorialDialog {
                     skipTutorial();
                 }
             }
-
         });
         dialog = builder.create();
         dialog.show();
