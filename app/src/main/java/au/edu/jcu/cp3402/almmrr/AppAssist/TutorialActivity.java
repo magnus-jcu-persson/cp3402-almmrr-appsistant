@@ -20,6 +20,7 @@ public class TutorialActivity extends AppCompatActivity {
 
     CalendarTutorialFragment1 fragmentCalendarTutorial1;
     CalendarTutorialFragment2 fragmentCalendarTutorial2;
+    CalendarTutorialFragment3 fragmentCalendarTutorial3;
     TextView textViewTutorial;
     ArrayList<Fragment> fragments;
     ImageView settingsArrow;
@@ -36,10 +37,12 @@ public class TutorialActivity extends AppCompatActivity {
         fragmentContainer = findViewById(R.id.fragmentContainer);
         fragmentCalendarTutorial1 = new CalendarTutorialFragment1();
         fragmentCalendarTutorial2 = new CalendarTutorialFragment2();
+        fragmentCalendarTutorial3 = new CalendarTutorialFragment3();
         fragments = new ArrayList<>(4);
         // add overview (layout.activity_calendar_tutorial)
         fragments.add(fragmentCalendarTutorial1);
         fragments.add(fragmentCalendarTutorial2);
+        fragments.add(fragmentCalendarTutorial3);
 
         textViewTutorial = findViewById(R.id.view_tutorial_information);
         settingsArrow = findViewById(R.id.settingsArrow);
@@ -83,9 +86,13 @@ public class TutorialActivity extends AppCompatActivity {
             case 2:
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(1));
+                textViewTutorial.setVisibility(View.INVISIBLE);
                 fragmentTransaction.commit();
                 break;
             case 3:
+                fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(2));
+                fragmentTransaction.commit();
                 break;
         }
     }
@@ -100,12 +107,18 @@ public class TutorialActivity extends AppCompatActivity {
                 fragmentTransaction.commit();
                 settingsArrow.setVisibility(View.INVISIBLE);
                 textViewTutorial.setText(R.string.event_button);
+                break;
             case 2:
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(1));
                 fragmentTransaction.commit();
                 textViewTutorial.setText(R.string.event_tutorial);
+                break;
             case 3:
+                fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(2));
+                textViewTutorial.setVisibility(View.INVISIBLE);
+                fragmentTransaction.commit();
                 break;
             case 4:
                 count = 0;
