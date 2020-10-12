@@ -78,12 +78,13 @@ public class TutorialActivity extends AppCompatActivity {
                 fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(0));
                 fragmentTransaction.commit();
                 settingsArrow.setVisibility(View.INVISIBLE);
-                textViewTutorial.setText(R.string.event_button);
+                textViewTutorial.setText(R.string.calendar_stage_one);
                 break;
             case 2:
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(1));
                 fragmentTransaction.commit();
+                textViewTutorial.setText(R.string.calendar_stage_two);
                 break;
             case 3:
                 break;
@@ -99,12 +100,12 @@ public class TutorialActivity extends AppCompatActivity {
                 fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(0));
                 fragmentTransaction.commit();
                 settingsArrow.setVisibility(View.INVISIBLE);
-                textViewTutorial.setText(R.string.event_button);
+                textViewTutorial.setText(R.string.calendar_stage_one);
             case 2:
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(1));
                 fragmentTransaction.commit();
-                textViewTutorial.setText(R.string.event_tutorial);
+                textViewTutorial.setText(R.string.calendar_stage_two);
             case 3:
                 break;
             case 4:
