@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.ContactsContract;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -43,7 +44,7 @@ public class ContactsAdapter extends ApplicationAdapter {
     public void onBindViewHolder(@NonNull final ApplicationViewHolder holder, final int position) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         viewPopup = inflater.inflate(R.layout.popup_find_contact, null);
-        editTextContactName = (EditText) viewPopup.findViewById(R.id.edit_date);
+        editTextContactName = (EditText) viewPopup.findViewById(R.id.edit_contact_name);
         buttonGoContact = viewPopup.findViewById(R.id.button_go);
         buttonCancel = viewPopup.findViewById(R.id.button_cancel);
         final ImageButton viewApplicationVideo = holder.linearLayout
@@ -88,8 +89,8 @@ public class ContactsAdapter extends ApplicationAdapter {
             @Override
             public void onClick(View view) {
                 buttonGoContact.setOnClickListener(null);
-//                contactName = editTextContactName.getText().toString();
-                viewContact("Dad");
+                contactName = editTextContactName.getText().toString();
+                viewContact(contactName);
             }
         });
 
@@ -107,7 +108,7 @@ public class ContactsAdapter extends ApplicationAdapter {
             }
 
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 String path = applicationList[position].toLowerCase().replace(" ", "_");
                 webView.loadUrl(context.getString(getStringIdentifier(context, String.format("url_%s_video",
                         path))));
@@ -116,39 +117,32 @@ public class ContactsAdapter extends ApplicationAdapter {
     }
 
     private void newContact() {
-        context.startActivity(new Intent(Intent.ACTION_INSERT, ContactsContract.Contacts.CONTENT_URI));
+        Intent newContact = new Intent(Intent.ACTION_INSERT, ContactsContract.Contacts.CONTENT_URI);
+        context.startActivity(newContact);
     }
-  
+
     private void openContacts() {
-        context.startActivity(new Intent(Intent.ACTION_VIEW, ContactsContract.Contacts.CONTENT_URI));
+        Intent openContacts = new Intent(Intent.ACTION_VIEW, ContactsContract.Contacts.CONTENT_URI);
+        context.startActivity(openContacts);
     }
 
     private void viewContact(String name) {
-        //TODO
-//        ContentResolver contentResolver = context.getContentResolver();
-//
-//        String   whereString = "display_name LIKE ?";
-//        String[] whereParams = new String[]{ "%" + name + "%" };
-//
-//        Cursor contactCursor = contentResolver.query(
-//                ContactsContract.Data.CONTENT_URI,
-//                null,
-//                whereString,
-//                whereParams,
-//                null );
-//
-//        assert contactCursor != null;
-//        while( contactCursor.moveToNext() ) {
-//            int contactId = context.getIntFromCursor( contactCursor, ContactsContract.Data.CONTACT_ID );
-//        }
-//
-//        Uri contactUri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI,
-//                Uri.encode(contactId));
-//        try {
-//            context.startActivity(new Intent(Intent.ACTION_VIEW, contactUri));
-//        } catch (Exception e){
-//            e.printStackTrace();
-//        }
+        if (name != null) {
+            Uri lookupUri = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_FILTER_URI, Uri.encode(name));
+            String[] displayNameProjection = {ContactsContract.Contacts._ID, ContactsContract.Contacts.LOOKUP_KEY, ContactsContract.Contacts.DISPLAY_NAME_PRIMARY};
+            try (Cursor cur = context.getContentResolver().query(lookupUri, displayNameProjection, null, null, null)) {
+                assert cur != null;
+                if (cur.moveToFirst()) {
+                    String contactId = cur.getString(0);
+                    Uri contactUri = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_URI, String.valueOf(contactId));
+                    Intent viewContact = new Intent(Intent.ACTION_VIEW, contactUri);
+                    context.startActivity(viewContact);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
 }
