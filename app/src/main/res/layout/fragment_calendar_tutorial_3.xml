@@ -46,7 +46,7 @@
         android:layout_height="99dp"
         android:background="@android:color/black"
         android:fontFamily="sans-serif-black"
-        android:text="@string/event_tutorial_2"
+        android:text="@string/calendar_stage_three"
         android:textColor="@android:color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"

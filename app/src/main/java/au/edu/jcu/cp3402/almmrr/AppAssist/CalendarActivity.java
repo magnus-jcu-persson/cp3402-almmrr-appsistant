@@ -25,8 +25,10 @@ public class CalendarActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        final String ACTIVITY_NAME = "Calendar";
         SharedPreferences appPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
         boolean colorBlindMode = appPreferences.getBoolean("settingColorBlind", false);
+
         if (colorBlindMode) {
             setThemeMode(Theme.COLOR_BLIND);
         } else {
@@ -37,7 +39,7 @@ public class CalendarActivity extends AppCompatActivity {
         applicationListView = findViewById(R.id.view_calendar_list);
         setApplicationListView();
         tutorialDialog = new TutorialDialog(this);
-        tutorialDialog.start();
+        tutorialDialog.start(ACTIVITY_NAME);
     }
 
     private void setApplicationListView() {

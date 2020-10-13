@@ -30,6 +30,7 @@ public class ContactsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        final String ACTIVITY_NAME = "Contacts";
         SharedPreferences appPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
         boolean colorBlindMode = appPreferences.getBoolean("settingColorBlind", false);
         if (colorBlindMode) {
@@ -42,7 +43,7 @@ public class ContactsActivity extends AppCompatActivity {
         applicationListView = findViewById(R.id.view_contacts_list);
         setApplicationListView();
         tutorialDialog = new TutorialDialog(this);
-        tutorialDialog.start();
+        tutorialDialog.start(ACTIVITY_NAME);
     }
 
     private void setApplicationListView() {

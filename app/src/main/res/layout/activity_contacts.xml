@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/title_contacts"
+            android:text="@string/contacts_title"
             style="@style/TextAppearance.AppCompat.Display2" />
 
         <Space

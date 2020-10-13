@@ -14,16 +14,11 @@ import androidx.fragment.app.FragmentTransaction;
 
 import java.util.ArrayList;
 
-public class TutorialActivity extends AppCompatActivity {
-    private ImageButton buttonNextFragment;
-    private ImageButton buttonPreviousFragment;
+public class ContactsTutorialActivity extends AppCompatActivity {
 
-    private CalendarTutorialFragment1 fragmentCalendarTutorial1;
-    private CalendarTutorialFragment2 fragmentCalendarTutorial2;
     private TextView textViewTutorial;
     private ArrayList<Fragment> fragments;
     private ImageView settingsArrow;
-    FrameLayout fragmentContainer;
 
     private FragmentTransaction fragmentTransaction;
     private int count;
@@ -31,24 +26,28 @@ public class TutorialActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calendar_tutorial);
+        setContentView(R.layout.activity_contacts_tutorial);
         count = 1;
-        fragmentContainer = findViewById(R.id.fragmentContainer);
-        fragmentCalendarTutorial1 = new CalendarTutorialFragment1();
-        fragmentCalendarTutorial2 = new CalendarTutorialFragment2();
+        ContactsTutorialFragment1 fragmentContactsTutorial1 = new ContactsTutorialFragment1();
+        ContactsTutorialFragment2 fragmentContactsTutorial2 = new ContactsTutorialFragment2();
+        ContactsTutorialFragment3 fragmentContactsTutorial3 = new ContactsTutorialFragment3();
+
+        System.out.println("Activity loaded.");
+
         fragments = new ArrayList<>(4);
         // add overview (layout.activity_calendar_tutorial)
-        fragments.add(fragmentCalendarTutorial1);
-        fragments.add(fragmentCalendarTutorial2);
+        fragments.add(fragmentContactsTutorial1);
+        fragments.add(fragmentContactsTutorial2);
+        fragments.add(fragmentContactsTutorial3);
 
-        textViewTutorial = findViewById(R.id.view_tutorial_information);
+        textViewTutorial = findViewById(R.id.contacts_tutorial_information);
         settingsArrow = findViewById(R.id.settingsArrow);
 
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(0));
+        fragmentTransaction.replace(R.id.contacts_fragment_container, fragments.get(0));
         fragmentTransaction.commit();
 
-        buttonNextFragment = findViewById(R.id.next_fragment_button);
+        ImageButton buttonNextFragment = findViewById(R.id.next_fragment_button);
         buttonNextFragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,7 +55,7 @@ public class TutorialActivity extends AppCompatActivity {
             }
         });
 
-        buttonPreviousFragment = findViewById(R.id.previous_fragment_button);
+        ImageButton buttonPreviousFragment = findViewById(R.id.previous_fragment_button);
         buttonPreviousFragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,7 +65,7 @@ public class TutorialActivity extends AppCompatActivity {
     }
 
     protected void decreaseFragmentState() {
-        if (count <= 0) {
+        if (count <= 0 | count == 1) {
             count = 1;
         } else {
             count -= 1;
@@ -75,18 +74,22 @@ public class TutorialActivity extends AppCompatActivity {
         switch (count) {
             case 1:
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(0));
+                fragmentTransaction.replace(R.id.contacts_fragment_container, fragments.get(0));
                 fragmentTransaction.commit();
                 settingsArrow.setVisibility(View.INVISIBLE);
-                textViewTutorial.setText(R.string.calendar_stage_one);
+                textViewTutorial.setText(R.string.contacts_stage_one);
                 break;
             case 2:
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(1));
+                fragmentTransaction.replace(R.id.contacts_fragment_container, fragments.get(1));
                 fragmentTransaction.commit();
-                textViewTutorial.setText(R.string.calendar_stage_two);
+                textViewTutorial.setText(R.string.contacts_stage_two);
                 break;
             case 3:
+                fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.contacts_fragment_container, fragments.get(2));
+                fragmentTransaction.commit();
+                textViewTutorial.setText(R.string.contacts_stage_three);
                 break;
         }
     }
@@ -97,23 +100,27 @@ public class TutorialActivity extends AppCompatActivity {
         switch (count) {
             case 1:
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(0));
+                fragmentTransaction.replace(R.id.contacts_fragment_container, fragments.get(0));
                 fragmentTransaction.commit();
                 settingsArrow.setVisibility(View.INVISIBLE);
-                textViewTutorial.setText(R.string.calendar_stage_one);
+                textViewTutorial.setText(R.string.contacts_stage_one);
                 break;
             case 2:
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(1));
+                fragmentTransaction.replace(R.id.contacts_fragment_container, fragments.get(1));
                 fragmentTransaction.commit();
-                textViewTutorial.setText(R.string.calendar_stage_two);
+                textViewTutorial.setText(R.string.contacts_stage_two);
                 break;
             case 3:
+                fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.contacts_fragment_container, fragments.get(2));
+                fragmentTransaction.commit();
+                textViewTutorial.setText(R.string.contacts_stage_three);
                 break;
             case 4:
                 count = 0;
                 finish();
-                Intent intent = new Intent(this, CalendarActivity.class);
+                Intent intent = new Intent(this, ContactsActivity.class);
                 startActivity(intent);
                 break;
         }

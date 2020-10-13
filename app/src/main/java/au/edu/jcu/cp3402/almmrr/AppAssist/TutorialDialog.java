@@ -21,17 +21,26 @@ public class TutorialDialog {
         activity = myActivity;
     }
 
-    void start() {
+    void start(final String activityName) {
         vibrator = (Vibrator) activity.getSystemService(Context.VIBRATOR_SERVICE);
+        final Intent[] intent = new Intent[1];
 
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle(R.string.question_tutorial_type);
         builder.setItems(R.array.array_tutorial_options, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                if (i == 0) {
+                if (i == 0) { // Full tutorial option
                     vibrateDevice();
-                    startFullTutorial();
+                    switch (activityName) {
+                        case "Calendar":
+                            intent[0] = new Intent(activity, TutorialActivity.class);
+                            break;
+                        case "Contacts":
+                            intent[0] = new Intent(activity, ContactsTutorialActivity.class);
+                            break;
+                    }
+                    startFullTutorial(intent[0]);
                 } else if (i == 1) {
                     startShortTutorial();
                 } else skipTutorial();
@@ -49,7 +58,7 @@ public class TutorialDialog {
             vibrator.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
             Log.i("Vibrator", "I am vibrating so hard right now!");
         } else {
-            //deprecated in API 26
+            // Deprecated in API 26
             vibrator.vibrate(500);
         }
     }
@@ -61,13 +70,12 @@ public class TutorialDialog {
     private void skipTutorial(){
         dialog.dismiss();
     }
-    private void startFullTutorial(){
-        activity.finish();
-        Intent intent = new Intent(activity, TutorialActivity.class);
+
+    private void startFullTutorial(Intent intent){
         activity.startActivity(intent);
+        activity.finish();
     }
     private void startShortTutorial(){
         activity.finish();
-
     }
 }
