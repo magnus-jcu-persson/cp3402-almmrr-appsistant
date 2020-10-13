@@ -14,32 +14,37 @@ import androidx.fragment.app.FragmentTransaction;
 
 import java.util.ArrayList;
 
-public class TutorialActivity extends AppCompatActivity {
-    private ImageButton buttonNextFragment;
-    private ImageButton buttonPreviousFragment;
 
-    private CalendarTutorialFragment1 fragmentCalendarTutorial1;
-    private CalendarTutorialFragment2 fragmentCalendarTutorial2;
-    private TextView textViewTutorial;
-    private ArrayList<Fragment> fragments;
-    private ImageView settingsArrow;
+
+public class TutorialActivity extends AppCompatActivity {
+    ImageButton buttonNextFragment;
+    ImageButton buttonPreviousFragment;
+
+    CalendarTutorialFragment1 fragmentCalendarTutorial1;
+    CalendarTutorialFragment2 fragmentCalendarTutorial2;
+    CalendarTutorialFragment3 fragmentCalendarTutorial3;
+    TextView textViewTutorial;
+    ArrayList<Fragment> fragments;
+    ImageView settingsArrow;
     FrameLayout fragmentContainer;
 
-    private FragmentTransaction fragmentTransaction;
-    private int count;
+    FragmentTransaction fragmentTransaction;
+    int count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar_tutorial);
-        count = 1;
+        count = 0;
         fragmentContainer = findViewById(R.id.fragmentContainer);
         fragmentCalendarTutorial1 = new CalendarTutorialFragment1();
         fragmentCalendarTutorial2 = new CalendarTutorialFragment2();
+        fragmentCalendarTutorial3 = new CalendarTutorialFragment3();
         fragments = new ArrayList<>(4);
         // add overview (layout.activity_calendar_tutorial)
         fragments.add(fragmentCalendarTutorial1);
         fragments.add(fragmentCalendarTutorial2);
+        fragments.add(fragmentCalendarTutorial3);
 
         textViewTutorial = findViewById(R.id.view_tutorial_information);
         settingsArrow = findViewById(R.id.settingsArrow);
@@ -66,7 +71,7 @@ public class TutorialActivity extends AppCompatActivity {
     }
 
     protected void decreaseFragmentState() {
-        if (count <= 0) {
+        if (count <= 0 | count == 1) {
             count = 1;
         } else {
             count -= 1;
@@ -84,9 +89,12 @@ public class TutorialActivity extends AppCompatActivity {
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(1));
                 fragmentTransaction.commit();
-                textViewTutorial.setText(R.string.calendar_stage_two);
+                textViewTutorial.setVisibility(View.VISIBLE);
                 break;
             case 3:
+                fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(2));
+                fragmentTransaction.commit();
                 break;
         }
     }
@@ -109,6 +117,10 @@ public class TutorialActivity extends AppCompatActivity {
                 textViewTutorial.setText(R.string.calendar_stage_two);
                 break;
             case 3:
+                fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(2));
+                fragmentTransaction.commit();
+                textViewTutorial.setVisibility(View.INVISIBLE);
                 break;
             case 4:
                 count = 0;

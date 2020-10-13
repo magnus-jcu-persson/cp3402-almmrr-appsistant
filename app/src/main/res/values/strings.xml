@@ -10,7 +10,7 @@
     <string name="text_tutorial_continue">To add an event click the red plus sign in the lower left. Click the arrow on the bottom right to continue the tutorial.</string>
     <string name="calendar_stage_one">Clicking this arrow opens the event button, which allows your create either an event, task, reminder or goal.</string>
     <string name="calendar_stage_two">Here we will be selecting an event to show what to do when trying to set an event on your calendar.</string>
-    <string name="calendar_stage_three">Set a title for your event.</string>
+    <string name="calendar_stage_three">Set a title for your event, once the title is set click the tick in the bottom right to save the event. Thats the end of the tutorial.</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- Contacts -->
