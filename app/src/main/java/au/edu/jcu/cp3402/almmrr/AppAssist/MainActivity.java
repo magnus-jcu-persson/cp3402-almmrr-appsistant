@@ -30,9 +30,6 @@ public class MainActivity extends AppCompatActivity {
     private ApplicationAdapter applicationListAdapter;
     private LayoutManager applicationListManager;
 
-    private SharedPreferences appPreferences;
-    private boolean colorBlindMode;
-
     private String[] applicationList = {
             "Calendar",
             "Contacts"
@@ -51,16 +48,19 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        checkColorBlindMode();
+        SharedPreferences appPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
+        boolean colorBlindMode = appPreferences.getBoolean("setting:toggle_color_blind", false);
+        if (colorBlindMode) {
+            setThemeMode(Theme.COLOR_BLIND);
+        } else {
+            setThemeMode(Theme.NORMAL);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         applicationListView = findViewById(R.id.view_application_list);
 
         setupSpeechRecognizer();
         setApplicationListView();
-
-        SwitchCompat toggle = findViewById(R.id.switch_color_blind);
-        toggle.setChecked(colorBlindMode);
     }
 
     @Override
@@ -86,6 +86,11 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         speechRecognizer.cancel();
         speechRecognizer.destroy();
+    }
+
+    public void openSettings(View view) {
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
     }
 
     private void setupSpeechRecognizer() {
@@ -181,27 +186,6 @@ public class MainActivity extends AppCompatActivity {
                 applicationListView
         );
         applicationListView.setAdapter(applicationListAdapter);
-    }
-
-    private void checkColorBlindMode() {
-        appPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
-        colorBlindMode = appPreferences.getBoolean("settingColorBlind", false);
-        if (colorBlindMode) {
-            setThemeMode(Theme.COLOR_BLIND);
-        } else {
-            setThemeMode(Theme.NORMAL);
-        }
-    }
-
-    public void toggleColorBlindMode(View view) {
-
-        SwitchCompat toggle = (SwitchCompat) view;
-
-        SharedPreferences.Editor appEditor = appPreferences.edit();
-        appEditor.putBoolean("settingColorBlind", toggle.isChecked());
-        appEditor.apply();
-
-        recreate();
     }
 
     private void setThemeMode(Theme theme) {

@@ -24,4 +24,9 @@
     <string name="go">Go</string>
     <string name="contact_popup_title">Contact Name?</string>
     <string name="firstname_lastname">first Name - Last Name</string>
+    <array name="tutorial_length_options">
+        <item>Long Tutorial</item>
+        <item>Short Tutorial</item>
+        <item>No Tutorial</item>
+    </array>
 </resources>

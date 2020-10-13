@@ -3,12 +3,21 @@
         <item name="colorPrimary">@color/color_primary</item>
         <item name="colorPrimaryDark">@color/color_primary_dark</item>
         <item name="colorAccent">@color/color_accent</item>
+
+        <item name="android:spinnerItemStyle">@style/Spinner</item>
+        <item name="spinnerDropDownItemStyle">@style/Spinner.Item</item>
     </style>
 
     <style name="ColorBlindMode" parent="AppTheme">
         <item name="colorPrimary">@color/color_primary_blind</item>
         <item name="colorPrimaryDark">@color/color_primary_blind_dark</item>
         <item name="colorAccent">@color/color_accent_blind</item>
+    </style>
+
+    <style name="Spinner" parent="TextAppearance.AppCompat.Large"/>
+
+    <style name="Spinner.Item" parent="Spinner">
+        <item name="android:textSize">22sp</item>
     </style>
 
 </resources>

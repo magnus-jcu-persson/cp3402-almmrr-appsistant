@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -28,14 +27,10 @@
         android:layout_width="match_parent"
         android:layout_height="10dp"/>
 
-    <androidx.appcompat.widget.SwitchCompat
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="toggleColorBlindMode"
-        android:checked="false"
-        android:id="@+id/switch_color_blind"
-        style="@style/TextAppearance.AppCompat.Large"
-        android:text="@string/text_activate_color_blind" />
-
+        android:text="Open Settings"
+        android:onClick="openSettings"/>
 
 </LinearLayout>
