@@ -1,53 +1,49 @@
 package au.edu.jcu.cp3402.almmrr.AppAssist;
 
+import android.content.SharedPreferences;
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.SharedPreferences;
-import android.os.Bundle;
+import au.edu.jcu.cp3402.almmrr.AppAssist.CalendarAdapter;
+import au.edu.jcu.cp3402.almmrr.AppAssist.R;
+import au.edu.jcu.cp3402.almmrr.AppAssist.Theme;
+import au.edu.jcu.cp3402.almmrr.AppAssist.TutorialDialog;
 
-public class CalendarActivity extends AppCompatActivity {
+public class ContactsActivity extends AppCompatActivity {
     private RecyclerView applicationListView;
-    private CalendarAdapter applicationListAdapter;
+    private ContactsAdapter applicationListAdapter;
     private RecyclerView.LayoutManager applicationListManager;
     private TutorialDialog tutorialDialog;
     private String[] applicationList = {
-            "View my Calendar",
-            "Add new Event",
-            "Go to Specific Date",
+            "View My Contacts",
+            "Add new Contact",
+            "Find a Contact",
     };
 
     private Class<?>[] applicationActivities = {
-            //Intents for Android calendar
+            //Intents for Android contacts
 
     };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        final String ACTIVITY_NAME = "Calendar";
+        final String ACTIVITY_NAME = "Contacts";
         SharedPreferences appPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
-        boolean colorBlindMode = appPreferences.getBoolean("setting:toggle_color_blind", false);
+        boolean colorBlindMode = appPreferences.getBoolean("settingColorBlind", false);
         if (colorBlindMode) {
             setThemeMode(Theme.COLOR_BLIND);
         } else {
             setThemeMode(Theme.NORMAL);
         }
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calendar);
-        applicationListView = findViewById(R.id.view_calendar_list);
+        setContentView(R.layout.activity_contacts);
+        applicationListView = findViewById(R.id.view_contacts_list);
         setApplicationListView();
-
         tutorialDialog = new TutorialDialog(this);
         tutorialDialog.start(ACTIVITY_NAME);
-
-        int tutorialOption = appPreferences.getInt("setting:option_tutorial_length", -1);
-        tutorialDialog = new TutorialDialog(this, this);
-        if (tutorialOption == -1) {
-            tutorialDialog.start();
-        } else {
-            tutorialDialog.chooseTutorialOption(tutorialOption);
-        }
     }
 
     private void setApplicationListView() {
@@ -56,7 +52,7 @@ public class CalendarActivity extends AppCompatActivity {
         applicationListManager = new LinearLayoutManager(this);
         applicationListView.setLayoutManager(applicationListManager);
 
-        applicationListAdapter = new CalendarAdapter(
+        applicationListAdapter = new ContactsAdapter(
                 this,
                 applicationList,
                 applicationActivities,

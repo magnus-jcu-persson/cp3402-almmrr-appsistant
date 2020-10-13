@@ -8,12 +8,11 @@ import android.widget.ImageView;
 
 import androidx.fragment.app.Fragment;
 
+public class ContactsTutorialFragment2 extends Fragment {
+    ImageView openCalendarArrow;
+    ImageView contactStageView;
 
-public class CalendarTutorialFragment1 extends Fragment {
-    ImageView contactsStageView;
-    ImageView indicatorArrow;
-
-    public CalendarTutorialFragment1() {
+    public ContactsTutorialFragment2() {
         // Required empty public constructor
     }
 
@@ -21,10 +20,10 @@ public class CalendarTutorialFragment1 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_calendar_tutorial_1, container, false);
+        View view = inflater.inflate(R.layout.fragment_contacts_tutorial_2, container, false);
         // Inflate the layout for this fragment
-        contactsStageView = view.findViewById(R.id.contacts_stage_one);
-        indicatorArrow = view.findViewById(R.id.calendar_indicator_arrow_1);
+        openCalendarArrow = view.findViewById(R.id.contacts_indicator_arrow_2);
+        contactStageView = view.findViewById(R.id.contacts_stage_two);
         return view;
     }
 }

@@ -19,11 +19,12 @@
     <ImageView
         android:layout_width="69dp"
         android:layout_height="42dp"
+        android:rotation="45"
         android:src="@drawable/ic_right_arrow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.766"
+        app:layout_constraintHorizontal_bias="0.774"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.92" />
+        app:layout_constraintVertical_bias="0.843" />
 </androidx.constraintlayout.widget.ConstraintLayout>

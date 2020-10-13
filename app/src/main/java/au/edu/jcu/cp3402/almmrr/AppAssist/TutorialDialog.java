@@ -32,18 +32,37 @@ public class TutorialDialog {
         setMultiChoiceItems = new boolean[1];
     }
 
-    void start() {
+    void start(final String activityName) {
         vibrator = (Vibrator) activity.getSystemService(Context.VIBRATOR_SERVICE);
+
+        final Intent[] intent = new Intent[1];
+
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle(R.string.question_tutorial_type);
         builder.setItems(R.array.array_tutorial_options, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                if (i == 0) { // Full tutorial option
+                    vibrateDevice();
+                    switch (activityName) {
+                        case "Calendar":
+                            intent[0] = new Intent(activity, TutorialActivity.class);
+                            break;
+                        case "Contacts":
+                            intent[0] = new Intent(activity, ContactsTutorialActivity.class);
+                            break;
+                    }
+                    startFullTutorial(intent[0]);
+                } else if (i == 1) {
+                    startShortTutorial();
+                } else skipTutorial();
+                //-- New options
                 appEditor.putInt("setting:option_tutorial_length", i);
                 Log.i("SavePreference", "setting:option_tutorial_length: " + i);
                 appEditor.apply();
                 chooseTutorialOption(i);
                 dismiss();
+
             }
         });
         dialog = builder.create();
@@ -59,7 +78,7 @@ public class TutorialDialog {
             vibrator.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
             Log.i("Vibrator", "I am vibrating so hard right now!");
         } else {
-            //deprecated in API 26
+            // Deprecated in API 26
             vibrator.vibrate(500);
         }
     }
@@ -67,6 +86,18 @@ public class TutorialDialog {
     void setText(String text) {
         textView.setText(text);
     }
+
+
+    private void skipTutorial(){
+        dialog.dismiss();
+    }
+
+    private void startFullTutorial(Intent intent){
+        activity.startActivity(intent);
+        activity.finish();
+    }
+    private void startShortTutorial(){
+        activity.finish();
 
     void dismiss() {
         dialog.dismiss();

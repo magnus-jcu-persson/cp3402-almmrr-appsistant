@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TutorialActivity">
+    tools:context=".ContactsTutorialActivity">
 
     <TextView
         android:id="@+id/text_view_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tutorial"
+        android:text="@string/contacts_title"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +36,7 @@
         app:srcCompat="@drawable/abc_vector_test" />
 
     <FrameLayout
-        android:id="@+id/fragmentContainer"
+        android:id="@+id/contacts_fragment_container"
         android:layout_width="428dp"
         android:layout_height="600dp"
         android:layout_marginBottom="50dp"
@@ -50,12 +50,12 @@
 
 
     <TextView
-        android:id="@+id/view_tutorial_information"
+        android:id="@+id/contacts_tutorial_information"
         android:layout_width="302dp"
         android:layout_height="109dp"
         android:background="@android:color/black"
         android:fontFamily="sans-serif-black"
-        android:text="@string/text_tutorial_continue"
+        android:text="@string/contacts_stage_one"
         android:textColor="@android:color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"

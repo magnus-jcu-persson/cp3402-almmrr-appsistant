@@ -1,10 +1,12 @@
 package au.edu.jcu.cp3402.almmrr.AppAssist;
 
-import android.content.ContentUris;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
-import android.provider.CalendarContract;
+import android.os.Build;
+import android.provider.ContactsContract;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,24 +20,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-
-public class CalendarAdapter extends ApplicationAdapter {
+public class ContactsAdapter extends ApplicationAdapter {
     private Context context;
     private String[] applicationList;
     RecyclerView applicationListView;
 
-    EditText editTextDate;
-    Button buttonGoToDate;
+    EditText editTextContactName;
+    Button buttonGoContact;
     Button buttonCancel;
     View viewPopup;
     View viewWebPopup;
-    String dateFormat;
+    String contactName;
 
 
-    public CalendarAdapter(Context context, String[] applicationList, Class<?>[] applicationActivities, RecyclerView applicationListView) {
+    public ContactsAdapter(Context context, String[] applicationList, Class<?>[] applicationActivities, RecyclerView applicationListView) {
         super(context, applicationList, applicationActivities, applicationListView);
         this.context = context;
         this.applicationList = applicationList;
@@ -45,9 +43,9 @@ public class CalendarAdapter extends ApplicationAdapter {
     @Override
     public void onBindViewHolder(@NonNull final ApplicationViewHolder holder, final int position) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        viewPopup = inflater.inflate(R.layout.popup_date, null);
-        editTextDate = (EditText) viewPopup.findViewById(R.id.edit_date);
-        buttonGoToDate = viewPopup.findViewById(R.id.button_go);
+        viewPopup = inflater.inflate(R.layout.popup_find_contact, null);
+        editTextContactName = (EditText) viewPopup.findViewById(R.id.edit_contact_name);
+        buttonGoContact = viewPopup.findViewById(R.id.button_go);
         buttonCancel = viewPopup.findViewById(R.id.button_cancel);
         final ImageButton viewApplicationVideo = holder.linearLayout
                 .findViewById(R.id.imageButton_video);
@@ -67,7 +65,7 @@ public class CalendarAdapter extends ApplicationAdapter {
                 @Override
                 public void onClick(View view) {
                     holder.linearLayout.setOnClickListener(null);
-                    openCalendar();
+                    openContacts();
                 }
             });
         } else if (position == 1) {
@@ -75,7 +73,7 @@ public class CalendarAdapter extends ApplicationAdapter {
                 @Override
                 public void onClick(View view) {
                     holder.linearLayout.setOnClickListener(null);
-                    newAppointment();
+                    newContact();
                 }
             });
         } else {
@@ -87,12 +85,12 @@ public class CalendarAdapter extends ApplicationAdapter {
             });
         }
 
-        buttonGoToDate.setOnClickListener(new View.OnClickListener() {
+        buttonGoContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                buttonGoToDate.setOnClickListener(null);
-                dateFormat = editTextDate.getText().toString();
-                goToDate(dateFormat);
+                buttonGoContact.setOnClickListener(null);
+                contactName = editTextContactName.getText().toString();
+                viewContact(contactName);
             }
         });
 
@@ -118,39 +116,34 @@ public class CalendarAdapter extends ApplicationAdapter {
         });
     }
 
-    private void newAppointment() {
-        Intent addAppointment = new Intent(Intent.ACTION_INSERT)
-                .setData(CalendarContract.Events.CONTENT_URI);
-        context.startActivity(addAppointment);
+    private void newContact() {
+        Intent newContact = new Intent(Intent.ACTION_INSERT, ContactsContract.Contacts.CONTENT_URI);
+        context.startActivity(newContact);
     }
 
-    private void openCalendar() {
-        long start = System.currentTimeMillis();
-        Uri.Builder builder = CalendarContract.CONTENT_URI.buildUpon();
-        builder.appendPath("time");
-        ContentUris.appendId(builder, start);
-
-        Intent openCalendar = new Intent(Intent.ACTION_VIEW)
-                .setData(builder.build());
-        context.startActivity(openCalendar);
+    private void openContacts() {
+        Intent openContacts = new Intent(Intent.ACTION_VIEW, ContactsContract.Contacts.CONTENT_URI);
+        context.startActivity(openContacts);
     }
 
-    private void goToDate(String date) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-        try {
-            Date dateParsed = sdf.parse(date);
-            assert dateParsed != null;
-
-            long currentTimeMillis = dateParsed.getTime();
-            Uri.Builder builder = CalendarContract.CONTENT_URI.buildUpon();
-            builder.appendPath("time");
-            ContentUris.appendId(builder, currentTimeMillis);
-            Intent openCalendar = new Intent(Intent.ACTION_VIEW)
-                    .setData(builder.build());
-            context.startActivity(openCalendar);
-        } catch (Exception e) {
-            e.printStackTrace();
+    private void viewContact(String name) {
+        if (name != null) {
+            Uri lookupUri = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_FILTER_URI, Uri.encode(name));
+            String[] displayNameProjection = {ContactsContract.Contacts._ID, ContactsContract.Contacts.LOOKUP_KEY, ContactsContract.Contacts.DISPLAY_NAME_PRIMARY};
+            try (Cursor cur = context.getContentResolver().query(lookupUri, displayNameProjection, null, null, null)) {
+                assert cur != null;
+                if (cur.moveToFirst()) {
+                    String contactId = cur.getString(0);
+                    Uri contactUri = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_URI, String.valueOf(contactId));
+                    Intent viewContact = new Intent(Intent.ACTION_VIEW, contactUri);
+                    context.startActivity(viewContact);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
+
     }
+
 }
 

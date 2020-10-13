@@ -31,11 +31,13 @@ public class MainActivity extends AppCompatActivity {
     private LayoutManager applicationListManager;
 
     private String[] applicationList = {
-            "Calendar"
+            "Calendar",
+            "Contacts"
     };
 
     private Class<?>[] applicationActivities = {
-            CalendarActivity.class
+            CalendarActivity.class,
+            ContactsActivity.class
     };
 
     /* Voice recognition related variables */

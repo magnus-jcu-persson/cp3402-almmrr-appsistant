@@ -2,14 +2,28 @@
     <string name="app_name">AppAssist</string>
     <string name="applications_list">Applications List</string>
     <string name="row_placeholder">RowPlaceholder</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="loading">Loading…</string>
     <string name="title_calendar">Calendar</string>
     <string name="select_option_heading">Select an option:</string>
     <string name="question_tutorial_type">What type of Tutorial would you like?</string>
     <string name="text_activate_color_blind">Activate Color Blind Mode</string>
     <string name="text_tutorial_continue">To add an event click the red plus sign in the lower left. Click the arrow on the bottom right to continue the tutorial.</string>
+    <string name="calendar_stage_one">Clicking this arrow opens the event button, which allows your create either an event, task, reminder or goal.</string>
+    <string name="calendar_stage_two">Here we will be selecting an event to show what to do when trying to set an event on your calendar.</string>
+    <string name="calendar_stage_three">Set a title for your event, once the title is set click the tick in the bottom right to save the event. Thats the end of the tutorial.</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!-- Contacts -->
+    <string name="application_contacts">Contacts</string>
+    <string name="contacts_stage_one">To add a contact, click on the + symbol.</string>
+    <string name="contacts_stage_two">Fill out your desired fields for your contact.</string>
+    <string name="contacts_stage_three">Apply this contact by pressing the save button.</string>
+    <string name="contacts_title">Contacts</string>
+    <string name="date_popup_title">What date would like to see?</string>
+    <string name="dd_mm_yyyy">dd-mm-yyyy</string>
+    <string name="go">Go</string>
+    <string name="contact_popup_title">Contact Name?</string>
+    <string name="firstname_lastname">first Name - Last Name</string>
     <array name="tutorial_length_options">
         <item>Long Tutorial</item>
         <item>Short Tutorial</item>
