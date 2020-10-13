@@ -5,10 +5,12 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 public class TutorialDialog {
@@ -16,30 +18,38 @@ public class TutorialDialog {
     AlertDialog dialog;
     TextView textView;
     Vibrator vibrator;
+    CharSequence[] multiChoiceItems;
+    boolean[] setMultiChoiceItems;
+    SharedPreferences appPreferences;
+    SharedPreferences.Editor appEditor;
 
-    TutorialDialog(Activity myActivity) {
+    TutorialDialog(Activity myActivity, Context context) {
+        appPreferences = context.getSharedPreferences(context.getPackageName(),Context.MODE_PRIVATE);
+        appEditor = appPreferences.edit();
+        appEditor.apply();
         activity = myActivity;
+        multiChoiceItems = new CharSequence[]{"Remember My Preference"};
+        setMultiChoiceItems = new boolean[1];
     }
 
     void start() {
         vibrator = (Vibrator) activity.getSystemService(Context.VIBRATOR_SERVICE);
-
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle(R.string.question_tutorial_type);
         builder.setItems(R.array.array_tutorial_options, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                if (i == 0) {
-                    vibrateDevice();
-                    startFullTutorial();
-                } else if (i == 1) {
-                    startShortTutorial();
-                } else skipTutorial();
+                appEditor.putInt("setting:option_tutorial_length", i);
+                Log.i("SavePreference", "setting:option_tutorial_length: " + i);
+                appEditor.apply();
+                chooseTutorialOption(i);
+                dismiss();
             }
-
         });
         dialog = builder.create();
         dialog.show();
+
+
     }
 
     // Vibrate device when user clicks on an option throughout the tutorial
@@ -62,15 +72,34 @@ public class TutorialDialog {
         dialog.dismiss();
     }
 
-
-    private void skipTutorial(){
-        dialog.dismiss();
+    public void chooseTutorialOption(int choice) {
+        System.out.println("tutorial choice: " + choice);
+        switch (choice) {
+            case 0:
+                vibrateDevice();
+                startFullTutorial();
+                break;
+            case 1:
+                startShortTutorial();
+                break;
+            default:
+                skipTutorial();
+                break;
+        }
     }
-    private void startFullTutorial(){
+
+
+    private void skipTutorial() {
+
+    }
+
+    private void startFullTutorial() {
         Intent intent = new Intent(activity, TutorialActivity.class);
         activity.startActivity(intent);
+        dismiss();
     }
-    private void startShortTutorial(){
+
+    private void startShortTutorial() {
 
     }
 }
