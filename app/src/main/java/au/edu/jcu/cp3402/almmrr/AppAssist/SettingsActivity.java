@@ -36,7 +36,7 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
         appEditor.apply();
 
         Spinner spinnerTutorialLength = findViewById(R.id.option_tutorial_length);
-        spinnerTutorialLength.setOnItemClickListener((AdapterView.OnItemClickListener) this);
+        spinnerTutorialLength.setOnItemSelectedListener(this);
 
         loadPreferences();
     }

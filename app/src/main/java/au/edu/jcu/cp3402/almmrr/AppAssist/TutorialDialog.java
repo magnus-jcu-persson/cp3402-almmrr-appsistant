@@ -34,24 +34,20 @@ public class TutorialDialog {
 
     void start() {
         vibrator = (Vibrator) activity.getSystemService(Context.VIBRATOR_SERVICE);
-        int tutorialOption = appPreferences.getInt("setting:option_tutorial_length", -1);
-        if (tutorialOption != -1) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-            builder.setTitle(R.string.question_tutorial_type);
-            builder.setItems(R.array.array_tutorial_options, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    appEditor.putInt("setting:option_tutorial_length", i);
-                    Log.i("SavePreference", "setting:option_tutorial_length: " + i);
-                    appEditor.apply();
-                    chooseTutorialOption(i);
-                }
-            });
-            dialog = builder.create();
-            dialog.show();
-        } else {
-            chooseTutorialOption(tutorialOption);
-        }
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        builder.setTitle(R.string.question_tutorial_type);
+        builder.setItems(R.array.array_tutorial_options, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                appEditor.putInt("setting:option_tutorial_length", i);
+                Log.i("SavePreference", "setting:option_tutorial_length: " + i);
+                appEditor.apply();
+                chooseTutorialOption(i);
+                dismiss();
+            }
+        });
+        dialog = builder.create();
+        dialog.show();
 
 
     }
@@ -76,7 +72,8 @@ public class TutorialDialog {
         dialog.dismiss();
     }
 
-    private void chooseTutorialOption(int choice) {
+    public void chooseTutorialOption(int choice) {
+        System.out.println("tutorial choice: " + choice);
         switch (choice) {
             case 0:
                 vibrateDevice();
@@ -93,12 +90,13 @@ public class TutorialDialog {
 
 
     private void skipTutorial() {
-        dialog.dismiss();
+
     }
 
     private void startFullTutorial() {
         Intent intent = new Intent(activity, TutorialActivity.class);
         activity.startActivity(intent);
+        dismiss();
     }
 
     private void startShortTutorial() {
