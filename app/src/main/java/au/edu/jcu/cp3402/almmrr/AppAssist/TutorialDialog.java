@@ -32,11 +32,10 @@ public class TutorialDialog {
         this.activityName = activityName;
         multiChoiceItems = new CharSequence[]{"Remember My Preference"};
         setMultiChoiceItems = new boolean[1];
+        vibrator = (Vibrator) activity.getSystemService(Context.VIBRATOR_SERVICE);
     }
 
     void start() {
-        vibrator = (Vibrator) activity.getSystemService(Context.VIBRATOR_SERVICE);
-
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle(R.string.question_tutorial_type);
         builder.setItems(R.array.array_tutorial_options, new DialogInterface.OnClickListener() {
@@ -111,7 +110,6 @@ public class TutorialDialog {
         }
 
         activity.startActivity(intent);
-        dismiss();
     }
 
     private void startShortTutorial() {
