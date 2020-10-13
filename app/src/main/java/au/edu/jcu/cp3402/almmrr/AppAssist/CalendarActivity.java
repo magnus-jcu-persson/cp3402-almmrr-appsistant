@@ -38,11 +38,8 @@ public class CalendarActivity extends AppCompatActivity {
         applicationListView = findViewById(R.id.view_calendar_list);
         setApplicationListView();
 
-        tutorialDialog = new TutorialDialog(this);
-        tutorialDialog.start(ACTIVITY_NAME);
-
         int tutorialOption = appPreferences.getInt("setting:option_tutorial_length", -1);
-        tutorialDialog = new TutorialDialog(this, this);
+        tutorialDialog = new TutorialDialog(this, ACTIVITY_NAME);
         if (tutorialOption == -1) {
             tutorialDialog.start();
         } else {

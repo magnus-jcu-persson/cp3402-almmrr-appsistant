@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 public class TutorialDialog {
     Activity activity;
+    String activityName;
     AlertDialog dialog;
     TextView textView;
     Vibrator vibrator;
@@ -23,39 +24,24 @@ public class TutorialDialog {
     SharedPreferences appPreferences;
     SharedPreferences.Editor appEditor;
 
-    TutorialDialog(Activity myActivity, Context context) {
+    TutorialDialog(Context context, String activityName) {
         appPreferences = context.getSharedPreferences(context.getPackageName(),Context.MODE_PRIVATE);
         appEditor = appPreferences.edit();
         appEditor.apply();
-        activity = myActivity;
+        activity = (Activity) context;
+        this.activityName = activityName;
         multiChoiceItems = new CharSequence[]{"Remember My Preference"};
         setMultiChoiceItems = new boolean[1];
     }
 
-    void start(final String activityName) {
+    void start() {
         vibrator = (Vibrator) activity.getSystemService(Context.VIBRATOR_SERVICE);
-
-        final Intent[] intent = new Intent[1];
 
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle(R.string.question_tutorial_type);
         builder.setItems(R.array.array_tutorial_options, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                if (i == 0) { // Full tutorial option
-                    vibrateDevice();
-                    switch (activityName) {
-                        case "Calendar":
-                            intent[0] = new Intent(activity, TutorialActivity.class);
-                            break;
-                        case "Contacts":
-                            intent[0] = new Intent(activity, ContactsTutorialActivity.class);
-                            break;
-                    }
-                    startFullTutorial(intent[0]);
-                } else if (i == 1) {
-                    startShortTutorial();
-                } else skipTutorial();
                 //-- New options
                 appEditor.putInt("setting:option_tutorial_length", i);
                 Log.i("SavePreference", "setting:option_tutorial_length: " + i);
@@ -87,18 +73,6 @@ public class TutorialDialog {
         textView.setText(text);
     }
 
-
-    private void skipTutorial(){
-        dialog.dismiss();
-    }
-
-    private void startFullTutorial(Intent intent){
-        activity.startActivity(intent);
-        activity.finish();
-    }
-    private void startShortTutorial(){
-        activity.finish();
-
     void dismiss() {
         dialog.dismiss();
     }
@@ -125,7 +99,17 @@ public class TutorialDialog {
     }
 
     private void startFullTutorial() {
-        Intent intent = new Intent(activity, TutorialActivity.class);
+        Intent intent;
+        switch (activityName) {
+            case "Calendar":
+            default:
+                intent = new Intent(activity, TutorialActivity.class);
+                break;
+            case "Contacts":
+                intent = new Intent(activity, ContactsTutorialActivity.class);
+                break;
+        }
+
         activity.startActivity(intent);
         dismiss();
     }

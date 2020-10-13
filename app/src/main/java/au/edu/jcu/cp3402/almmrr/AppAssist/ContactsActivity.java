@@ -42,8 +42,14 @@ public class ContactsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_contacts);
         applicationListView = findViewById(R.id.view_contacts_list);
         setApplicationListView();
-        tutorialDialog = new TutorialDialog(this);
-        tutorialDialog.start(ACTIVITY_NAME);
+
+        int tutorialOption = appPreferences.getInt("setting:option_tutorial_length", -1);
+        tutorialDialog = new TutorialDialog(this, ACTIVITY_NAME);
+        if (tutorialOption == -1) {
+            tutorialDialog.start();
+        } else {
+            tutorialDialog.chooseTutorialOption(tutorialOption);
+        }
     }
 
     private void setApplicationListView() {
