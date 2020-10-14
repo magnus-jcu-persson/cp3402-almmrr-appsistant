@@ -1,4 +1,4 @@
-package au.edu.jcu.cp3402.almmrr.appsistant;
+package au.edu.jcu.cp3402.almmrr.AppAssist;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -25,7 +25,7 @@ class LoadingDialog {
             builder.setView(view);
             builder.setCancelable(false);
 
-            textView = view.findViewById(R.id.textView);
+            textView = view.findViewById(R.id.view_date_prompt);
 
             dialog = builder.create();
             dialog.show();

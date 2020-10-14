@@ -1,4 +1,4 @@
-package au.edu.jcu.cp3402.almmrr.appsistant;
+package au.edu.jcu.cp3402.almmrr.AppAssist;
 
 import org.junit.Test;
 
