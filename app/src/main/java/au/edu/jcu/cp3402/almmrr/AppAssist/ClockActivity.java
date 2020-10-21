@@ -1,21 +1,19 @@
 package au.edu.jcu.cp3402.almmrr.AppAssist;
 
-import android.content.SharedPreferences;
-import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ContactsActivity extends AppCompatActivity {
+import android.content.SharedPreferences;
+import android.os.Bundle;
+
+public class ClockActivity extends AppCompatActivity {
     private RecyclerView applicationListView;
     private ContactsAdapter applicationListAdapter;
     private RecyclerView.LayoutManager applicationListManager;
     private TutorialDialog tutorialDialog;
     private String[] applicationList = {
-            "View My Contacts",
-            "Add new Contact",
-            "Find a Contact",
+            "Example"
     };
 
     private Class<?>[] applicationActivities = {
@@ -34,7 +32,7 @@ public class ContactsActivity extends AppCompatActivity {
             setThemeMode(Theme.NORMAL);
         }
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contacts);
+        setContentView(R.layout.activity_clock);
         applicationListView = findViewById(R.id.view_clock_list);
         setApplicationListView();
 
