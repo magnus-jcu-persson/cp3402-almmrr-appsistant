@@ -3,7 +3,7 @@
     android:layout_width="350dp"
     android:layout_height="250dp"
     android:layout_gravity="center"
-    android:background="@color/colorPrimary"
+    android:background="@color/color_primary"
     android:orientation="vertical">
 
     <WebView

@@ -18,7 +18,7 @@
             style="@style/TextAppearance.AppCompat.Display2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/calendar_title" />
+            android:text="@string/title_calendar" />
 
         <Space
             android:layout_width="match_parent"
