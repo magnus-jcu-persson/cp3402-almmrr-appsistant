@@ -1,4 +1,9 @@
 <resources>
+    <array name="tutorial_length_options">
+        <item>Long Tutorial</item>
+        <item>Short Tutorial</item>
+        <item>No Tutorial</item>
+    </array>
     <string name="app_name">AppAssist</string>
     <string name="applications_list">Applications List</string>
     <string name="row_placeholder">RowPlaceholder</string>
@@ -11,9 +16,9 @@
     <string name="calendar_stage_one">Clicking this arrow opens the event button, which allows your create either an event, task, reminder or goal.</string>
     <string name="calendar_stage_two">Here we will be selecting an event to show what to do when trying to set an event on your calendar.</string>
     <string name="calendar_stage_three">Set a title for your event, once the title is set click the tick in the bottom right to save the event. Thats the end of the tutorial.</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- Contacts -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="application_contacts">Contacts</string>
     <string name="contacts_stage_one">To add a contact, click on the + symbol.</string>
     <string name="contacts_stage_two">Fill out your desired fields for your contact.</string>
@@ -24,9 +29,12 @@
     <string name="go">Go</string>
     <string name="contact_popup_title">Contact Name?</string>
     <string name="firstname_lastname">first Name - Last Name</string>
-    <array name="tutorial_length_options">
-        <item>Long Tutorial</item>
-        <item>Short Tutorial</item>
-        <item>No Tutorial</item>
-    </array>
+
+    <!-- Clock -->
+    <string name="clock_tutorial">Clock Tutorial</string>
+    <string name="clock_stage_one">Press the + button to add a new alarm.</string>
+    <string name="clock_stage_two">Press on your chosen hour within the clock face. The selected hour will be highlighted in blue.</string>
+    <string name="clock_stage_three">Hold and drag toward the chosen minutes within the clock face. Select either AM or PM and press OK to set the alarm.</string>
+    <string name="clock_stage_four">This displays the information of your set alarm with options to repeat, set a custom alarm sound, label and delete the alarm.</string>
+
 </resources>
