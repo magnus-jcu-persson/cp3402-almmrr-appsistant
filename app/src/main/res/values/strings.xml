@@ -24,6 +24,7 @@
     <string name="go">Go</string>
     <string name="contact_popup_title">Contact Name?</string>
     <string name="firstname_lastname">first Name - Last Name</string>
+    <string name="alarm_clock">Alarm Clock</string>
     <array name="tutorial_length_options">
         <item>Long Tutorial</item>
         <item>Short Tutorial</item>
