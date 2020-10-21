@@ -54,18 +54,17 @@ public class CalendarAdapter extends ApplicationAdapter {
     @Override
     public void onBindViewHolder(@NonNull final ApplicationViewHolder holder, final int position) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        popup = inflater.inflate(R.layout.popup_date, null);
-        date = (EditText) popup.findViewById(R.id.editTextDate);
-        goToDate = popup.findViewById(R.id.goToDate);
-        cancel = popup.findViewById(R.id.cancel);
+
+        int width = 850;
+        int height = 550;
+
         videoPopup = inflater.inflate(R.layout.popup_video, null);
         videoView = videoPopup.findViewById(R.id.VideoWebView);
         WebSettings webSettings = videoView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         ImageButton viewApplicationDetail = holder.linearLayout
-                .findViewById(R.id.imageButton);
-        int width = 850;
-        int height = 550;
+                .findViewById(R.id.imageButton_detail);
+
         final PopupWindow videoPopupWindow = new PopupWindow(videoPopup, width, height, true);
 
         viewPopup = inflater.inflate(R.layout.popup_date, null);

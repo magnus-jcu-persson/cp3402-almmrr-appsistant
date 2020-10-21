@@ -63,10 +63,9 @@ public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.
                 .findViewById(R.id.imageButton_video);
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        popup = inflater.inflate(R.layout.popup_pre, null);
-        final WebView webView= popup.findViewById(R.id.VideoWebView);
-        final PopupWindow popupWindow= new PopupWindow(popup,850,550);
         popup = inflater.inflate(R.layout.popup_web_view, null);
+        final WebView webView = popup.findViewById(R.id.VideoWebView);
+        final PopupWindow popupWindow = new PopupWindow(popup, 850, 550);
         final boolean[] checkState = {false};
 
         viewApplicationDetail.setOnClickListener(new View.OnClickListener() {
@@ -95,7 +94,7 @@ public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.
             }
 
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 webView.loadUrl(context.getString(getStringIdentifier(context, String.format("url_%s_video",
                         applicationList[position].toLowerCase()))));
             }
