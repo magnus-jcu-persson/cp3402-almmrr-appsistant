@@ -50,7 +50,7 @@ public class ContactsAdapter extends ApplicationAdapter {
         final ImageButton viewApplicationVideo = holder.linearLayout
                 .findViewById(R.id.imageButton_video);
         viewWebPopup = inflater.inflate(R.layout.popup_web_view, null);
-        final WebView webView = viewWebPopup.findViewById(R.id.webView);
+        final WebView webView = viewWebPopup.findViewById(R.id.VideoWebView);
 
         int width = 850;
         int height = 550;

@@ -16,7 +16,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,11 +28,6 @@ public class CalendarAdapter extends ApplicationAdapter {
     private Context context;
     private String[] applicationList;
     RecyclerView applicationListView;
-    Uri uri;
-    EditText date;
-    Button goToDate;
-    Button cancel;
-    View popup;
     View videoPopup;
     EditText editTextDate;
     Button buttonGoToDate;
@@ -41,7 +35,7 @@ public class CalendarAdapter extends ApplicationAdapter {
     View viewPopup;
     View viewWebPopup;
     String dateFormat;
-    WebView videoView;
+    WebView infoPopupView;
 
     public CalendarAdapter(Context context, String[] applicationList, Class<?>[] applicationActivities, RecyclerView applicationListView) {
         super(context, applicationList, applicationActivities, applicationListView);
@@ -54,18 +48,17 @@ public class CalendarAdapter extends ApplicationAdapter {
     @Override
     public void onBindViewHolder(@NonNull final ApplicationViewHolder holder, final int position) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        popup = inflater.inflate(R.layout.popup_date, null);
-        date = (EditText) popup.findViewById(R.id.editTextDate);
-        goToDate = popup.findViewById(R.id.goToDate);
-        cancel = popup.findViewById(R.id.cancel);
+
+        int width = 850;
+        int height = 300;
+
         videoPopup = inflater.inflate(R.layout.popup_video, null);
-        videoView = videoPopup.findViewById(R.id.VideoWebView);
-        WebSettings webSettings = videoView.getSettings();
+        infoPopupView = videoPopup.findViewById(R.id.VideoWebView);
+        WebSettings webSettings = infoPopupView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         ImageButton viewApplicationDetail = holder.linearLayout
-                .findViewById(R.id.imageButton);
-        int width = 850;
-        int height = 550;
+                .findViewById(R.id.imageButton_detail);
+
         final PopupWindow videoPopupWindow = new PopupWindow(videoPopup, width, height, true);
 
         viewPopup = inflater.inflate(R.layout.popup_date, null);
@@ -91,7 +84,7 @@ public class CalendarAdapter extends ApplicationAdapter {
 
                 }
             });
-            videoView.loadUrl("https://appassist.s3-ap-southeast-2.amazonaws.com/openCalendar.html");
+            infoPopupView.loadUrl("https://appassist.s3-ap-southeast-2.amazonaws.com/openCalendar.html");
         } else if (position == 1) {
             holder.linearLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -100,7 +93,7 @@ public class CalendarAdapter extends ApplicationAdapter {
                     newAppointment();
                 }
             });
-            videoView.loadUrl("https://appassist.s3-ap-southeast-2.amazonaws.com/addNewEvent.html");
+            infoPopupView.loadUrl("https://appassist.s3-ap-southeast-2.amazonaws.com/addNewEvent.html");
         } else {
             holder.linearLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -108,7 +101,7 @@ public class CalendarAdapter extends ApplicationAdapter {
                     popupWindow.showAtLocation(applicationListView, Gravity.CENTER, 0, 0);
                 }
             });
-            videoView.loadUrl("https://appassist.s3-ap-southeast-2.amazonaws.com/goToDate.html");
+            infoPopupView.loadUrl("https://appassist.s3-ap-southeast-2.amazonaws.com/goToDate.html");
         }
 
         buttonGoToDate.setOnClickListener(new View.OnClickListener() {
@@ -125,22 +118,15 @@ public class CalendarAdapter extends ApplicationAdapter {
             @Override
             public void onClick(View view) {
                 videoPopupWindow.showAtLocation(holder.linearLayout, Gravity.CENTER, 0, 0);
-                Toast.makeText(context, "Video should be shgowing", Toast.LENGTH_SHORT).show();
             }
         });
-        cancel.setOnClickListener(new View.OnClickListener() {
-                                      @Override
-                                      public void onClick(View view) {
 
-                                      }
-                                  });
-                buttonCancel.setOnClickListener(new View.OnClickListener() {
-
-                    @Override
-                    public void onClick(View view) {
-                        popupWindow.dismiss();
-                    }
-                });
+        buttonCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+            }
+        });
 
         viewApplicationVideo.setOnClickListener(new View.OnClickListener() {
 
