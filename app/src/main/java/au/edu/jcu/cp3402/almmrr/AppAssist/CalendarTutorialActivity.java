@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 
 
-public class TutorialActivity extends AppCompatActivity {
+public class CalendarTutorialActivity extends AppCompatActivity {
     ImageButton buttonNextFragment;
     ImageButton buttonPreviousFragment;
 
@@ -47,7 +47,6 @@ public class TutorialActivity extends AppCompatActivity {
         fragments.add(fragmentCalendarTutorial3);
 
         textViewTutorial = findViewById(R.id.view_tutorial_information);
-        settingsArrow = findViewById(R.id.settingsArrow);
 
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(0));
@@ -82,18 +81,17 @@ public class TutorialActivity extends AppCompatActivity {
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(0));
                 fragmentTransaction.commit();
-                settingsArrow.setVisibility(View.INVISIBLE);
                 textViewTutorial.setText(R.string.calendar_stage_one);
                 break;
             case 2:
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(1));
                 fragmentTransaction.commit();
-                textViewTutorial.setVisibility(View.VISIBLE);
                 break;
             case 3:
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(2));
+                textViewTutorial.setVisibility(View.VISIBLE);
                 fragmentTransaction.commit();
                 break;
         }
@@ -107,7 +105,6 @@ public class TutorialActivity extends AppCompatActivity {
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(0));
                 fragmentTransaction.commit();
-                settingsArrow.setVisibility(View.INVISIBLE);
                 textViewTutorial.setText(R.string.calendar_stage_one);
                 break;
             case 2:
@@ -119,8 +116,8 @@ public class TutorialActivity extends AppCompatActivity {
             case 3:
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(2));
-                fragmentTransaction.commit();
                 textViewTutorial.setVisibility(View.INVISIBLE);
+                fragmentTransaction.commit();
                 break;
             case 4:
                 count = 0;
