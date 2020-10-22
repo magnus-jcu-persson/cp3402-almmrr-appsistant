@@ -9,11 +9,11 @@ import android.os.Bundle;
 
 public class ClockActivity extends AppCompatActivity {
     private RecyclerView applicationListView;
-    private ContactsAdapter applicationListAdapter;
+    private ClockAdapter applicationListAdapter;
     private RecyclerView.LayoutManager applicationListManager;
     private TutorialDialog tutorialDialog;
     private String[] applicationList = {
-            "Example"
+            "Open My Clock"
     };
 
     private Class<?>[] applicationActivities = {
@@ -51,7 +51,7 @@ public class ClockActivity extends AppCompatActivity {
         applicationListManager = new LinearLayoutManager(this);
         applicationListView.setLayoutManager(applicationListManager);
 
-        applicationListAdapter = new ContactsAdapter(
+        applicationListAdapter = new ClockAdapter(
                 this,
                 applicationList,
                 applicationActivities,
