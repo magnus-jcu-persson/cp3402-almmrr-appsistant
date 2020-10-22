@@ -1,5 +1,6 @@
 package au.edu.jcu.cp3402.almmrr.AppAssist;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -28,9 +29,6 @@ public class ClockTutorialActivity extends AppCompatActivity {
         ClockTutorialFragment3 clockTutorialFragment3 = new ClockTutorialFragment3();
         ClockTutorialFragment4 clockTutorialFragment4 = new ClockTutorialFragment4();
 
-
-        System.out.println("Activity loaded.");
-
         fragments = new ArrayList<>(5);
         fragments.add(clockTutorialFragment1);
         fragments.add(clockTutorialFragment2);
@@ -39,7 +37,6 @@ public class ClockTutorialActivity extends AppCompatActivity {
 
 
         textViewTutorial = findViewById(R.id.clock_tutorial_information);
-//        settingsArrow = findViewById(R.id.settingsArrow);
 
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.clock_fragment_container, fragments.get(0));
@@ -128,7 +125,7 @@ public class ClockTutorialActivity extends AppCompatActivity {
             case 5:
                 count = 0;
                 finish();
-                Intent intent = new Intent(this, ContactsActivity.class);
+                Intent intent = new Intent(this, ClockActivity.class);
                 startActivity(intent);
                 break;
         }

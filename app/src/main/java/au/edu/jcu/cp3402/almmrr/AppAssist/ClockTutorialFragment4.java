@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment;
 public class ClockTutorialFragment4 extends Fragment {
 
     ImageView contactsStageView;
-    ImageView indicatorArrow;
 
     public ClockTutorialFragment4() {
         // Required empty public constructor
@@ -24,7 +23,6 @@ public class ClockTutorialFragment4 extends Fragment {
         View view = inflater.inflate(R.layout.fragment_clock_tutorial_4, container, false);
         // Inflate the layout for this fragment
         contactsStageView = view.findViewById(R.id.clock_stage_four);
-        indicatorArrow = view.findViewById(R.id.clock_indicator_arrow_4);
         return view;
     }
 }

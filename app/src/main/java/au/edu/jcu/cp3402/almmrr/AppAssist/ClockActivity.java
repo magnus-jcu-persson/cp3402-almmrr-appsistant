@@ -23,7 +23,7 @@ public class ClockActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        final String ACTIVITY_NAME = "Contacts";
+        final String ACTIVITY_NAME = "Clock";
         SharedPreferences appPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
         boolean colorBlindMode = appPreferences.getBoolean("settingColorBlind", false);
         if (colorBlindMode) {
