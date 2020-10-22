@@ -8,10 +8,11 @@
     android:padding="25dp">
 
     <TextView
+        style="@style/HeadingText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/applications_list"
-        style="@style/TextAppearance.AppCompat.Display1"/>
+        android:gravity="center"/>
 
     <Space
         android:layout_width="match_parent"
@@ -27,10 +28,13 @@
         android:layout_width="match_parent"
         android:layout_height="10dp"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Open Settings"
-        android:onClick="openSettings"/>
+    <ImageButton
+        style="@style/CustomButton"
+        android:layout_gravity="end"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:onClick="openSettings"
+        android:src="@drawable/ic_baseline_settings_24"/>
+
 
 </LinearLayout>

@@ -20,4 +20,15 @@
         <item name="android:textSize">22sp</item>
     </style>
 
+    <style name="CustomButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="colorButtonNormal">@color/color_primary</item>
+    </style>
+
+    <style name="HeadingText" parent="TextAppearance.AppCompat.Display1">
+        <item name="android:textColor">@color/color_text</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
 </resources>

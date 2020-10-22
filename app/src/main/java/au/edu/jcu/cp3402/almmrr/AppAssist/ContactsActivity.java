@@ -18,9 +18,9 @@ public class ContactsActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager applicationListManager;
     private TutorialDialog tutorialDialog;
     private String[] applicationList = {
-            "View My Contacts",
-            "Add new Contact",
-            "Find a Contact",
+            "View Contacts",
+            "Add Contact",
+            "Find Contact",
     };
 
     private Class<?>[] applicationActivities = {

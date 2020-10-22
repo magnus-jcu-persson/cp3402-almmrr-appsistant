@@ -52,7 +52,7 @@ public class CalendarAdapter extends ApplicationAdapter {
         int width = 850;
         int height = 300;
 
-        videoPopup = inflater.inflate(R.layout.popup_video, null);
+        videoPopup = inflater.inflate(R.layout.popup_web_view, null);
         infoPopupView = videoPopup.findViewById(R.id.VideoWebView);
         WebSettings webSettings = infoPopupView.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -71,12 +71,12 @@ public class CalendarAdapter extends ApplicationAdapter {
         final WebView webView = viewWebPopup.findViewById(R.id.VideoWebView);
         final PopupWindow popupWindow = new PopupWindow(viewPopup, width, height, true);
 
-        TextView viewApplicationName = holder.linearLayout
+        Button viewApplicationName = holder.linearLayout
                 .findViewById(R.id.application_name);
 
         viewApplicationName.setText(applicationList[position]);
         if (position == 0) {
-            holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            viewApplicationName.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     holder.linearLayout.setOnClickListener(null);
@@ -86,7 +86,7 @@ public class CalendarAdapter extends ApplicationAdapter {
             });
             infoPopupView.loadUrl("https://appassist.s3-ap-southeast-2.amazonaws.com/openCalendar.html");
         } else if (position == 1) {
-            holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            viewApplicationName.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     holder.linearLayout.setOnClickListener(null);
@@ -95,7 +95,7 @@ public class CalendarAdapter extends ApplicationAdapter {
             });
             infoPopupView.loadUrl("https://appassist.s3-ap-southeast-2.amazonaws.com/addNewEvent.html");
         } else {
-            holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            viewApplicationName.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     popupWindow.showAtLocation(applicationListView, Gravity.CENTER, 0, 0);
