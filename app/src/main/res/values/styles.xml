@@ -22,7 +22,7 @@
 
     <style name="CustomButton" parent="Widget.AppCompat.Button.Colored">
         <item name="android:textColor">#FFFFFF</item>
-        <item name="colorButtonNormal">@color/color_primary</item>
+        <item name="colorButtonNormal">?attr/colorPrimary</item>
     </style>
 
     <style name="HeadingText" parent="TextAppearance.AppCompat.Display1">
