@@ -13,7 +13,10 @@ public class ClockActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager applicationListManager;
     private TutorialDialog tutorialDialog;
     private String[] applicationList = {
-            "Open My Clock"
+            "Open My Clock",
+            "Open Timers",
+            "Set A New Alarm"
+
     };
 
     private Class<?>[] applicationActivities = {

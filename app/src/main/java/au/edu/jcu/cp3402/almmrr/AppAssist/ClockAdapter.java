@@ -77,7 +77,37 @@ public class ClockAdapter extends ApplicationAdapter {
                 }
             });
             infoPopupView.loadUrl("https://appassist.s3-ap-southeast-2.amazonaws.com/openCalendar.html");
-        } else {
+        } else if(position==1){
+            holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    holder.linearLayout.setOnClickListener(null);
+                    openTimers();
+                }
+            });
+        }
+        else if(position==2){
+            holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    holder.linearLayout.setOnClickListener(null);
+                    setAlarm();
+                }
+            });
+        }
+        else if(position==3){
+            holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    holder.linearLayout.setOnClickListener(null);
+                    setTimer();
+                }
+            });
+        }
+
+
+
+        else {
             holder.linearLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -119,4 +149,9 @@ public class ClockAdapter extends ApplicationAdapter {
     private void openClock() {
         context.startActivity(new Intent(AlarmClock.ACTION_SHOW_ALARMS));
     }
+
+    private void openTimers() { context.startActivity(new Intent(AlarmClock.ACTION_SET_TIMER)); }
+
+    private void setAlarm() { context.startActivity(new Intent(AlarmClock.ACTION_SET_ALARM)); }
+    
 }
