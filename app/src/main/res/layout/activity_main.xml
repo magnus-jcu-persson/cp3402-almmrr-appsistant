@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="au.edu.jcu.cp3402.almmrr.AppAssist.MainActivity"
-    android:padding="25dp">
+    android:padding="15dp">
 
     <TextView
         style="@style/HeadingText"
@@ -28,13 +28,32 @@
         android:layout_width="match_parent"
         android:layout_height="10dp"/>
 
-    <ImageButton
-        style="@style/CustomButton"
-        android:layout_gravity="end"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:onClick="openSettings"
-        android:src="@drawable/ic_baseline_settings_24"/>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            style="@style/CustomButton"
+            android:layout_marginEnd="10dp"
+            android:textSize="40sp"
+            android:text="@string/help_button"
+            android:onClick="openHelp"
+            />
+
+        <ImageButton
+            style="@style/CustomButton"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:onClick="openSettings"
+            android:src="@drawable/ic_baseline_settings_24"
+            android:contentDescription="@string/settings_cog" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
 
 
 </LinearLayout>
