@@ -9,7 +9,7 @@
         android:id="@+id/CalendarLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="25dp"
+        android:layout_margin="15dp"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="25dp"
         tools:layout_editor_absoluteY="25dp">

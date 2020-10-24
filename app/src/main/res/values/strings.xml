@@ -3,7 +3,7 @@
     <string name="applications_list">Applications:</string>
     <string name="row_placeholder">RowPlaceholder</string>
     <string name="loading">Loading…</string>
-    <string name="title_calendar">Calendar:</string>
+    <string name="title_calendar">Calendar Tasks:</string>
     <string name="select_option_heading">Select an option:</string>
     <string name="question_tutorial_type">What type of Tutorial would you like?</string>
     <string name="text_activate_color_blind">Activate Color Blind Mode</string>
@@ -12,18 +12,27 @@
     <string name="calendar_stage_two">Here we will be selecting an event to show what to do when trying to set an event on your calendar.</string>
     <string name="calendar_stage_three">Set a title for your event, once the title is set click the tick in the bottom right to save the event. Thats the end of the tutorial.</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="play_video">Play Video Button</string>
+    <string name="information">Information Button</string>
 
     <!-- Contacts -->
-    <string name="application_contacts">Contacts:</string>
+    <string name="application_contacts">Contacts</string>
     <string name="contacts_stage_one">To add a contact, click on the + symbol.</string>
     <string name="contacts_stage_two">Fill out your desired fields for your contact.</string>
     <string name="contacts_stage_three">Apply this contact by pressing the save button.</string>
-    <string name="contacts_title">Contacts</string>
+    <string name="contacts_title">Contacts Tasks:</string>
     <string name="date_popup_title">What date would like to see?</string>
     <string name="dd_mm_yyyy">dd-mm-yyyy</string>
     <string name="go">Go</string>
     <string name="contact_popup_title">Contact Name?</string>
     <string name="firstname_lastname">First Name - Last Name</string>
+    <string name="settings_cog">Settings Cog</string>
+    <string name="help_button">Help!</string>
+    <string name="done_button_text">Done</string>
+    <string name="help_app_button_text">To select an application to use, tap these buttons:</string>
+    <string name="help_info_button_text">For information about the application, tap these buttons:</string>
+    <string name="help_video_button_text">To watch a tutorial video, tap these buttons:</string>
+    <string name="help_settings_button_text">To change the settings, tap this button:</string>
     <array name="tutorial_length_options">
         <item>Long Tutorial</item>
         <item>No Tutorial</item>

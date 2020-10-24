@@ -32,7 +32,7 @@
         android:layout_width="match_parent"
         android:layout_columnSpan="1"
         android:layout_margin="16dp"
-        android:text="Done"
+        android:text="@string/done_button_text"
         android:onClick="backClick"/>
 
 </GridLayout>

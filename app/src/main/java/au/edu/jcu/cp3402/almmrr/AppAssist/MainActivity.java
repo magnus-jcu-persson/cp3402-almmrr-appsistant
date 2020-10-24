@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String[] applicationList = {
             "Calendar",
-            "Contacts"
+            "Contacts",
     };
 
     private Class<?>[] applicationActivities = {
@@ -90,6 +90,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void openSettings(View view) {
         Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
+    }
+
+    public void openHelp(View view) {
+        Intent intent = new Intent(this, HelpActivity.class);
         startActivity(intent);
     }
 
