@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     private ApplicationAdapter applicationListAdapter;
     private LayoutManager applicationListManager;
 
+    private SharedPreferences appPreferences;
+
     private String[] applicationList = {
             "Calendar",
             "Contacts"
@@ -48,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        SharedPreferences appPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
+        appPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
         boolean colorBlindMode = appPreferences.getBoolean("setting:toggle_color_blind", false);
         if (colorBlindMode) {
             setThemeMode(Theme.COLOR_BLIND);
@@ -94,6 +96,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupSpeechRecognizer() {
+
+        boolean speechRecognitionMode = appPreferences.getBoolean("setting:toggle_speech_recognition", false);
+
         // Check if user has given permission to record audio
         int permissionCheck = ContextCompat.checkSelfPermission(getApplicationContext(),
                 Manifest.permission.RECORD_AUDIO);
@@ -105,6 +110,12 @@ public class MainActivity extends AppCompatActivity {
 
         // Initialize recognizer
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
+
+        // -- If setting has been deactivated, do not set the listener.
+        if (!speechRecognitionMode) {
+            return;
+        }
+
         speechRecognizer.setRecognitionListener(new RecognitionListener() {
             @Override
             public void onReadyForSpeech(Bundle bundle) {
@@ -137,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onResults(Bundle bundle) {
+
                 ArrayList<String> receivedWords =
                         bundle.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
                 assert receivedWords != null;

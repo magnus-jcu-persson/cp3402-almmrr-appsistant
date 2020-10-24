@@ -7,6 +7,8 @@
     <string name="select_option_heading">Select an option:</string>
     <string name="question_tutorial_type">What type of Tutorial would you like?</string>
     <string name="text_activate_color_blind">Activate Color Blind Mode</string>
+    <string name="text_activate_vibrate">Activate Vibrate Mode</string>
+    <string name="text_activate_speech_recognition">Activate Speech Recognition</string>
     <string name="text_tutorial_continue">To add an event click the red plus sign in the lower left. Click the arrow on the bottom right to continue the tutorial.</string>
     <string name="calendar_stage_one">Clicking this arrow opens the event button, which allows your create either an event, task, reminder or goal.</string>
     <string name="calendar_stage_two">Here we will be selecting an event to show what to do when trying to set an event on your calendar.</string>

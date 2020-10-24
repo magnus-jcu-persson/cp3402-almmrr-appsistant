@@ -20,6 +20,32 @@
         android:layout_width="match_parent"
         android:layout_height="16dp"/>
 
+    <androidx.appcompat.widget.SwitchCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="toggleSwitch"
+        android:checked="false"
+        style="@style/TextAppearance.AppCompat.Large"
+        android:id="@+id/toggle_vibrate"
+        android:text="@string/text_activate_vibrate"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="16dp"/>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="toggleSwitch"
+        android:checked="false"
+        style="@style/TextAppearance.AppCompat.Large"
+        android:id="@+id/toggle_speech_recognition"
+        android:text="@string/text_activate_speech_recognition"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="16dp"/>
+
     <Spinner
         android:id="@+id/option_tutorial_length"
         android:layout_height="45dp"
