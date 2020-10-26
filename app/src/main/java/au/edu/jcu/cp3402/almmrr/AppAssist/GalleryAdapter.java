@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -21,7 +20,6 @@ public class GalleryAdapter extends ApplicationAdapter {
     private String[] applicationList;
     RecyclerView applicationListView;
 
-    EditText editAlbumName;
     Button buttonGoAlbum;
     Button buttonCancel;
     View viewPopup;
@@ -112,13 +110,6 @@ public class GalleryAdapter extends ApplicationAdapter {
         Intent openGalleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
         context.startActivity(openGalleryIntent);
     }
-
-//    private void goToImage(Uri photoUri) { //Method for locating and displaying a certain image
-//        Intent goToImageIntent = new Intent();
-//        goToImageIntent.setAction(Intent.ACTION_VIEW);
-//        goToImageIntent.setDataAndType(photoUri, "image/*");
-//        context.startActivity(goToImageIntent);
-//    }
 
 }
 

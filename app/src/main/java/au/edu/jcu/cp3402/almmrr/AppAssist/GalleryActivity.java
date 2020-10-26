@@ -13,9 +13,7 @@ public class GalleryActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager applicationListManager;
     private TutorialDialog tutorialDialog;
     private String[] applicationList = {
-            "View my Gallery",
-            "Add new Album",
-            "Go to Image",
+            "View my Gallery"
     };
 
     private Class<?>[] applicationActivities = {
