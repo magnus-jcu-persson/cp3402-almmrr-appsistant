@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
     };
 
     /* Voice recognition related variables */
+    boolean speechRecognitionMode;
+
     private SpeechRecognizer speechRecognizer;
     private static final int PERMISSIONS_REQUEST_RECORD_AUDIO = 1; /* Used to handle permission request; */
     private Intent speechRecognizerIntent;
@@ -53,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         appPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
         boolean colorBlindMode = appPreferences.getBoolean("setting:toggle_color_blind", false);
+        speechRecognitionMode = appPreferences.getBoolean("setting:toggle_speech_recognition", false);
         if (colorBlindMode) {
             setThemeMode(Theme.COLOR_BLIND);
         } else {
@@ -61,7 +64,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         applicationListView = findViewById(R.id.view_application_list);
-        setupSpeechRecognizer();
+
+        if (speechRecognitionMode) {
+            setupSpeechRecognizer();
+        }
+
         setApplicationListView();
     }
 
@@ -69,15 +76,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         appPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
         boolean colorBlindMode = appPreferences.getBoolean("setting:toggle_color_blind", false);
+        speechRecognitionMode = appPreferences.getBoolean("setting:toggle_speech_recognition", false);
         if (colorBlindMode) {
             setThemeMode(Theme.COLOR_BLIND);
         } else {
             setThemeMode(Theme.NORMAL);
         }
-        //TODO
-//        if (speechRecognizer != null) {
-//            speechRecognizer.startListening(speechRecognizerIntent);
-//        }
+        if (speechRecognitionMode) {
+            if (speechRecognizer != null) {
+                speechRecognizer.startListening(speechRecognizerIntent);
+            }
+        }
         applicationListManager.removeAllViews();
         applicationListView.setAdapter(applicationListAdapter);
         super.onResume();
@@ -89,16 +98,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        if (speechRecognizer != null) {
-            speechRecognizer.stopListening();
+        if (speechRecognitionMode) {
+            if (speechRecognizer != null) {
+                speechRecognizer.stopListening();
+            }
         }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        speechRecognizer.cancel();
-        speechRecognizer.destroy();
+        if (speechRecognitionMode) {
+            speechRecognizer.cancel();
+            speechRecognizer.destroy();
+        }
     }
 
     public void openSettings(View view) {
@@ -113,8 +126,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupSpeechRecognizer() {
 
-        boolean speechRecognitionMode = appPreferences.getBoolean("setting:toggle_speech_recognition", false);
-
         // Check if user has given permission to record audio
         int permissionCheck = ContextCompat.checkSelfPermission(getApplicationContext(),
                 Manifest.permission.RECORD_AUDIO);
@@ -126,12 +137,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Initialize recognizer
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
-
-        // -- If setting has been deactivated, do not set the listener.
-        if (!speechRecognitionMode) {
-            return;
-        }
-
         speechRecognizer.setRecognitionListener(new RecognitionListener() {
             @Override
             public void onReadyForSpeech(Bundle bundle) {
