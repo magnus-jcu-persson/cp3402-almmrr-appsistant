@@ -207,7 +207,7 @@ public class ClockAdapter extends ApplicationAdapter {
                     context.startActivity(new Intent(AlarmClock.ACTION_SET_TIMER)
                             .putExtra(AlarmClock.EXTRA_LENGTH, timerLength[0])
                             .putExtra(AlarmClock.EXTRA_SKIP_UI, true));
-                    Toast.makeText(context, String.valueOf(timerLength[0] / 60) + " minute timer has started!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, timerLength[0] / 60 + " minute timer has started!", Toast.LENGTH_SHORT).show();
                     popupWindow.dismiss();
                 }
             });
