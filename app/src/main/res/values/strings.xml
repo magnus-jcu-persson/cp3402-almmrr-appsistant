@@ -35,8 +35,4 @@
     <string name="help_info_button_text">For information about the application, tap these buttons:</string>
     <string name="help_video_button_text">To watch a tutorial video, tap these buttons:</string>
     <string name="help_settings_button_text">To change the settings, tap this button:</string>
-    <array name="tutorial_length_options">
-        <item>Long Tutorial</item>
-        <item>No Tutorial</item>
-    </array>
 </resources>

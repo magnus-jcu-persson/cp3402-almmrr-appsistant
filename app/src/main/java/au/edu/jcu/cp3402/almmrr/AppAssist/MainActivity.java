@@ -10,12 +10,13 @@ import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SwitchCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.SharedPreferences;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -29,12 +30,12 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView applicationListView;
     private ApplicationAdapter applicationListAdapter;
     private LayoutManager applicationListManager;
-
+    boolean colorBlindMode;
     private SharedPreferences appPreferences;
 
     private String[] applicationList = {
             "Calendar",
-            "Contacts",
+            "Contacts"
     };
 
     private Class<?>[] applicationActivities = {
@@ -60,19 +61,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         applicationListView = findViewById(R.id.view_application_list);
-
         setupSpeechRecognizer();
         setApplicationListView();
     }
 
     @Override
     protected void onResume() {
-        super.onResume();
-        if (speechRecognizer != null) {
-            speechRecognizer.startListening(speechRecognizerIntent);
+        appPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
+        boolean colorBlindMode = appPreferences.getBoolean("setting:toggle_color_blind", false);
+        if (colorBlindMode) {
+            setThemeMode(Theme.COLOR_BLIND);
+        } else {
+            setThemeMode(Theme.NORMAL);
         }
+        //TODO
+//        if (speechRecognizer != null) {
+//            speechRecognizer.startListening(speechRecognizerIntent);
+//        }
         applicationListManager.removeAllViews();
         applicationListView.setAdapter(applicationListAdapter);
+        super.onResume();
+        setContentView(R.layout.activity_main);
+        applicationListView = findViewById(R.id.view_application_list);
+        setApplicationListView();
     }
 
     @Override
@@ -174,7 +185,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onEvent(int i, Bundle bundle) {
-
             }
         });
 
