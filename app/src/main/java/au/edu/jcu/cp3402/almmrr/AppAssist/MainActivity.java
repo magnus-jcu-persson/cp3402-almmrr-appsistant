@@ -32,12 +32,14 @@ public class MainActivity extends AppCompatActivity {
 
     private String[] applicationList = {
             "Calendar",
-            "Contacts"
+            "Contacts",
+            "Gallery"
     };
 
     private Class<?>[] applicationActivities = {
             CalendarActivity.class,
-            ContactsActivity.class
+            ContactsActivity.class,
+            GalleryTutorialActivity.class
     };
 
     /* Voice recognition related variables */

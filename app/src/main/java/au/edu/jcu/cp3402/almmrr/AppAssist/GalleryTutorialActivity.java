@@ -11,38 +11,35 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-
 import java.util.ArrayList;
 
 public class GalleryTutorialActivity extends AppCompatActivity {
 
-    private TextView textViewTutorial;
     private ArrayList<Fragment> fragments;
-
     private FragmentTransaction fragmentTransaction;
     private int count;
-
+    GalleryTutorialFragment1 galleryTutorialFragment1;
+    GalleryTutorialFragment2 galleryTutorialFragment2;
+    GalleryTutorialFragment3 galleryTutorialFragment3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contacts_tutorial);
+        setContentView(R.layout.activity_gallery_tutorial);
         count = 1;
-        ContactsTutorialFragment1 fragmentContactsTutorial1 = new ContactsTutorialFragment1();
-        ContactsTutorialFragment2 fragmentContactsTutorial2 = new ContactsTutorialFragment2();
-        ContactsTutorialFragment3 fragmentContactsTutorial3 = new ContactsTutorialFragment3();
-
+        galleryTutorialFragment1 = new GalleryTutorialFragment1();
+        galleryTutorialFragment2 = new GalleryTutorialFragment2();
+        galleryTutorialFragment3 = new GalleryTutorialFragment3();
         System.out.println("Activity loaded.");
 
         fragments = new ArrayList<>(4);
         // add overview (layout.activity_calendar_tutorial)
-        fragments.add(fragmentContactsTutorial1);
-        fragments.add(fragmentContactsTutorial2);
-        fragments.add(fragmentContactsTutorial3);
+        fragments.add(galleryTutorialFragment1);
+        fragments.add(galleryTutorialFragment2);
+        fragments.add(galleryTutorialFragment3);
 
-        textViewTutorial = findViewById(R.id.contacts_tutorial_information);
 
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.contacts_fragment_container, fragments.get(0));
+        fragmentTransaction.replace(R.id.gallery_fragment_container, fragments.get(0));
         fragmentTransaction.commit();
 
         ImageButton buttonNextFragment = findViewById(R.id.next_fragment_button);
@@ -72,21 +69,18 @@ public class GalleryTutorialActivity extends AppCompatActivity {
         switch (count) {
             case 1:
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.contacts_fragment_container, fragments.get(0));
+                fragmentTransaction.replace(R.id.gallery_fragment_container, fragments.get(0));
                 fragmentTransaction.commit();
-                textViewTutorial.setText(R.string.contacts_stage_one);
                 break;
             case 2:
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.contacts_fragment_container, fragments.get(1));
+                fragmentTransaction.replace(R.id.gallery_fragment_container, fragments.get(1));
                 fragmentTransaction.commit();
-                textViewTutorial.setText(R.string.contacts_stage_two);
                 break;
             case 3:
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.contacts_fragment_container, fragments.get(2));
+                fragmentTransaction.replace(R.id.gallery_fragment_container, fragments.get(2));
                 fragmentTransaction.commit();
-                textViewTutorial.setText(R.string.contacts_stage_three);
                 break;
         }
     }
@@ -97,26 +91,23 @@ public class GalleryTutorialActivity extends AppCompatActivity {
         switch (count) {
             case 1:
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.contacts_fragment_container, fragments.get(0));
+                fragmentTransaction.replace(R.id.gallery_fragment_container, fragments.get(0));
                 fragmentTransaction.commit();
-                textViewTutorial.setText(R.string.contacts_stage_one);
                 break;
             case 2:
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.contacts_fragment_container, fragments.get(1));
+                fragmentTransaction.replace(R.id.gallery_fragment_container, fragments.get(1));
                 fragmentTransaction.commit();
-                textViewTutorial.setText(R.string.contacts_stage_two);
                 break;
             case 3:
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.contacts_fragment_container, fragments.get(2));
+                fragmentTransaction.replace(R.id.gallery_fragment_container, fragments.get(2));
                 fragmentTransaction.commit();
-                textViewTutorial.setText(R.string.contacts_stage_three);
                 break;
             case 4:
                 count = 0;
                 finish();
-                Intent intent = new Intent(this, ContactsActivity.class);
+                Intent intent = new Intent(this, GalleryActivity.class);
                 startActivity(intent);
                 break;
         }
