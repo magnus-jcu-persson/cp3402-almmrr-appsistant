@@ -14,8 +14,9 @@ public class ClockActivity extends AppCompatActivity {
     private TutorialDialog tutorialDialog;
     private String[] applicationList = {
             "Open My Clock",
-            "Open Timers",
-            "Set A New Alarm"
+            "Open My Timers",
+            "Set a New Alarm",
+            "Set a Quick Timer"
 
     };
 
