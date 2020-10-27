@@ -81,14 +81,13 @@ public class ClockAdapter extends ApplicationAdapter {
         setQuickTimerButtonListeners(quickTimersPopupWindow);
 
 
-
-        TextView viewApplicationName = holder.linearLayout
+        final TextView viewApplicationName = holder.linearLayout
                 .findViewById(R.id.application_name);
 
         viewApplicationName.setText(applicationList[position]);
 
         if (position == 0) {
-            holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            viewApplicationName.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     openClock();
@@ -96,7 +95,7 @@ public class ClockAdapter extends ApplicationAdapter {
             });
             infoPopupView.loadUrl("https://appassist.s3-ap-southeast-2.amazonaws.com/openCalendar.html");
         } else if (position == 1) {
-            holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            viewApplicationName.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     holder.linearLayout.setOnClickListener(null);
@@ -104,7 +103,7 @@ public class ClockAdapter extends ApplicationAdapter {
                 }
             });
         } else if (position == 2) {
-            holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            viewApplicationName.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     holder.linearLayout.setOnClickListener(null);
@@ -112,15 +111,14 @@ public class ClockAdapter extends ApplicationAdapter {
                 }
             });
         } else if (position == 3) {
-            holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            viewApplicationName.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    quickTimersPopupWindow.showAtLocation(holder.linearLayout, Gravity.CENTER, 0, 0);
-                    holder.itemView.refreshDrawableState();
+                    quickTimersPopupWindow.showAtLocation(applicationListView, Gravity.CENTER, 0, 0);
                 }
             });
         } else {
-            holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            viewApplicationName.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     popupWindow.showAtLocation(applicationListView, Gravity.CENTER, 0, 0);
