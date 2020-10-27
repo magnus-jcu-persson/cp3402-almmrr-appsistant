@@ -31,20 +31,19 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView applicationListView;
     private ApplicationAdapter applicationListAdapter;
     private LayoutManager applicationListManager;
-    boolean colorBlindMode;
     private SharedPreferences appPreferences;
 
     private String[] applicationList = {
             "Calendar",
             "Contacts",
-            "Gallery"
+            "Gallery",
             "Clock"
     };
 
     private Class<?>[] applicationActivities = {
             CalendarActivity.class,
             ContactsActivity.class,
-            GalleryTutorialActivity.class
+            GalleryTutorialActivity.class,
             ClockActivity.class
     };
 

@@ -21,6 +21,7 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         appPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
         boolean colorBlindMode = appPreferences.getBoolean("setting:toggle_color_blind", false);
         if (colorBlindMode) {
