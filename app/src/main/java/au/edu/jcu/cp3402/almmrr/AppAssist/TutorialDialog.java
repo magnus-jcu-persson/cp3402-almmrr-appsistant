@@ -10,7 +10,6 @@ import android.os.Build;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
 
 public class TutorialDialog {
@@ -106,7 +105,7 @@ public class TutorialDialog {
         switch (activityName) {
             case "Calendar":
             default:
-                intent = new Intent(activity, TutorialActivity.class);
+                intent = new Intent(activity, CalendarTutorialActivity.class);
                 break;
             case "Contacts":
                 intent = new Intent(activity, ContactsTutorialActivity.class);
