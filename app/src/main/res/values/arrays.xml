@@ -2,7 +2,6 @@
 <resources>
     <array name="array_tutorial_options">
         <item>Full Tutorial</item>
-        <item>Short Tutorial</item>
         <item>No Tutorial</item>
     </array>
 </resources>

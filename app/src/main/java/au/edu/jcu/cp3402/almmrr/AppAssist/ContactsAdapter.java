@@ -15,7 +15,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -56,12 +55,12 @@ public class ContactsAdapter extends ApplicationAdapter {
         int height = 550;
         final PopupWindow popupWindow = new PopupWindow(viewPopup, width, height, true);
 
-        TextView viewApplicationName = holder.linearLayout
+        Button viewApplicationName = holder.linearLayout
                 .findViewById(R.id.application_name);
 
         viewApplicationName.setText(applicationList[position]);
         if (position == 0) {
-            holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            viewApplicationName.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     holder.linearLayout.setOnClickListener(null);
@@ -69,7 +68,7 @@ public class ContactsAdapter extends ApplicationAdapter {
                 }
             });
         } else if (position == 1) {
-            holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            viewApplicationName.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     holder.linearLayout.setOnClickListener(null);
@@ -77,7 +76,7 @@ public class ContactsAdapter extends ApplicationAdapter {
                 }
             });
         } else {
-            holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            viewApplicationName.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     popupWindow.showAtLocation(applicationListView, Gravity.CENTER, 0, 0);

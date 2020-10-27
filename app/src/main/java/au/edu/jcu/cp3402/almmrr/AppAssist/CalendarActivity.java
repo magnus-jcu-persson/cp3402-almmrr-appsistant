@@ -13,9 +13,9 @@ public class CalendarActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager applicationListManager;
     private TutorialDialog tutorialDialog;
     private String[] applicationList = {
-            "View my Calendar",
-            "Add new Event",
-            "Go to Specific Date",
+            "View Calendar",
+            "Add Event",
+            "Go to Date",
     };
 
     private Class<?>[] applicationActivities = {

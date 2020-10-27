@@ -41,7 +41,6 @@ public class ContactsTutorialActivity extends AppCompatActivity {
         fragments.add(fragmentContactsTutorial3);
 
         textViewTutorial = findViewById(R.id.contacts_tutorial_information);
-        settingsArrow = findViewById(R.id.settingsArrow);
 
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.contacts_fragment_container, fragments.get(0));
@@ -76,7 +75,6 @@ public class ContactsTutorialActivity extends AppCompatActivity {
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.contacts_fragment_container, fragments.get(0));
                 fragmentTransaction.commit();
-                settingsArrow.setVisibility(View.INVISIBLE);
                 textViewTutorial.setText(R.string.contacts_stage_one);
                 break;
             case 2:
@@ -102,7 +100,6 @@ public class ContactsTutorialActivity extends AppCompatActivity {
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.contacts_fragment_container, fragments.get(0));
                 fragmentTransaction.commit();
-                settingsArrow.setVisibility(View.INVISIBLE);
                 textViewTutorial.setText(R.string.contacts_stage_one);
                 break;
             case 2:
