@@ -58,13 +58,17 @@ public class TutorialDialog {
     // Vibrate device when user clicks on an option throughout the tutorial
     void vibrateDevice() {
         // Vibrate for 500 milliseconds
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            vibrator.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
-            Log.i("Vibrator", "I am vibrating so hard right now!");
-        } else {
-            // Deprecated in API 26
-            vibrator.vibrate(500);
+        boolean vibrateMode = appPreferences.getBoolean("setting:toggle_vibrate", false);
+        if (vibrateMode) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                vibrator.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
+                Log.i("Vibrator", "I am vibrating so hard right now!");
+            } else {
+                // Deprecated in API 26
+                vibrator.vibrate(500);
+            }
         }
+
     }
 
     void setText(String text) {

@@ -18,9 +18,9 @@ public class ContactsActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager applicationListManager;
     private TutorialDialog tutorialDialog;
     private String[] applicationList = {
-            "View My Contacts",
-            "Add new Contact",
-            "Find a Contact",
+            "View Contacts",
+            "Add Contact",
+            "Find Contact",
     };
 
     private Class<?>[] applicationActivities = {
@@ -32,7 +32,7 @@ public class ContactsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         final String ACTIVITY_NAME = "Contacts";
         SharedPreferences appPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
-        boolean colorBlindMode = appPreferences.getBoolean("settingColorBlind", false);
+        boolean colorBlindMode = appPreferences.getBoolean("setting:toggle_color_blind", false);
         if (colorBlindMode) {
             setThemeMode(Theme.COLOR_BLIND);
         } else {

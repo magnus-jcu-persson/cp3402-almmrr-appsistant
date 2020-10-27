@@ -102,7 +102,7 @@ public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.
 
         viewApplicationName.setText(applicationList[position]);
 
-        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+        viewApplicationName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 holder.linearLayout.setOnClickListener(null);
