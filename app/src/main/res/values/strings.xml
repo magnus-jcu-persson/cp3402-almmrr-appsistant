@@ -28,10 +28,13 @@
     <string name="dd_mm_yyyy">dd-mm-yyyy</string>
     <string name="go">Go</string>
     <string name="contact_popup_title">Contact Name?</string>
+    <string name="to_open_the_gallery_press_the_gallery_icon">To open the gallery press the gallery icon.</string>
+    <string name="select_a_photo_to_open_the_photo_in_a_larger_space">Select a photo to open the photo in a larger space.</string>
+    <string name="title_gallery">Gallery</string>
+    <string name="this_is_the_end_of_this_tutorial">This is the end of this tutorial.</string>
     <string name="alarm_clock">Alarm Clock</string>
     <array name="tutorial_length_options">
         <item>Long Tutorial</item>
-        <item>Short Tutorial</item>
         <item>No Tutorial</item>
     </array>
 

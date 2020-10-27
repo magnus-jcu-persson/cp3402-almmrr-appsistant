@@ -16,6 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".GalleryActivity"></activity>
+        <activity android:name=".GalleryTutorialActivity" />
         <activity android:name=".HelpActivity" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".CalendarActivity"/>
@@ -27,6 +29,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".CalendarTutorialActivity" />
         <activity android:name=".TutorialActivity" />
         <activity android:name=".ContactsTutorialActivity" />
         <activity android:name=".ClockTutorialActivity" />

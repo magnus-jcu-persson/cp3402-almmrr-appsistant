@@ -5,52 +5,44 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-
 import java.util.ArrayList;
 
+public class GalleryTutorialActivity extends AppCompatActivity {
 
-
-public class CalendarTutorialActivity extends AppCompatActivity {
-    ImageButton buttonNextFragment;
-    ImageButton buttonPreviousFragment;
-
-    CalendarTutorialFragment1 fragmentCalendarTutorial1;
-    CalendarTutorialFragment2 fragmentCalendarTutorial2;
-    CalendarTutorialFragment3 fragmentCalendarTutorial3;
-    TextView textViewTutorial;
-    ArrayList<Fragment> fragments;
-    FrameLayout fragmentContainer;
-
-    FragmentTransaction fragmentTransaction;
-    int count;
-
+    private ArrayList<Fragment> fragments;
+    private FragmentTransaction fragmentTransaction;
+    private int count;
+    GalleryTutorialFragment1 galleryTutorialFragment1;
+    GalleryTutorialFragment2 galleryTutorialFragment2;
+    GalleryTutorialFragment3 galleryTutorialFragment3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calendar_tutorial);
-        count = 0;
-        fragmentContainer = findViewById(R.id.fragmentContainer);
-        fragmentCalendarTutorial1 = new CalendarTutorialFragment1();
-        fragmentCalendarTutorial2 = new CalendarTutorialFragment2();
-        fragmentCalendarTutorial3 = new CalendarTutorialFragment3();
+        setContentView(R.layout.activity_gallery_tutorial);
+        count = 1;
+        galleryTutorialFragment1 = new GalleryTutorialFragment1();
+        galleryTutorialFragment2 = new GalleryTutorialFragment2();
+        galleryTutorialFragment3 = new GalleryTutorialFragment3();
+        System.out.println("Activity loaded.");
+
         fragments = new ArrayList<>(4);
         // add overview (layout.activity_calendar_tutorial)
-        fragments.add(fragmentCalendarTutorial1);
-        fragments.add(fragmentCalendarTutorial2);
-        fragments.add(fragmentCalendarTutorial3);
+        fragments.add(galleryTutorialFragment1);
+        fragments.add(galleryTutorialFragment2);
+        fragments.add(galleryTutorialFragment3);
 
-        textViewTutorial = findViewById(R.id.view_tutorial_information);
 
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(0));
+        fragmentTransaction.replace(R.id.gallery_fragment_container, fragments.get(0));
         fragmentTransaction.commit();
 
-        buttonNextFragment = findViewById(R.id.next_fragment_button);
+        ImageButton buttonNextFragment = findViewById(R.id.next_fragment_button);
         buttonNextFragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,7 +50,7 @@ public class CalendarTutorialActivity extends AppCompatActivity {
             }
         });
 
-        buttonPreviousFragment = findViewById(R.id.previous_fragment_button);
+        ImageButton buttonPreviousFragment = findViewById(R.id.previous_fragment_button);
         buttonPreviousFragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,19 +69,17 @@ public class CalendarTutorialActivity extends AppCompatActivity {
         switch (count) {
             case 1:
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(0));
+                fragmentTransaction.replace(R.id.gallery_fragment_container, fragments.get(0));
                 fragmentTransaction.commit();
-                textViewTutorial.setText(R.string.calendar_stage_one);
                 break;
             case 2:
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(1));
+                fragmentTransaction.replace(R.id.gallery_fragment_container, fragments.get(1));
                 fragmentTransaction.commit();
                 break;
             case 3:
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(2));
-                textViewTutorial.setVisibility(View.VISIBLE);
+                fragmentTransaction.replace(R.id.gallery_fragment_container, fragments.get(2));
                 fragmentTransaction.commit();
                 break;
         }
@@ -101,26 +91,23 @@ public class CalendarTutorialActivity extends AppCompatActivity {
         switch (count) {
             case 1:
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(0));
+                fragmentTransaction.replace(R.id.gallery_fragment_container, fragments.get(0));
                 fragmentTransaction.commit();
-                textViewTutorial.setText(R.string.calendar_stage_one);
                 break;
             case 2:
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(1));
+                fragmentTransaction.replace(R.id.gallery_fragment_container, fragments.get(1));
                 fragmentTransaction.commit();
-                textViewTutorial.setText(R.string.calendar_stage_two);
                 break;
             case 3:
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragmentContainer, fragments.get(2));
-                textViewTutorial.setVisibility(View.INVISIBLE);
+                fragmentTransaction.replace(R.id.gallery_fragment_container, fragments.get(2));
                 fragmentTransaction.commit();
                 break;
             case 4:
                 count = 0;
                 finish();
-                Intent intent = new Intent(this, CalendarActivity.class);
+                Intent intent = new Intent(this, GalleryActivity.class);
                 startActivity(intent);
                 break;
         }

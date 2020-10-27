@@ -37,12 +37,14 @@ public class MainActivity extends AppCompatActivity {
     private String[] applicationList = {
             "Calendar",
             "Contacts",
+            "Gallery"
             "Clock"
     };
 
     private Class<?>[] applicationActivities = {
             CalendarActivity.class,
             ContactsActivity.class,
+            GalleryTutorialActivity.class
             ClockActivity.class
     };
 
