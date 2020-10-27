@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="url_default_video">https://www.youtube.com/channel/UCz8GO8vdwRlUEQQEoq6lorw/featured</string>
+<!--    Calendar:-->
     <string name="url_calendar_video">https://youtu.be/DvdrJ5dHvKg</string>
-    <string name="url_view_my_calendar_video">https://youtu.be/3BtN4f7bVDw</string>
-    <string name="url_add_new_event_video">https://youtu.be/0yRSXAKP57g</string>
-    <string name="url_go_to_specific_date_video">https://youtu.be/ZsA5HAVZMGo</string>
-    <string name="url_contacts_video">TODO</string>
+    <string name="url_view_calendar_video">https://youtu.be/3BtN4f7bVDw</string>
+    <string name="url_add_event_video">https://youtu.be/0yRSXAKP57g</string>
+    <string name="url_go_to_date_video">https://youtu.be/ZsA5HAVZMGo</string>
+    <!--    Contacts:-->
+    <string name="url_contacts_video">https://www.youtube.com/channel/UCz8GO8vdwRlUEQQEoq6lorw/featured</string>
+    <string name="url_view_contacts_video">https://www.youtube.com/channel/UCz8GO8vdwRlUEQQEoq6lorw/featured</string>
+    <string name="url_add_contact_video">https://www.youtube.com/channel/UCz8GO8vdwRlUEQQEoq6lorw/featured</string>
+    <string name="url_find_contact_video">https://www.youtube.com/channel/UCz8GO8vdwRlUEQQEoq6lorw/featured</string>
 </resources>

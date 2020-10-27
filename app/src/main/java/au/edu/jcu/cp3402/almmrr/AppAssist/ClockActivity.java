@@ -7,35 +7,37 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-public class CalendarActivity extends AppCompatActivity {
+public class ClockActivity extends AppCompatActivity {
     private RecyclerView applicationListView;
-    private CalendarAdapter applicationListAdapter;
+    private ClockAdapter applicationListAdapter;
     private RecyclerView.LayoutManager applicationListManager;
     private TutorialDialog tutorialDialog;
     private String[] applicationList = {
-            "View Calendar",
-            "Add Event",
-            "Go to Date",
+            "Open My Clock",
+            "Open My Timers",
+            "Set a New Alarm",
+            "Set a Quick Timer"
+
     };
 
     private Class<?>[] applicationActivities = {
-            //Intents for Android calendar
+            //Intents for Android contacts
 
     };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        final String ACTIVITY_NAME = "Calendar";
+        final String ACTIVITY_NAME = "Clock";
         SharedPreferences appPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
-        boolean colorBlindMode = appPreferences.getBoolean("setting:toggle_color_blind", false);
+        boolean colorBlindMode = appPreferences.getBoolean("settingColorBlind", false);
         if (colorBlindMode) {
             setThemeMode(Theme.COLOR_BLIND);
         } else {
             setThemeMode(Theme.NORMAL);
         }
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calendar);
-        applicationListView = findViewById(R.id.view_calendar_list);
+        setContentView(R.layout.activity_clock);
+        applicationListView = findViewById(R.id.view_clock_list);
         setApplicationListView();
 
         int tutorialOption = appPreferences.getInt("setting:option_tutorial_length", -1);
@@ -53,7 +55,7 @@ public class CalendarActivity extends AppCompatActivity {
         applicationListManager = new LinearLayoutManager(this);
         applicationListView.setLayoutManager(applicationListManager);
 
-        applicationListAdapter = new CalendarAdapter(
+        applicationListAdapter = new ClockAdapter(
                 this,
                 applicationList,
                 applicationActivities,

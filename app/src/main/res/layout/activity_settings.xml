@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="25dp"
     android:columnCount="1"
     tools:context=".SettingsActivity">
@@ -18,7 +19,33 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="16dp"/>
+        android:layout_height="25dp"/>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="toggleSwitch"
+        android:checked="false"
+        style="@style/TextAppearance.AppCompat.Large"
+        android:id="@+id/toggle_vibrate"
+        android:text="@string/text_activate_vibrate"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="25dp"/>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="toggleSwitch"
+        android:checked="false"
+        style="@style/TextAppearance.AppCompat.Large"
+        android:id="@+id/toggle_speech_recognition"
+        android:text="@string/text_activate_speech_recognition"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="25dp"/>
 
     <Spinner
         android:id="@+id/option_tutorial_length"
@@ -28,10 +55,11 @@
         android:textSize="22sp" />
 
     <Button
+        style="@style/CustomButton"
         android:layout_width="match_parent"
         android:layout_columnSpan="1"
         android:layout_margin="16dp"
-        android:text="Done"
+        android:text="@string/done_button_text"
         android:onClick="backClick"/>
 
 </GridLayout>

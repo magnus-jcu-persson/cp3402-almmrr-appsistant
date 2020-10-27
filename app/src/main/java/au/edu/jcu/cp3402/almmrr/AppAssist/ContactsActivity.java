@@ -7,20 +7,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import au.edu.jcu.cp3402.almmrr.AppAssist.CalendarAdapter;
-import au.edu.jcu.cp3402.almmrr.AppAssist.R;
-import au.edu.jcu.cp3402.almmrr.AppAssist.Theme;
-import au.edu.jcu.cp3402.almmrr.AppAssist.TutorialDialog;
-
 public class ContactsActivity extends AppCompatActivity {
     private RecyclerView applicationListView;
     private ContactsAdapter applicationListAdapter;
     private RecyclerView.LayoutManager applicationListManager;
     private TutorialDialog tutorialDialog;
     private String[] applicationList = {
-            "View My Contacts",
-            "Add new Contact",
-            "Find a Contact",
+            "View Contacts",
+            "Add Contact",
+            "Find Contact",
     };
 
     private Class<?>[] applicationActivities = {
@@ -32,7 +27,7 @@ public class ContactsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         final String ACTIVITY_NAME = "Contacts";
         SharedPreferences appPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
-        boolean colorBlindMode = appPreferences.getBoolean("settingColorBlind", false);
+        boolean colorBlindMode = appPreferences.getBoolean("setting:toggle_color_blind", false);
         if (colorBlindMode) {
             setThemeMode(Theme.COLOR_BLIND);
         } else {
@@ -40,7 +35,7 @@ public class ContactsActivity extends AppCompatActivity {
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts);
-        applicationListView = findViewById(R.id.view_contacts_list);
+        applicationListView = findViewById(R.id.view_clock_list);
         setApplicationListView();
 
         int tutorialOption = appPreferences.getInt("setting:option_tutorial_length", -1);

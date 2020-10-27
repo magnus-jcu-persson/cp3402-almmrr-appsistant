@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ContactsTutorialActivity">
+    tools:context=".ClockTutorialActivity">
 
     <TextView
         android:id="@+id/text_view_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/contacts_title"
+        android:text="@string/clock_tutorial"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,7 +18,6 @@
         app:layout_constraintVertical_bias="0.008" />
 
     <ImageButton
-        style="@style/CustomButton"
         android:id="@+id/next_fragment_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,7 +27,6 @@
         app:srcCompat="@drawable/abc_vector_test" />
 
     <ImageButton
-        style="@style/CustomButton"
         android:id="@+id/previous_fragment_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -38,7 +36,7 @@
         app:srcCompat="@drawable/abc_vector_test" />
 
     <FrameLayout
-        android:id="@+id/contacts_fragment_container"
+        android:id="@+id/clock_fragment_container"
         android:layout_width="428dp"
         android:layout_height="600dp"
         android:layout_marginBottom="50dp"
@@ -52,19 +50,20 @@
 
 
     <TextView
-        android:id="@+id/contacts_tutorial_information"
-        android:layout_width="302dp"
-        android:layout_height="109dp"
+        android:id="@+id/clock_tutorial_information"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp"
         android:background="@android:color/black"
         android:fontFamily="sans-serif-black"
-        android:text="@string/contacts_stage_one"
+        android:text="@string/text_tutorial_continue"
         android:textColor="@android:color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.36"
+        app:layout_constraintHorizontal_bias="0.50"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintVertical_bias="0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
