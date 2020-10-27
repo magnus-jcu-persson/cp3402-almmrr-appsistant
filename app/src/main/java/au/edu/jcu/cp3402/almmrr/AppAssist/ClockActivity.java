@@ -1,21 +1,23 @@
 package au.edu.jcu.cp3402.almmrr.AppAssist;
 
-import android.content.SharedPreferences;
-import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ContactsActivity extends AppCompatActivity {
+import android.content.SharedPreferences;
+import android.os.Bundle;
+
+public class ClockActivity extends AppCompatActivity {
     private RecyclerView applicationListView;
-    private ContactsAdapter applicationListAdapter;
+    private ClockAdapter applicationListAdapter;
     private RecyclerView.LayoutManager applicationListManager;
     private TutorialDialog tutorialDialog;
     private String[] applicationList = {
-            "View Contacts",
-            "Add Contact",
-            "Find Contact",
+            "Open My Clock",
+            "Open My Timers",
+            "Set a New Alarm",
+            "Set a Quick Timer"
+
     };
 
     private Class<?>[] applicationActivities = {
@@ -25,16 +27,16 @@ public class ContactsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        final String ACTIVITY_NAME = "Contacts";
+        final String ACTIVITY_NAME = "Clock";
         SharedPreferences appPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
-        boolean colorBlindMode = appPreferences.getBoolean("setting:toggle_color_blind", false);
+        boolean colorBlindMode = appPreferences.getBoolean("settingColorBlind", false);
         if (colorBlindMode) {
             setThemeMode(Theme.COLOR_BLIND);
         } else {
             setThemeMode(Theme.NORMAL);
         }
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contacts);
+        setContentView(R.layout.activity_clock);
         applicationListView = findViewById(R.id.view_clock_list);
         setApplicationListView();
 
@@ -53,7 +55,7 @@ public class ContactsActivity extends AppCompatActivity {
         applicationListManager = new LinearLayoutManager(this);
         applicationListView.setLayoutManager(applicationListManager);
 
-        applicationListAdapter = new ContactsAdapter(
+        applicationListAdapter = new ClockAdapter(
                 this,
                 applicationList,
                 applicationActivities,

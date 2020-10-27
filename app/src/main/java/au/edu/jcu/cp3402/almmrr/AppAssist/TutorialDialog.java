@@ -110,6 +110,9 @@ public class TutorialDialog {
             case "Contacts":
                 intent = new Intent(activity, ContactsTutorialActivity.class);
                 break;
+            case "Clock":
+                intent = new Intent(activity, ClockTutorialActivity.class);
+                break;
         }
 
         activity.startActivity(intent);

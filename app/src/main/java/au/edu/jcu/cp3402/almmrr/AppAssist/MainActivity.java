@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.provider.AlarmClock;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
@@ -35,12 +36,14 @@ public class MainActivity extends AppCompatActivity {
 
     private String[] applicationList = {
             "Calendar",
-            "Contacts"
+            "Contacts",
+            "Clock"
     };
 
     private Class<?>[] applicationActivities = {
             CalendarActivity.class,
-            ContactsActivity.class
+            ContactsActivity.class,
+            ClockActivity.class
     };
 
     /* Voice recognition related variables */

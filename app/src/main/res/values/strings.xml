@@ -2,6 +2,7 @@
     <string name="app_name">AppAssist</string>
     <string name="applications_list">Applications:</string>
     <string name="row_placeholder">RowPlaceholder</string>
+    <string name="placeholder">Placeholder</string>
     <string name="loading">Loading…</string>
     <string name="title_calendar">Calendar Tasks:</string>
     <string name="select_option_heading">Select an option:</string>
@@ -27,6 +28,30 @@
     <string name="dd_mm_yyyy">dd-mm-yyyy</string>
     <string name="go">Go</string>
     <string name="contact_popup_title">Contact Name?</string>
+    <string name="alarm_clock">Alarm Clock</string>
+    <array name="tutorial_length_options">
+        <item>Long Tutorial</item>
+        <item>Short Tutorial</item>
+        <item>No Tutorial</item>
+    </array>
+
+    <!-- Clock -->
+    <string name="clock_tutorial">Clock Tutorial</string>
+    <string name="clock_stage_one">Press the + button to add a new alarm.</string>
+    <string name="clock_stage_two">Press on your chosen hour within the clock face. The selected hour will be highlighted in blue.</string>
+    <string name="clock_stage_three">Hold and drag toward the chosen minutes within the clock face. Select either AM or PM and press OK to set the alarm.</string>
+    <string name="clock_stage_four">This displays the information of your set alarm with options to repeat, set a custom alarm sound, label and delete the alarm.</string>
+    <string name="clock_quick_timers_title">Quick Timers</string>
+    <string-array name="clock_quick_timer_options">
+        <item>01 Minute</item>
+        <item>05 Minutes</item>
+        <item>10 Minutes</item>
+        <item>15 Minutes</item>
+        <item>20 Minutes</item>
+        <item>30 Minutes</item>
+        <item>45 Minutes</item>
+        <item>60 Minutes</item>
+    </string-array>
     <string name="firstname_lastname">First Name - Last Name</string>
     <string name="settings_cog">Settings Cog</string>
     <string name="help_button">Help!</string>
