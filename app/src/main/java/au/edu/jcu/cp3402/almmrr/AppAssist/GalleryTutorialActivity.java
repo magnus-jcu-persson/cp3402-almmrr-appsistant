@@ -105,7 +105,6 @@ public class GalleryTutorialActivity extends AppCompatActivity {
                 fragmentTransaction.commit();
                 break;
             case 4:
-                count = 0;
                 finish();
                 Intent intent = new Intent(this, GalleryActivity.class);
                 startActivity(intent);

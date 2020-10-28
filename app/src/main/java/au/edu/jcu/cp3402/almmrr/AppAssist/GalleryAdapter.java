@@ -3,6 +3,7 @@ package au.edu.jcu.cp3402.almmrr.AppAssist;
 import android.content.Context;
 import android.content.Intent;
 import android.provider.MediaStore;
+import android.text.Html;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -41,6 +44,8 @@ public class GalleryAdapter extends ApplicationAdapter {
         buttonCancel = viewPopup.findViewById(R.id.button_cancel);
         final ImageButton viewApplicationVideo = holder.linearLayout
                 .findViewById(R.id.imageButton_video);
+        final ImageButton viewApplicationDetail = holder.linearLayout
+                .findViewById(R.id.imageButton_detail);
         viewWebPopup = inflater.inflate(R.layout.popup_web_view, null);
         final WebView webView = viewWebPopup.findViewById(R.id.VideoWebView);
 
@@ -48,7 +53,7 @@ public class GalleryAdapter extends ApplicationAdapter {
         int height = 550;
         final PopupWindow popupWindow = new PopupWindow(viewPopup, width, height, true);
 
-        TextView viewApplicationName = holder.linearLayout
+        Button viewApplicationName = holder.linearLayout
                 .findViewById(R.id.application_name);
 
         viewApplicationName.setText(applicationList[position]);
@@ -81,6 +86,16 @@ public class GalleryAdapter extends ApplicationAdapter {
             @Override
             public void onClick(View view) {
                 popupWindow.dismiss();
+            }
+        });
+
+        viewApplicationDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String path = applicationList[position].toLowerCase().replace(" ", "_");
+                Toast.makeText(context, Html.fromHtml(context.getString(getStringIdentifier(context, String.format("html_%s",
+                        path)))), Toast.LENGTH_LONG).show();
+//                videoPopupWindow.showAtLocation(holder.linearLayout, Gravity.CENTER, 0, 0);
             }
         });
 

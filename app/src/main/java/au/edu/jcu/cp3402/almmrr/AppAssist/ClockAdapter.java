@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.provider.AlarmClock;
+import android.text.Html;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -81,7 +82,7 @@ public class ClockAdapter extends ApplicationAdapter {
         setQuickTimerButtonListeners(quickTimersPopupWindow);
 
 
-        final TextView viewApplicationName = holder.linearLayout
+        final Button viewApplicationName = holder.linearLayout
                 .findViewById(R.id.application_name);
 
         viewApplicationName.setText(applicationList[position]);
@@ -130,7 +131,10 @@ public class ClockAdapter extends ApplicationAdapter {
         viewApplicationDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                videoPopupWindow.showAtLocation(holder.linearLayout, Gravity.CENTER, 0, 0);
+                String path = applicationList[position].toLowerCase().replace(" ", "_");
+                Toast.makeText(context, Html.fromHtml(context.getString(getStringIdentifier(context, String.format("html_%s",
+                        path)))), Toast.LENGTH_LONG).show();
+//                videoPopupWindow.showAtLocation(holder.linearLayout, Gravity.CENTER, 0, 0);
             }
         });
 

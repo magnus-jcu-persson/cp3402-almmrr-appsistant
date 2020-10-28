@@ -43,8 +43,12 @@ public class MainActivity extends AppCompatActivity {
     private Class<?>[] applicationActivities = {
             CalendarActivity.class,
             ContactsActivity.class,
+            GalleryActivity.class,
+            ClockActivity.class,
+            CalendarTutorialActivity.class,
+            ContactsTutorialActivity.class,
             GalleryTutorialActivity.class,
-            ClockActivity.class
+            ClockTutorialActivity.class
     };
 
     /* Voice recognition related variables */

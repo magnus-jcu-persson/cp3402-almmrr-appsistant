@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.ContactsContract;
+import android.text.Html;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -48,6 +50,8 @@ public class ContactsAdapter extends ApplicationAdapter {
         buttonCancel = viewPopup.findViewById(R.id.button_cancel);
         final ImageButton viewApplicationVideo = holder.linearLayout
                 .findViewById(R.id.imageButton_video);
+        final ImageButton viewApplicationDetail = holder.linearLayout
+                .findViewById(R.id.imageButton_detail);
         viewWebPopup = inflater.inflate(R.layout.popup_web_view, null);
         final WebView webView = viewWebPopup.findViewById(R.id.VideoWebView);
 
@@ -83,6 +87,16 @@ public class ContactsAdapter extends ApplicationAdapter {
                 }
             });
         }
+
+        viewApplicationDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String path = applicationList[position].toLowerCase().replace(" ", "_");
+                Toast.makeText(context, Html.fromHtml(context.getString(getStringIdentifier(context, String.format("html_%s",
+                        path)))), Toast.LENGTH_LONG).show();
+//                videoPopupWindow.showAtLocation(holder.linearLayout, Gravity.CENTER, 0, 0);
+            }
+        });
 
         buttonGoContact.setOnClickListener(new View.OnClickListener() {
             @Override

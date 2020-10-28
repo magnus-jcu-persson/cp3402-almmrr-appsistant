@@ -18,6 +18,7 @@
         app:layout_constraintVertical_bias="0.008" />
 
     <ImageButton
+        style="@style/CustomButton"
         android:id="@+id/next_fragment_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,6 +28,7 @@
         app:srcCompat="@drawable/abc_vector_test" />
 
     <ImageButton
+        style="@style/CustomButton"
         android:id="@+id/previous_fragment_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

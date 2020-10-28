@@ -5,23 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="au.edu.jcu.cp3402.almmrr.AppAssist.GalleryTutorialActivity">
+
     <ImageButton
         android:id="@+id/next_fragment_button"
-        android:layout_width="42dp"
-        android:layout_height="40dp"
+        style="@style/CustomButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:rotation="180"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/abc_vector_test"
         tools:ignore="PrivateResource" />
+
     <ImageButton
         android:id="@+id/previous_fragment_button"
+        style="@style/CustomButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:rotation="0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/abc_vector_test" />
+
     <FrameLayout
         android:id="@+id/gallery_fragment_container"
         android:layout_width="418dp"

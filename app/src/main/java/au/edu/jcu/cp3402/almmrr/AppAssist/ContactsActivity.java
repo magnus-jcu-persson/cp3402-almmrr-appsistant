@@ -38,13 +38,13 @@ public class ContactsActivity extends AppCompatActivity {
         applicationListView = findViewById(R.id.view_clock_list);
         setApplicationListView();
 
-        int tutorialOption = appPreferences.getInt("setting:option_tutorial_length", -1);
-        tutorialDialog = new TutorialDialog(this, ACTIVITY_NAME);
-        if (tutorialOption == -1) {
-            tutorialDialog.start();
-        } else {
-            tutorialDialog.chooseTutorialOption(tutorialOption);
-        }
+//        int tutorialOption = appPreferences.getInt("setting:option_tutorial_length", -1);
+//        tutorialDialog = new TutorialDialog(this, ACTIVITY_NAME);
+//        if (tutorialOption == -1) {
+//            tutorialDialog.start();
+//        } else {
+//            tutorialDialog.chooseTutorialOption(tutorialOption);
+//        }
     }
 
     private void setApplicationListView() {

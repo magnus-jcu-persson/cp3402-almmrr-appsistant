@@ -13,7 +13,7 @@ public class GalleryActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager applicationListManager;
     private TutorialDialog tutorialDialog;
     private String[] applicationList = {
-            "View my Gallery"
+            "View Gallery"
     };
 
     private Class<?>[] applicationActivities = {
@@ -36,13 +36,13 @@ public class GalleryActivity extends AppCompatActivity {
         applicationListView = findViewById(R.id.view_gallery_list);
         setApplicationListView();
 
-        int tutorialOption = appPreferences.getInt("setting:option_tutorial_length", -1);
-        tutorialDialog = new TutorialDialog(this, ACTIVITY_NAME);
-        if (tutorialOption == -1) {
-            tutorialDialog.start();
-        } else {
-            tutorialDialog.chooseTutorialOption(tutorialOption);
-        }
+//        int tutorialOption = appPreferences.getInt("setting:option_tutorial_length", -1);
+//        tutorialDialog = new TutorialDialog(this, ACTIVITY_NAME);
+//        if (tutorialOption == -1) {
+//            tutorialDialog.start();
+//        } else {
+//            tutorialDialog.chooseTutorialOption(tutorialOption);
+//        }
     }
 
     private void setApplicationListView() {

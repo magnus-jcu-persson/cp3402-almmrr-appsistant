@@ -13,10 +13,10 @@ public class ClockActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager applicationListManager;
     private TutorialDialog tutorialDialog;
     private String[] applicationList = {
-            "Open My Clock",
-            "Open My Timers",
-            "Set a New Alarm",
-            "Set a Quick Timer"
+            "Open Clock",
+            "Open Timers",
+            "Set Alarm",
+            "Set Quick Timer"
 
     };
 
@@ -29,7 +29,7 @@ public class ClockActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         final String ACTIVITY_NAME = "Clock";
         SharedPreferences appPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
-        boolean colorBlindMode = appPreferences.getBoolean("settingColorBlind", false);
+        boolean colorBlindMode = appPreferences.getBoolean("setting:toggle_color_blind", false);
         if (colorBlindMode) {
             setThemeMode(Theme.COLOR_BLIND);
         } else {
@@ -40,13 +40,13 @@ public class ClockActivity extends AppCompatActivity {
         applicationListView = findViewById(R.id.view_clock_list);
         setApplicationListView();
 
-        int tutorialOption = appPreferences.getInt("setting:option_tutorial_length", -1);
-        tutorialDialog = new TutorialDialog(this, ACTIVITY_NAME);
-        if (tutorialOption == -1) {
-            tutorialDialog.start();
-        } else {
-            tutorialDialog.chooseTutorialOption(tutorialOption);
-        }
+//        int tutorialOption = appPreferences.getInt("setting:option_tutorial_length", -1);
+//        tutorialDialog = new TutorialDialog(this, ACTIVITY_NAME);
+//        if (tutorialOption == -1) {
+//            tutorialDialog.start();
+//        } else {
+//            tutorialDialog.chooseTutorialOption(tutorialOption);
+//        }
     }
 
     private void setApplicationListView() {

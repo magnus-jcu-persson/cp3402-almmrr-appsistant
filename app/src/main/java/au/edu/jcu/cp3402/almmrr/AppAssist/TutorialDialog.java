@@ -81,17 +81,11 @@ public class TutorialDialog {
 
     public void chooseTutorialOption(int choice) {
         System.out.println("tutorial choice: " + choice);
-        switch (choice) {
-            case 0:
-                vibrateDevice();
-                startFullTutorial();
-                break;
-            case 1:
-                startShortTutorial();
-                break;
-            default:
-                skipTutorial();
-                break;
+        if (choice == 0) {
+            vibrateDevice();
+            startFullTutorial();
+        } else {
+            skipTutorial();
         }
     }
 
@@ -112,6 +106,9 @@ public class TutorialDialog {
                 break;
             case "Clock":
                 intent = new Intent(activity, ClockTutorialActivity.class);
+                break;
+            case "Gallery":
+                intent = new Intent(activity, GalleryTutorialActivity.class);
                 break;
         }
 

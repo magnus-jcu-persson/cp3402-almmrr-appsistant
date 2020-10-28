@@ -3,7 +3,6 @@ package au.edu.jcu.cp3402.almmrr.AppAssist;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -38,13 +37,13 @@ public class CalendarActivity extends AppCompatActivity {
         applicationListView = findViewById(R.id.view_calendar_list);
         setApplicationListView();
 
-        int tutorialOption = appPreferences.getInt("setting:option_tutorial_length", -1);
-        tutorialDialog = new TutorialDialog(this, ACTIVITY_NAME);
-        if (tutorialOption == -1) {
-            tutorialDialog.start();
-        } else {
-            tutorialDialog.chooseTutorialOption(tutorialOption);
-        }
+//        int tutorialOption = appPreferences.getInt("setting:option_tutorial_length", -1);
+//        tutorialDialog = new TutorialDialog(this, ACTIVITY_NAME);
+//        if (tutorialOption == -1) {
+//            tutorialDialog.start();
+//        } else {
+//            tutorialDialog.chooseTutorialOption(tutorialOption);
+//        }
     }
 
     private void setApplicationListView() {

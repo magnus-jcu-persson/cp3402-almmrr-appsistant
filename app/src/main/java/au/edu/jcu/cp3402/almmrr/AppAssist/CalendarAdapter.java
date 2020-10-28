@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.provider.CalendarContract;
+import android.text.Html;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -56,8 +58,7 @@ public class CalendarAdapter extends ApplicationAdapter {
         infoPopupView = videoPopup.findViewById(R.id.VideoWebView);
         WebSettings webSettings = infoPopupView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        ImageButton viewApplicationDetail = holder.linearLayout
-                .findViewById(R.id.imageButton_detail);
+
 
         final PopupWindow videoPopupWindow = new PopupWindow(videoPopup, width, height, true);
 
@@ -67,6 +68,8 @@ public class CalendarAdapter extends ApplicationAdapter {
         buttonCancel = viewPopup.findViewById(R.id.button_cancel);
         final ImageButton viewApplicationVideo = holder.linearLayout
                 .findViewById(R.id.imageButton_video);
+        final ImageButton viewApplicationDetail = holder.linearLayout
+                .findViewById(R.id.imageButton_detail);
         viewWebPopup = inflater.inflate(R.layout.popup_web_view, null);
         final WebView webView = viewWebPopup.findViewById(R.id.VideoWebView);
         final PopupWindow popupWindow = new PopupWindow(viewPopup, width, height, true);
@@ -81,10 +84,10 @@ public class CalendarAdapter extends ApplicationAdapter {
                 public void onClick(View view) {
                     holder.linearLayout.setOnClickListener(null);
                     openCalendar();
-
+                    Toast.makeText(context, "Open Calendar", Toast.LENGTH_SHORT).show();
                 }
             });
-            infoPopupView.loadUrl("https://appassist.s3-ap-southeast-2.amazonaws.com/openCalendar.html");
+//            infoPopupView.loadUrl("https://appassist.s3-ap-southeast-2.amazonaws.com/openCalendar.html");
         } else if (position == 1) {
             viewApplicationName.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -117,7 +120,10 @@ public class CalendarAdapter extends ApplicationAdapter {
         viewApplicationDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                videoPopupWindow.showAtLocation(holder.linearLayout, Gravity.CENTER, 0, 0);
+                String path = applicationList[position].toLowerCase().replace(" ", "_");
+                Toast.makeText(context, Html.fromHtml(context.getString(getStringIdentifier(context, String.format("html_%s",
+                        path)))), Toast.LENGTH_LONG).show();
+//                videoPopupWindow.showAtLocation(holder.linearLayout, Gravity.CENTER, 0, 0);
             }
         });
 

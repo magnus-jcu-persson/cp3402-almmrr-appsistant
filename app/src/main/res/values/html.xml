@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--Calendar-->
+    <string name="html_calendar">&lt;center>
+&lt;h1>Calendar&lt;/h1>
+&lt;p>The Calendar helps you manage your schedule, appointments and dates. In AppAssist you can:&lt;/p>
+&lt;/center>
+
+&lt;ul>
+    &lt;li>View your schedule for the day&lt;/li>
+    &lt;li>Create new appointments&lt;/li>
+    &lt;li>Go to a specific date&lt;/li>
+&lt;/ul></string>
+
+    <string name="html_view_calendar">&lt;center>
+&lt;h1>Open Calendar&lt;/h1>
+&lt;p>Open the Calendar app.&lt;/p>
+&lt;/center>
+    </string>
+
+    <string name="html_add_event">&lt;center>
+&lt;h1>Add Event&lt;/h1>
+&lt;p>Add a new event to your calendar.&lt;/p>
+&lt;/center>
+    </string>
+
+    <string name="html_go_to_date">&lt;center>
+&lt;h1>Go to Date&lt;/h1>
+&lt;p>Find a specific date.&lt;/p>
+&lt;/center>
+    </string>
+
+<!--Contacts-->
+    <string name="html_contacts">&lt;center>
+&lt;h1>Contacts&lt;/h1>
+&lt;p>The Contacts app helps you manage your phone numbers. In AppAssist you can:&lt;/p>
+&lt;/center>
+
+&lt;ul>
+    &lt;li>View your contacts list&lt;/li>
+    &lt;li>Add a new contact&lt;/li>
+    &lt;li>Find a contact&lt;/li>
+    &lt;/ul></string>
+
+    <string name="html_view_contacts">&lt;center>
+&lt;h1>View Contacts&lt;/h1>
+&lt;p>Open the Contacts app.&lt;/p>
+&lt;/center>
+    </string>
+
+    <string name="html_add_contact">&lt;center>
+&lt;h1>Add Contact&lt;/h1>
+&lt;p>Add a new contact to your address book.&lt;/p>
+&lt;/center>
+    </string>
+
+    <string name="html_find_contact">&lt;center>
+&lt;h1>Find Contacts&lt;/h1>
+&lt;p>Type in to search for a contact by name.&lt;/p>
+&lt;/center>
+    </string>
+
+<!--Gallery-->
+    <string name="html_gallery">&lt;center>
+&lt;h1>Gallery&lt;/h1>
+&lt;p>The Gallery helps you manage your Photos. In AppAssist you can:&lt;/p>
+&lt;/center>
+
+&lt;ul>
+    &lt;li>View your gallery&lt;/li>
+    &lt;/ul></string>
+
+    <string name="html_view_gallery">&lt;center>
+&lt;h1>View Gallery&lt;/h1>
+&lt;p>Open the Gallery app.&lt;/p>
+&lt;/center>
+    </string>
+
+<!--Clock-->
+    <string name="html_clock">&lt;center>
+&lt;h1>Clock&lt;/h1>
+&lt;p>The Clock helps you manage your alarms and timers. In AppAssist you can:&lt;/p>
+&lt;/center>
+
+&lt;ul>
+    &lt;li>Open your clock&lt;/li>
+    &lt;li>Open your timers&lt;/li>
+    &lt;li>Set alarms&lt;/li>
+    &lt;li>Set a quick timer&lt;/li>
+    &lt;/ul></string>
+
+    <string name="html_open_clock">&lt;center>
+&lt;h1>Open Clock&lt;/h1>
+&lt;p>Opens the clock app.&lt;/p>
+&lt;/center>
+    </string>
+
+    <string name="html_open_timers">&lt;center>
+&lt;h1>Open Timers&lt;/h1>
+&lt;p>Opens the timers on the clock app.&lt;/p>
+&lt;/center>
+    </string>
+
+    <string name="html_set_alarm">&lt;center>
+&lt;h1>Alarm&lt;/h1>
+&lt;p>Set a new alarm in your clock.&lt;/p>
+&lt;/center>
+    </string>
+
+    <string name="html_set_quick_timer">&lt;center>
+&lt;h1>Quick Timer&lt;/h1>
+&lt;p>Choose from a number of timers to automatically set.&lt;/p>
+&lt;/center>
+    </string>
+</resources>

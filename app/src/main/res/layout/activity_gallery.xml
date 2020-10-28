@@ -15,20 +15,11 @@
         tools:layout_editor_absoluteY="25dp">
 
         <TextView
-            style="@style/TextAppearance.AppCompat.Display2"
+            style="@style/HeadingText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/title_gallery" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="10dp" />
-
-        <TextView
-            style="@style/TextAppearance.AppCompat.Display1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/select_option_heading" />
+            android:text="@string/title_gallery"
+            android:layout_gravity="center"/>
 
         <Space
             android:layout_width="match_parent"

@@ -13,20 +13,10 @@
         android:orientation="vertical">
 
         <TextView
-            style="@style/TextAppearance.AppCompat.Display2"
+            style="@style/HeadingText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/alarm_clock" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="10dp" />
-
-        <TextView
-            style="@style/TextAppearance.AppCompat.Display1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/select_option_heading" />
 
         <Space
             android:layout_width="match_parent"
