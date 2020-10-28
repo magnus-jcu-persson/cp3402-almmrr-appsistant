@@ -53,12 +53,12 @@ public class GalleryAdapter extends ApplicationAdapter {
         int height = 550;
         final PopupWindow popupWindow = new PopupWindow(viewPopup, width, height, true);
 
-        Button viewApplicationName = holder.linearLayout
+        final Button viewApplicationName = holder.linearLayout
                 .findViewById(R.id.application_name);
 
         viewApplicationName.setText(applicationList[position]);
         if (position == 0) {
-            holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            viewApplicationName.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     holder.linearLayout.setOnClickListener(null);
@@ -66,7 +66,7 @@ public class GalleryAdapter extends ApplicationAdapter {
                 }
             });
         } else if (position == 1) {
-            holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            viewApplicationName.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     holder.linearLayout.setOnClickListener(null);
@@ -74,7 +74,7 @@ public class GalleryAdapter extends ApplicationAdapter {
                 }
             });
         } else {
-            holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            viewApplicationName.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     popupWindow.showAtLocation(applicationListView, Gravity.CENTER, 0, 0);
