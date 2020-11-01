@@ -1,4 +1,4 @@
-# AppAssist
+# AppAssist ![alt text](https://github.com/magnus-jcu-persson/cp3402-almmrr-appsistant/blob/master/app/src/main/res/mipmap-hdpi/ic_launcher.png?raw=true)
 
 ## Dev Team
 - Aidan Megee - https://github.com/aidanmegee
